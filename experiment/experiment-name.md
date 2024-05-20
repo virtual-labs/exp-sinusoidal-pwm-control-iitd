@@ -1,1 +1,1 @@
-## Experiment name
+## Single phase IGBT inverter under sinusoidal PWM control
