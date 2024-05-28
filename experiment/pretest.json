@@ -2,12 +2,30 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "Answer the questions given below (refer Fig.1):<br> <center> <img src='images/pre1.png' height='300px'><br><br>Fig. 1. Circuit diagram of single-phase bridge inverter.</center><br><br> 1. What is the definition of modulation index (MI) where ‘A<sub>r</sub>’ is reference signal amplitude and ‘A<sub>c</sub>’ is carrier signal amplitude?",
+      "answers": {        
+        "a": "A<sub>r</sub>/A<sub>c</sub>",
+        "b": "A<sub>c</sub>/A<sub>r</sub>",
+        "c": "(1-A<sub>c</sub>)/A<sub>r</sub>",
+        "d": "(1-A<sub>r</sub>)/A<sub>c</sub>"
+      },
+      "explanations": {
+        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "b": "Explanation 2",
+        "c": "Explanation 2",
+        "d": "Explanation 2"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+      
+    {
+      "question": "2. What is output voltage when switch “S<sub>1</sub>” and “S<sub>3</sub>” are",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "0",
+        "b": "-V<sub>in</sub>",
+        "c": "V<sub>in</sub>",
+        "d": "V<sub>in</sub>/2"
       },
       "explanations": {
         "a": "Explanation 1  <a href='www.google.com'>here</a>",
@@ -18,13 +36,32 @@
       "correctAnswer": "a",
       "difficulty": "beginner"
     },
+    
     {
-      "question": "This is a Sample Question 2?",
+      "question": "3. An inverter converts ",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "DC -to- DC",
+        "b": "DC -to- AC",
+        "c": "AC -to- AC",
+        "d": "AC -to- DC"
+      },
+      "explanations": {
+        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "b": "Explanation 2",
+        "c": "Explanation 2",
+        "d": "Explanation 2"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+        
+    {
+      "question": "4. In voltage source inverters (VSI)",
+      "answers": {
+        "a": "both voltage and current depend on the load impedance",
+        "b": "only voltage depends on the load impedance",
+        "c": "only current depends on the load impedance",
+        "d": "neither voltage nor current depends"
       },
       "explanations": {
         "a": "Explanation 1  <a href='www.google.com'>here</a>",
@@ -33,6 +70,25 @@
         "d": "Explanation 2"
       },
       "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    
+    {
+      
+      "question": "5. The Total Harmonic Distortion (THD) is the ratio of",
+      "answers": {
+        "a": "<img src='images/pre2.png' height='70px'>",
+        "b": "<img src='images/pre3.png' height='70px'>",
+        "c": "<img src='images/pre4.png' height='70px'>",
+        "d": "<img src='images/pre5.png' height='70px'>"
+      },
+      "explanations": {
+        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "b": "Explanation 2",
+        "c": "Explanation 2",
+        "d": "Explanation 2"
+      },
+      "correctAnswer": "a",
       "difficulty": "beginner"
     }
   ]
