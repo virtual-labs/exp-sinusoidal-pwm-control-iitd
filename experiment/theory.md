@@ -148,9 +148,9 @@ where “m<sub>f</sub>=f<sub>c</sub>/f<sub>o</sub>” is defined as the frequenc
 <div style="float: left; width:100%;"><br>
 - The variation of the modulation index (M) from 0 to 1 varies the pulse width “d” from 0 to “T/2p” (0 to &#8508;/p) and the RMS output voltage (V<sub>o</sub>) from “0 to V<sub>in</sub>”.
 - The general form of load voltage expressed using Fourier series is
-</div>
+</div><br>
 
-<div style="float: left; width:50%;"><br>
+<div style="float: left; width:50%;">
   <img src="images/th7.png" height="70px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
@@ -161,7 +161,7 @@ where “m<sub>f</sub>=f<sub>c</sub>/f<sub>o</sub>” is defined as the frequenc
 
 <div style="float: left; width:100%;"><br>
 The coefficient ‘B<sub>n</sub>’ can be found by adding the effects of all pulses (2<sub>p</sub>).
-<br>
+<br><br>
 </div>
 
 <div style="float: left; width:50%;">
@@ -175,9 +175,9 @@ The coefficient ‘B<sub>n</sub>’ can be found by adding the effects of all pu
 <div style="float: left; width:100%;"><br>
   
 - The pulse width ‘d’ is
-</div>
+</div><br>
 
-<div style="float: left; width:50%;"><br>
+<div style="float: left; width:50%;">
   <img src="images/th9.png" height="65px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
@@ -200,8 +200,8 @@ where T<sub>s</sub>=T/2p.
 - When the instantaneous sinusoidal reference magnitude is higher than the triangular carrier magnitude then the PWM signal is high, otherwise it is low.
 
 </div>
-
-<div style="float: left; width:50%;"><br>
+<br>
+<div style="float: left; width:50%;">
   <img src="images/th10.png" height="65px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
@@ -220,12 +220,9 @@ where T<sub>s</sub>=T/2p.
     ..(7)
 
 </div>
-
-
-<div style="float: left; width:100%;"><br>
-
-&nbsp;     
-
+<br>
+<div style="float: left; width:100%;">
+&nbsp;
 </div>
 
 <div style="float: left; width:50%;">
@@ -235,12 +232,9 @@ where T<sub>s</sub>=T/2p.
     ..(8)
 
 </div>
-
-
-<div style="float: left; width:100%;"><br>
-
-&nbsp;     
-
+<br>
+<div style="float: left; width:100%;">
+&nbsp;
 </div>
 
 <center>
