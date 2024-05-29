@@ -148,11 +148,9 @@ where “mf=fc/fo” is defined as the frequency modulation ratio.
 <div style="float: left; width:100%;"><br>
 - The variation of the modulation index (M) from 0 to 1 varies the pulse width “d” from 0 to “T/2p” (0 to &#8508;/p) and the RMS output voltage (V<sub>o</sub>) from “0 to Vin”. 
 - The general form of load voltage expressed using Fourier series is
-
-<br><br>
 </div>
 
-<div style="float: left; width:50%;">
+<div style="float: left; width:50%;"><br>
   <img src="images/th7.png" height="70px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
@@ -163,8 +161,7 @@ where “mf=fc/fo” is defined as the frequency modulation ratio.
 
 <div style="float: left; width:100%;"><br>
 The coefficient ‘Bn’ can be found by adding the effects of all pulses (2p).
-
-<br><br>
+<br>
 </div>
 
 <div style="float: left; width:50%;">
@@ -176,13 +173,11 @@ The coefficient ‘Bn’ can be found by adding the effects of all pulses (2p).
 </div>
 
 <div style="float: left; width:100%;"><br>
-
+  
 - The pulse width ‘d’ is
-
-<br><br>
 </div>
 
-<div style="float: left; width:50%;">
+<div style="float: left; width:50%;"><br>
   <img src="images/th9.png" height="65px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
@@ -206,7 +201,7 @@ where Ts=T/2p.
 
 </div>
 
-<div style="float: left; width:50%;">
+<div style="float: left; width:50%;"><br>
   <img src="images/th10.png" height="65px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
@@ -214,10 +209,8 @@ where Ts=T/2p.
 
 </div>
 
-<div style="float: left; width:100%;"><br>
-
-&nbsp;     
-
+<div style="float: left; width:100%;">
+&nbsp;
 </div>
 
 <div style="float: left; width:50%;">
