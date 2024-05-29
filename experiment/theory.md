@@ -9,22 +9,22 @@ Fig. 1. Circuit diagram of single -phase bridge inverter.
 
 </center>
 <br>
-Based on the operation of switches (S1, S2, S3, S4: ON/OFF-state) the operating principle of the inverter is explained below briefly. All possible switching states are given Table.1.
+Based on the operation of switches (S<sub>1</sub>, S<sub>2</sub>, S<sub>3</sub>, S<sub>4</sub>: ON/OFF-state) the operating principle of the inverter is explained below briefly. All possible switching states are given Table.1.
 <br><br>
 
 <table border="0" align="center" style="width:100%; border:none;">
   <tr>
     <td>
       
-**Switch (S1, S2): ON-state** 
+**Switch (S<sub>1</sub>, S<sub>2</sub>): ON-state** 
 
-**Switch (S3, S4): OFF-state**
+**Switch (S<sub>3</sub>, S<sub>4</sub>): OFF-state**
     </td>
     <td>
 
-**Switch (S1, S2): OFF-state**
+**Switch (S<sub>1</sub>, S<sub>2</sub>): OFF-state**
 
-**Switch (S3, S4): ON-state**  
+**Switch (S<sub>3</sub>, S<sub>4</sub>): ON-state**  
     </td>
   </tr>
   <tr>
@@ -33,7 +33,7 @@ Based on the operation of switches (S1, S2, S3, S4: ON/OFF-state) the operating 
   
 <img src="images/th2.png">
 <br><br>
-Fig. 2(a). Equivalent circuit when S1 and S2 are ON
+Fig. 2(a). Equivalent circuit when S<sub>1</sub> and S<sub>2</sub> are ON
 <br><br>
 </center>
 </td>
@@ -43,7 +43,7 @@ Fig. 2(a). Equivalent circuit when S1 and S2 are ON
 
 <img src="images/th3.png">
 <br><br>
-Fig. 2(b). when S3 and S4 are ON
+Fig. 2(b). when S<sub>3</sub> and S<sub>4</sub> are ON
 <br><br>
 </center> 
     </td>
@@ -60,10 +60,10 @@ Fig. 2(b). when S3 and S4 are ON
 <table align="center" width="100%" >
   <tr style="text-align: center; font-weight: bold; background-color: #c9c9c9;">
     <td style="text-align: center; font-weight: bold;">Switching States</td>
-    <td style="text-align: center; font-weight: bold;">S1</td>
-    <td style="text-align: center; font-weight: bold;">S2</td>
-    <td style="text-align: center; font-weight: bold;">S3</td>
-    <td style="text-align: center; font-weight: bold;">S4</td>
+    <td style="text-align: center; font-weight: bold;">S<sub>1</sub></td>
+    <td style="text-align: center; font-weight: bold;">S<sub>2</sub></td>
+    <td style="text-align: center; font-weight: bold;">S<sub>3</sub></td>
+    <td style="text-align: center; font-weight: bold;">S<sub>4</sub></td>
     <td style="text-align: center; font-weight: bold;">V<sub>o</sub></td>
   </tr>
   <tr style="background-color: #FFF;">
@@ -118,7 +118,7 @@ Fig. 3. Multi-pulse PWM generation.
 
 - The harmonic content can easily be reduced by using several pulses in each half-cycle of output voltage. 
 - The generation of gating signals for turning ON and OFF of switches is done by comparing a square wave reference signal with triangular carrier wave.
-- The frequency of reference signals sets the output frequency (fo) and the carrier frequency (fc) determines the number of pulses (p) per half-cycle. 
+- The frequency of reference signals sets the output frequency (f<sub>o</sub>) and the carrier frequency (f<sub>c</sub>) determines the number of pulses (p) per half-cycle. 
 - The modulation index (M) controls the output voltage magnitude.
 - This type of modulation is also known as uniform pulse-width modulation (UPWM).
 - The number of pulses (p) per half-cycle is:
@@ -133,7 +133,7 @@ Fig. 3. Multi-pulse PWM generation.
 <br>
 
 <div style="float: left; width:100%;"><br>
-where “mf=fc/fo” is defined as the frequency modulation ratio.
+where “m<sub>f</sub>=f<sub>c</sub>/f<sub>o</sub>” is defined as the frequency modulation ratio.
 <br><br>
 </div>
 
@@ -146,7 +146,7 @@ where “mf=fc/fo” is defined as the frequency modulation ratio.
 </div>
 
 <div style="float: left; width:100%;"><br>
-- The variation of the modulation index (M) from 0 to 1 varies the pulse width “d” from 0 to “T/2p” (0 to &#8508;/p) and the RMS output voltage (V<sub>o</sub>) from “0 to Vin”. 
+- The variation of the modulation index (M) from 0 to 1 varies the pulse width “d” from 0 to “T/2p” (0 to &#8508;/p) and the RMS output voltage (V<sub>o</sub>) from “0 to V<sub>in</sub>”.
 - The general form of load voltage expressed using Fourier series is
 </div>
 
@@ -160,7 +160,7 @@ where “mf=fc/fo” is defined as the frequency modulation ratio.
 
 
 <div style="float: left; width:100%;"><br>
-The coefficient ‘Bn’ can be found by adding the effects of all pulses (2p).
+The coefficient ‘B<sub>n</sub>’ can be found by adding the effects of all pulses (2<sub>p</sub>).
 <br>
 </div>
 
@@ -187,7 +187,7 @@ The coefficient ‘Bn’ can be found by adding the effects of all pulses (2p).
 <br>
 
 <div style="float: left; width:100%;"><br>
-where Ts=T/2p.
+where T<sub>s</sub>=T/2p.
 <br><br>
 
 **SINUSOIDAL-PULSE WIDTH MODULATION (SPWM)**
@@ -195,7 +195,7 @@ where Ts=T/2p.
 
 - For realizing SPWM, a high-frequency triangular carrier wave is compared with a sinusoidal reference of the desired output frequency. 
 - The intersection of carrier and reference waveforms determines the switching instants of the devices. 
-- The PWM scheme is illustrated in Fig. 4 in which ‘vc’ is the peak value of triangular carrier wave and ‘vr’ that of the reference signal. 
+- The PWM scheme is illustrated in Fig. 4 in which ‘v<sub>c</sub>’ is the peak value of triangular carrier wave and ‘v<sub>r</sub>’ that of the reference signal. 
 - The switches of the inverter are controlled based on the PWM generated above. 
 - When the instantaneous sinusoidal reference magnitude is higher than the triangular carrier magnitude then the PWM signal is high, otherwise it is low.
 
