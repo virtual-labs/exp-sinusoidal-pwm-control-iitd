@@ -69,7 +69,7 @@ Table-1. Switch states for full bridge Inverter-Unipolar switching
     <td style="text-align: center; font-weight: bold;">S2</td>
     <td style="text-align: center; font-weight: bold;">S3</td>
     <td style="text-align: center; font-weight: bold;">S4</td>
-    <td style="text-align: center; font-weight: bold;">V<sub>0</sub></td>
+    <td style="text-align: center; font-weight: bold;">V<sub>o</sub></td>
   </tr>
   <tr style="background-color: #FFF;">
     <td style="text-align: center; font-weight: bold;">1</td>
@@ -122,7 +122,6 @@ Fig. 3. Multi-pulse PWM generation.
 </center>
 <br>
 
-
 - The harmonic content can easily be reduced by using several pulses in each half-cycle of output voltage. 
 - The generation of gating signals for turning ON and OFF of switches is done by comparing a square wave reference signal with triangular carrier wave.
 - The frequency of reference signals sets the output frequency (fo) and the carrier frequency (fc) determines the number of pulses (p) per half-cycle. 
@@ -130,3 +129,137 @@ Fig. 3. Multi-pulse PWM generation.
 - This type of modulation is also known as uniform pulse-width modulation (UPWM).
 - The number of pulses (p) per half-cycle is:
 
+<br>
+<div style="float: left; width:50%;">
+  <img src="images/th5.png" height="40px">
+</div>
+<div style="float: right; width:50%; text-align:center;">
+    ..(1)
+</div>
+<br>
+
+<div style="float: left; width:100%;"><br>
+where “mf=fc/fo” is defined as the frequency modulation ratio.
+<br><br>
+</div>
+
+<div style="float: left; width:50%;">
+  <img src="images/th6.png" height="65px">
+      </div>
+<div style="float: right; width:50%; text-align:center;">
+    ..(2)
+
+</div>
+
+<div style="float: left; width:100%;"><br>
+- The variation of the modulation index (M) from 0 to 1 varies the pulse width “d” from 0 to “T/2p” (0 to &#8508;/p) and the RMS output voltage (V<sub>o</sub>) from “0 to Vin”. 
+- The general form of load voltage expressed using Fourier series is
+
+<br><br>
+</div>
+
+<div style="float: left; width:50%;">
+  <img src="images/th7.png" height="65px">
+      </div>
+<div style="float: right; width:50%; text-align:center;">
+    ..(3)
+
+</div>
+
+
+<div style="float: left; width:100%;"><br>
+The coefficient ‘Bn’ can be found by adding the effects of all pulses (2p).
+
+<br><br>
+</div>
+
+<div style="float: left; width:50%;">
+  <img src="images/th8.png" height="65px">
+      </div>
+<div style="float: right; width:50%; text-align:center;">
+    ..(4)
+
+</div>
+
+<div style="float: left; width:100%;"><br>
+
+- The pulse width ‘d’ is
+
+<br><br>
+</div>
+
+<div style="float: left; width:50%;">
+  <img src="images/th9.png" height="65px">
+      </div>
+<div style="float: right; width:50%; text-align:center;">
+    ..(5)
+
+</div>
+<br>
+
+<div style="float: left; width:100%;"><br>
+where Ts=T/2p.
+<br><br>
+
+**SINUSOIDAL-PULSE WIDTH MODULATION (SPWM)**
+<br>
+
+- For realizing SPWM, a high-frequency triangular carrier wave is compared with a sinusoidal reference of the desired output frequency. 
+- The intersection of carrier and reference waveforms determines the switching instants of the devices. 
+- The PWM scheme is illustrated in Fig. 4 in which ‘vc’ is the peak value of triangular carrier wave and ‘vr’ that of the reference signal. 
+- The switches of the inverter are controlled based on the PWM generated above. 
+- When the instantaneous sinusoidal reference magnitude is higher than the triangular carrier magnitude then the PWM signal is high, otherwise it is low.
+
+</div>
+
+<div style="float: left; width:50%;">
+  <img src="images/th10.png" height="65px">
+      </div>
+<div style="float: right; width:50%; text-align:center;">
+    ..(6)
+
+</div>
+
+<div style="float: left; width:100%;"><br>
+
+&nbsp;     
+
+</div>
+
+<div style="float: left; width:50%;">
+  <img src="images/th11.png" height="65px">
+      </div>
+<div style="float: right; width:50%; text-align:center;">
+    ..(7)
+
+</div>
+
+
+<div style="float: left; width:100%;"><br>
+
+&nbsp;     
+
+</div>
+
+<div style="float: left; width:50%;">
+  <img src="images/th12.png" height="65px">
+      </div>
+<div style="float: right; width:50%; text-align:center;">
+    ..(8)
+
+</div>
+
+
+<div style="float: left; width:100%;"><br>
+
+&nbsp;     
+
+</div>
+
+<center>
+  <img src="images/th13.png">
+  
+Fig. 4. Ideal waveforms for the unipolar SPWM generation.
+
+</center>
+<br>
