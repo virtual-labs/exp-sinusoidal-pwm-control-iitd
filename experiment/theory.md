@@ -31,8 +31,6 @@ Based on the operation of switches (S1, S2, S3, S4: ON/OFF-state) the operating 
 <td style="width:50%">
 <center>
   
-**Mode – I :  Switch S:ON-state, Diode: OFF-state**
-<br>
 <img src="images/th2.png">
 <br><br>
 Fig. 2(a). Equivalent circuit when S1 and S2 are ON
@@ -42,9 +40,7 @@ Fig. 2(a). Equivalent circuit when S1 and S2 are ON
 <td style="width:50%">
   
 <center>
-  
-**Mode – II :  Switch S:OFF-state, Diode: ON-state**
-<br>
+
 <img src="images/th3.png">
 <br><br>
 Fig. 2(b). when S3 and S4 are ON
@@ -57,11 +53,10 @@ Fig. 2(b). when S3 and S4 are ON
 
 
 <div style="float: left; width:100%;"><br>
-Table-1. Switch states for full bridge Inverter-Unipolar switching
+<center>Table-1. Switch states for full bridge Inverter-Unipolar switching</center>
 <br>
 </div>
 
-<center>
 <table align="center" width="100%" >
   <tr style="text-align: center; font-weight: bold; background-color: #c9c9c9;">
     <td style="text-align: center; font-weight: bold;">Switching States</td>
@@ -104,14 +99,13 @@ Table-1. Switch states for full bridge Inverter-Unipolar switching
     <td style="text-align: center; font-weight: bold;">0</td>
   </tr>
 </table>
-</center>
 <br>
 
-
 <div style="float: left; width:100%;"><br>
+<center>
 
-**MULTIPLE-PULSE WIDTH MODULATION (SPWM)**     
-
+  **MULTIPLE-PULSE WIDTH MODULATION (SPWM)**     
+</center>
 </div>
 
 <center>
@@ -131,7 +125,7 @@ Fig. 3. Multi-pulse PWM generation.
 
 <br>
 <div style="float: left; width:50%;">
-  <img src="images/th5.png" height="40px">
+  <img src="images/th5.png" height="65px">
 </div>
 <div style="float: right; width:50%; text-align:center;">
     ..(1)
@@ -144,7 +138,7 @@ where “mf=fc/fo” is defined as the frequency modulation ratio.
 </div>
 
 <div style="float: left; width:50%;">
-  <img src="images/th6.png" height="65px">
+  <img src="images/th6.png" height="75px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
     ..(2)
@@ -159,7 +153,7 @@ where “mf=fc/fo” is defined as the frequency modulation ratio.
 </div>
 
 <div style="float: left; width:50%;">
-  <img src="images/th7.png" height="65px">
+  <img src="images/th7.png" height="70px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
     ..(3)
@@ -174,7 +168,7 @@ The coefficient ‘Bn’ can be found by adding the effects of all pulses (2p).
 </div>
 
 <div style="float: left; width:50%;">
-  <img src="images/th8.png" height="65px">
+  <img src="images/th8.png" height="78px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
     ..(4)
