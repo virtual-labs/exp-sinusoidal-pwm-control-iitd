@@ -3351,7 +3351,7 @@ part1_box1 : new Dom(".part1_box1"),
               labels: ["Multi-pulse PWM", "Sinusoidal PWM"],
               datasets: [
                 {
-                  backgroundColor: '#7030a0',
+                  backgroundColor: ['#395723','#7030a0'],
                   label: "Vo1,rms",
                   data: [],
                 },
@@ -3361,11 +3361,11 @@ part1_box1 : new Dom(".part1_box1"),
               maintainAspectRatio: false,
               responsive: true,
               legend: {
-                // display: false
+                display: false
               },
               title:{
-                display: false,
-                text: "Fundamental",
+                display: true,
+                text: "Vo1,rms (fundamental)",
                 fontColor: 'black',
                 fontSize: 15,
               },
@@ -3431,7 +3431,7 @@ part1_box1 : new Dom(".part1_box1"),
                 // display: false
               },
               title:{
-                display: false,
+                display: true,
                 text: "Harmonic Component & THD",
                 fontColor: 'black',
                 fontSize: 15,
