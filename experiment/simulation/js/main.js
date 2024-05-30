@@ -896,12 +896,24 @@ part1_box1 : new Dom(".part1_box1"),
 
       Scenes.items.btn_check.set(865-80, -40, 45).zIndex(1)
       Scenes.items.btn_reset.set(865, -40, 45).zIndex(1)
+
+      let us = {
+        color: "#993366",
+        fontSize: "1.2rem",
+        textAlign: "left",
+        fontStyle: ""
+      }
+      Scenes.items.tempTitle16.setContent("Connect the device terminal to the bridge terminals to form 1-phase bridge inverter.").set(714, 29, null, 198
+        
+      ).styles(us).zIndex(20000)
+
       // connected vertex src and dest
       let allConnectedVertexSrcDest = {}
 
       function isConnectionsRight(isConnectionsCorrect){
         let imgToShow = null
         if(isConnectionsCorrect){
+          Scenes.items.tempTitle16.hide()
           setCC("Well Done, This is 'single-phase bridge inverter'")
 
           // * destroy all the connection
@@ -3339,8 +3351,8 @@ part1_box1 : new Dom(".part1_box1"),
               labels: ["Multi-pulse PWM", "Sinusoidal PWM"],
               datasets: [
                 {
-                  backgroundColor: ['#385623','#7030a0'],
-                  label: ["Vo1","rms"],
+                  backgroundColor: '#7030a0',
+                  label: "Vo1,rms",
                   data: [],
                 },
               ]
@@ -3349,11 +3361,11 @@ part1_box1 : new Dom(".part1_box1"),
               maintainAspectRatio: false,
               responsive: true,
               legend: {
-                display: false
+                // display: false
               },
               title:{
                 display: false,
-                text: "Voltage Stress",
+                text: "Fundamental",
                 fontColor: 'black',
                 fontSize: 15,
               },
@@ -3420,7 +3432,7 @@ part1_box1 : new Dom(".part1_box1"),
               },
               title:{
                 display: false,
-                text: "Current Stress",
+                text: "Harmonic Component & THD",
                 fontColor: 'black',
                 fontSize: 15,
               },
@@ -3526,8 +3538,8 @@ part1_box1 : new Dom(".part1_box1"),
 
          // taking values from all sliders 
         let vInValue = Number(sliders.selectOp1.value)
-        let dutyRatioValue = Number(sliders.slider.value)
-        let resistanceValue = Number(sliders.selectOp2.value)
+        let dutyRatioValue = Number(sliders.selectOp2.value)
+        let resistanceValue = Number(sliders.slider.value)
         let nValue = Number(sliders.selectOp3.value)
 
         // * if all values not selected
@@ -3564,7 +3576,7 @@ part1_box1 : new Dom(".part1_box1"),
         let data1Arr = Formulas.multipulse.valueSet(vInValue, dutyRatioValue)
         let data2Arr = Formulas.sinusoidal.valueSet(vInValue, dutyRatioValue)
 
-        // console.log(data1Arr)
+        console.log(vInValue, dutyRatioValue)
         // console.log(data2Arr)
         let data_1 = data1Arr[3]
         let data_2 = data1Arr[4]
@@ -3577,11 +3589,9 @@ part1_box1 : new Dom(".part1_box1"),
         let data_8 = data2Arr[6]
 
         let val1 = data1Arr[2]
-        let val2 = data1Arr[0]
+        let val2 = data2Arr[2]
         // ! add values to graph
         // let graph1_data = [vS,vD,vC]
-        console.log(val1)
-        console.log(val2)
         let graph1_data = [val1, val2]
 
         // let graph2_data = [iS,iD,iC]
