@@ -1688,231 +1688,7 @@ part1_box1 : new Dom(".part1_box1"),
 
       return true
     }),
-  //   (step2 = function () {
-  //     setIsProcessRunning(true);
-  //     // * destroy all the connection
-  //     Scenes.items.btn_reset.item.click()
-  //     getAll(".jtk-endpoint").forEach(ele=>{
-  //       ele.style.display = "none"
-  //     })
-  //     Scenes.setStepHeading(
-  //       "Step-2",
-  //       "Voltage and current waveforms."
-  //     )
-      
-  //     Scenes.items.btn_next.show();
-  //     function stepTutorial2(){
-
-  //       setCC("Select V<sub>in</sub>")
-  //         Dom.setBlinkArrowRed(true,110,89,30,30,90).play()
-          
-  //         sliders.selectOp1.oninput = ()=>{
-  //           Dom.setBlinkArrowRed(true,270,89,30,30,90).play()
-  //           setCC("Select R")
-
-  //           sliders.selectOp2.oninput = ()=>{
-  //             Dom.setBlinkArrowRed(true,440,89,30,30,90).play()
-  //             setCC("Select Turns ratio")
-      
-  //             sliders.selectOp3.oninput = ()=>{
-  //               Dom.setBlinkArrowRed(true,98,144,30,30,90).play()
-  //               setCC("Select D")
-        
-
-  //             sliders.slider.onclick = ()=>{
-  //               Dom.setBlinkArrowRed(true,400,8,30,30,90).play()
-  //               setCC("Press Record")   
-
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-  //     stepTutorial2()
-      
-   
-
-  // //! Required Items
-  // Scenes.items.btn_record.set(355, -40)
-  // Scenes.items.slider_box.set(40,25)
-  // sliders.generateOptionsFor(-1)
-
-
-  // Scenes.items.new_part_2_circuit_full.set(10,155, 220)
-  // Scenes.items.slider_box.item.style.scale = "0.9";
-  // // sliders.hideSliderAndOption(0)
-
-
   
-  // // * for bigger screen
-  // /*
-  // let l = 465
-  // let t = -75
-  // let h = 474
-  // let w = 470
-  // Scenes.items.part_2_graph_data_upper.set(l,t,h,w).zIndex(2).hide()
-  // */
-  // let l = 530
-  // let t = -79
-  // let h = 480
-  // let w = 405
-  // // Scenes.items.part_2_graph_data_upper.set(l-50,t,h,w+58).zIndex(2).hide()
-  // Scenes.items.part_2_graph_empty.set(l, t, h, w).hide();
-  // Scenes.items.new_part_2_graph_1.set(l, t, h, w).hide();
-  // Scenes.items.new_part_2_graph_2.set(l, t, h, w).hide();
-  // Scenes.items.new_part_2_graph_3.set(l, t, h, w).hide();
-       
-  // // ! temp values and text
-  // let st = {
-  //   backgroundColor: "white",
-  //   border: "2px solid black",
-  //   color: "black",
-  //   borderRadius: "0",
-  //   width: "fit-content",
-  //   textAlign: "center",
-  //   padding: "0",
-  //   fontSize: "0.7rem",
-  //   lineHeight: "13px"
-  // }
-  // let textLabels = [
-  //   // ! iL
-  //   iL = Scenes.items.tempTitle24.set(891,21).setContent("0 A").styles(st).hide(),
-    
-  //   // ! iIn
-
-  //   iInOn = Scenes.items.tempTitle25.set(613,-7).setContent("0 V").styles(st).hide(),
-  //   iInOff = Scenes.items.tempTitle26.set(813,-7).setContent("0 V").styles(st).hide(),
-
-  //   // ! vL
-
-  //   vLon = Scenes.items.tempTitle27.set(614,69).setContent("0 us").styles(st).hide(),
-  //   vLoff = Scenes.items.tempTitle28.set(893,125).setContent("0 us").styles(st).hide(),
-
-  //   // ! vSw
-
-  //   vSwon = Scenes.items.tempTitle29.set(618,157).setContent("0 V").styles(st).hide(),
-  //   vSwoff = Scenes.items.tempTitle30.set(814,155).setContent("0 V").styles(st).hide(),
-
-  //   // ! vDf
-    
-  //   vDfon = Scenes.items.tempTitle32.set(621,212).setContent("0 V").styles(st).hide(),
-  //   vsDfoff = Scenes.items.tempTitle33.set(812,213).setContent("0 V").styles(st).hide(),
-
-  //   // ! iC
-
-  //   iCon = Scenes.items.tempTitle34.set(620,293).setContent("0 A").styles(st).hide(),
-  //   iCoff = Scenes.items.tempTitle35.set(814,252).setContent("0 A").styles(st).hide(),
-
-  //   // ! vC
-    
-  //   vC = Scenes.items.tempTitle36.set(844,318).setContent("0 V").styles(st).hide(),
-  // ]    
- 
-  //     let currentGraph = Scenes.items.part_2_graph_empty
-
-       
-  //     // *  chage the step size of the sliders
-  //     // let dutyRatioSlider = Scenes.items.slider_D.item.children[1].children[0];
-  //     let dutyRatioSlider = Scenes.items.slider_D.item;
-  //     dutyRatioSlider.min = "0.25";
-  //     dutyRatioSlider.max = "0.75";
-  //     dutyRatioSlider.step = "0.25";
-  //     get(".slider_D_input").value = "0.25";
-      
-  //     let isOneTimeOver = false
-  //     // ! onclick for record
-  //     Scenes.items.btn_record.item.onclick = function () {
-  //       Dom.setBlinkArrowRed(-1)
-  //       // ! Activate the next btn right after the click
-        
-        
-  //       let vInValue = Number(sliders.selectOp1.value)
-  //       let dutyRatioValue = Number(sliders.slider.value)
-  //       let resistanceValue = Number(sliders.selectOp2.value)
-  //       let nValue = Number(sliders.selectOp3.value)
-
-  //       updateValues(vInValue,dutyRatioValue,resistanceValue)
-
-  //       // setting values from formulas
-  //       function setTempTitleAndValues(showValues=false,vInValue=0){  
-    
-  //         let v0 = Number(parseFloat(Formulas.step2.v0(values)).toFixed(1))
-  //         let iIn  = Number(parseFloat(Formulas.step2.iIn(values)).toFixed(1))
-  //         let iL = Number(parseFloat( iIn / dutyRatioValue).toFixed(1))
-
-  //         let textValues = [
-  //           iLArr = `${ iIn / dutyRatioValue}A`,
-
-  //           iInOn = `${iIn}A`,
-  //           iInOff = `${ 0 }A`,
-
-  //           vLon = `${ vInValue }V`,
-  //           vLoff = `${ -v0 / nValue}V`,
-
-  //           vSwon = `${ 0}V`,
-  //           vSwoff = `${ vInValue + (v0/nValue)}V`,
-
-  //           vDfon = `${ ((nValue * vInValue) + v0)}V`,
-  //           vDfoff = `${ 0}V`,
-
-  //           iCon = `${ parseFloat(-v0 / resistanceValue).toFixed(1)}A`,
-  //           iCoff = `${ parseFloat((iL / nValue) - (v0 /resistanceValue)).toFixed(1)}A`,
-
-  //           vC = `${v0}V`,
-  //         ]  
-
-  //         console.log("values",iL,nValue,v0,resistanceValue)
-      
-  //         // also show the all values and graph uppper image
-  //         // Scenes.items.part_2_graph_data_upper.show()
-  //         if(showValues){
-  //           textLabels.forEach((ele,idx)=>{
-  //             ele.setContent(textValues[idx]).show()
-  //           })
-  //         }
-
-
-  //       }
-  //       setTempTitleAndValues(true,vInValue)
-
-
-  //       if (dutyRatioValue == 0.25){
-  //         currentGraph.hide();
-  //         Scenes.items.new_part_2_graph_1.show();
-  //         currentGraph = Scenes.items.new_part_2_graph_1;
-  //       }
-  //       if (dutyRatioValue == 0.5){
-  //         currentGraph.hide();
-  //         Scenes.items.new_part_2_graph_2.show();
-  //         currentGraph = Scenes.items.new_part_2_graph_2;
-  //       }
-  //       if (dutyRatioValue == 0.75){
-  //         currentGraph.hide();
-  //         Scenes.items.new_part_2_graph_3.show();
-  //         currentGraph = Scenes.items.new_part_2_graph_3;
-  //       }
-  //       // setIsProcessRunning(false);
-  //       // Dom.setBlinkArrow(true, 630, 315)
-
-  //       // speak test
-  //       if(isOneTimeOver==false){
-  //         setCC("For the these set input voltage and duty ratio, various component voltage and current waveforms are displayed here.",6)
-  //         isOneTimeOver = true
-  //       }
-
-  //       // after complete
-  //       setTimeout(()=>{
-  //         Dom.setBlinkArrow(true, 790, 408).play()
-  //         // setCC("Click 'Next' to go to next step")
-  //         setIsProcessRunning(false)
-  //       },5000)
-  //     };
-      
-
-
-      
-  //     return true
-  //   }),
     (step3 = function () {
       setIsProcessRunning(true);
       Scenes.items.btn_next.show()
@@ -1998,6 +1774,7 @@ part1_box1 : new Dom(".part1_box1"),
         Scenes.optionsDone[0]=1;
         Scenes.forMathematicalExpressionBtn = 1
         Scenes.steps[4]()
+    
       }
       const opTwo = ()=>{
        
@@ -2074,7 +1851,7 @@ part1_box1 : new Dom(".part1_box1"),
        Scenes.items.btn_reset.set(840+20,-78, 45)
       // Scenes.items.part3_table_three.set(20)
        let table = Scenes.items.part3_table_one.item
-       let tableColumnMax = table.tBodies[0].rows[0].cells.length
+       let tableColumnMax = 10
        let tableRowMax = table.tBodies[0].rows.length
 
        let valuesToMatch = []
@@ -2364,31 +2141,32 @@ part1_box1 : new Dom(".part1_box1"),
             graphData2.push({x: x2,y: y2})
           }
           // ! setDefault two values in it
-          function setDefaultLowHighInGraph(graphNumber){
+          function setDefaultLowHighInGraph(){
             // D value
-            let low = 0, high = 0.95,x = 0,y = 0
-            updateValues(sliders.selectOp1.value,low,sliders.selectOp2.value)
+            let low = 0.1, high = 0.9, x = 0, y=0, y2=0, 
+            rowValues = [],
+            colIdx = 2,
+            colIdx2 = 6
+            
+            // for low, 
             x = low
-            if(graphNumber == 1){
-              y = Number(Formulas.ideal.M(values)).toFixed(2)
-              graphData.unshift({x: x, y: y})
-            }else{
-              y = Number(Formulas.ideal.v0(values)).toFixed(2)
-              graphData2.unshift({x: x, y: y})
-            }
+            rowValues = Formulas.multipulse.valueSet(sliders.selectOp2.value, x)
+            y = rowValues[colIdx]
+            y2 = rowValues[colIdx2]
+            graphData.unshift({x: x, y:y})
+            graphData2.unshift({x: x, y:y2})
 
-            updateValues(sliders.selectOp1.value,high,sliders.selectOp2.value)
+            // for high
             x = high
-            if(graphNumber == 1){
-              y = Number(Formulas.ideal.M(values)).toFixed(2)
-              graphData.push({x: x, y: y})
-            }else{
-              y = Number(Formulas.ideal.v0(values)).toFixed(2)
-              graphData2.push({x: x, y: y})
-            }
+            rowValues = Formulas.multipulse.valueSet(sliders.selectOp2.value, x)
+            y = rowValues[colIdx]
+            y2 = rowValues[colIdx2]
+            graphData.push({x: x, y:y})
+            graphData2.push({x: x, y:y2})
+
           }
-          // setDefaultLowHighInGraph(1)
-          // setDefaultLowHighInGraph(2)
+          setDefaultLowHighInGraph()
+
 
           //for labeling
           let conclusionFront = ""
@@ -2446,13 +2224,13 @@ part1_box1 : new Dom(".part1_box1"),
         Scenes.currentStep = 3
 
         // ! change the table column index who's changing
-        let changeableColumnIndx = 3
+        let changeableColumnIndx = 2
 
         recordBtnClickIdx = 7
         let rows = table.tBodies[0].rows
       
         // * to get old values from table for matching
-        for(let i=0;i<tableColumnMax;i++){
+        for(let i=0;i< tableRowMax;i++){
           let val = rows[i].cells[changeableColumnIndx].innerHTML
           valuesToMatch.push(Number(val))
         }
@@ -2980,31 +2758,31 @@ part1_box1 : new Dom(".part1_box1"),
             graphData2.push({x: x2,y: y2})
           }
           // ! setDefault two values in it
-          function setDefaultLowHighInGraph(graphNumber){
+          function setDefaultLowHighInGraph(){
             // D value
-            let low = 0, high = 0.95,x = 0,y = 0
-            updateValues(sliders.selectOp1.value,low,sliders.selectOp2.value)
+            let low = 0.1, high = 0.9, x = 0, y=0, y2=0, 
+            rowValues = [],
+            colIdx = 2,
+            colIdx2 = 6
+            
+            // for low, 
             x = low
-            if(graphNumber == 1){
-              y = Number(Formulas.ideal.M(values)).toFixed(2)
-              graphData.unshift({x: x, y: y})
-            }else{
-              y = Number(Formulas.ideal.v0(values)).toFixed(2)
-              graphData2.unshift({x: x, y: y})
-            }
+            rowValues = Formulas.sinusoidal.valueSet(sliders.selectOp2.value, x)
+            y = rowValues[colIdx]
+            y2 = rowValues[colIdx2]
+            graphData.unshift({x: x, y:y})
+            graphData2.unshift({x: x, y:y2})
 
-            updateValues(sliders.selectOp1.value,high,sliders.selectOp2.value)
+            // for high
             x = high
-            if(graphNumber == 1){
-              y = Number(Formulas.ideal.M(values)).toFixed(2)
-              graphData.push({x: x, y: y})
-            }else{
-              y = Number(Formulas.ideal.v0(values)).toFixed(2)
-              graphData2.push({x: x, y: y})
-            }
+            rowValues = Formulas.sinusoidal.valueSet(sliders.selectOp2.value, x)
+            y = rowValues[colIdx]
+            y2 = rowValues[colIdx2]
+            graphData.push({x: x, y:y})
+            graphData2.push({x: x, y:y2})
+
           }
-          // setDefaultLowHighInGraph(1)
-          // setDefaultLowHighInGraph(2)
+          setDefaultLowHighInGraph()
 
           //for labeling
           let conclusionFront = ""
@@ -3059,13 +2837,13 @@ part1_box1 : new Dom(".part1_box1"),
         Scenes.currentStep = 3
 
         // ! change the table column index who's changing
-        let changeableColumnIndx = 3
+        let changeableColumnIndx = 2
 
         recordBtnClickIdx = 7
         let rows = table.tBodies[0].rows
       
         // * to get old values from table for matching
-        for(let i=0;i<tableColumnMax;i++){
+        for(let i=0;i<tableRowMax;i++){
           let val = rows[i].cells[changeableColumnIndx].innerHTML
           valuesToMatch.push(Number(val))
         }
@@ -3516,9 +3294,10 @@ part1_box1 : new Dom(".part1_box1"),
         if(chart1 != null){
           setIsProcessRunning(false)
           Scenes.currentStep = 3
+          Scenes.items.graph7.set(null,null,250,355)
+          Scenes.items.graph8.set(null,200,250,355)
         }else{
           plotGraph()
-          // Scenes.items.graph2.set(null,null,190,355)
           Scenes.items.graph7.set(null,null,250,355)
           Scenes.items.graph8.set(null,200,250,355)
         }   
@@ -3528,8 +3307,9 @@ part1_box1 : new Dom(".part1_box1"),
       Scenes.items.btn_reset.item.onclick = function(){
         // reset all the parameters
         // so just simply call this step again
-        Scenes.items.chart[graphIdx] = chart1
-        Scenes.items.chart[graphIdx+1] = chart2
+        Scenes.items.chart[graphIdx] = null
+        Scenes.items.chart[graphIdx+1] = null
+        
         Scenes.steps[6]()        
       }
        
