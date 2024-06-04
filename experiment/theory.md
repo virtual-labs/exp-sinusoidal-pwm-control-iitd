@@ -56,7 +56,7 @@ Fig. 2(b). when S<sub>3</sub> and S<sub>4</sub> are ON
 <center>Table-1. Switch states for full bridge Inverter-Unipolar switching</center>
 <br>
 </div>
-
+<center>
 <table align="center" width="100%" >
   <tr style="text-align: center; font-weight: bold; background-color: #c9c9c9;">
     <td style="text-align: center; font-weight: bold;">Switching States</td>
@@ -99,6 +99,7 @@ Fig. 2(b). when S<sub>3</sub> and S<sub>4</sub> are ON
     <td style="text-align: center; font-weight: bold;">0</td>
   </tr>
 </table>
+</center>
 <br>
 
 <div style="float: left; width:100%;"><br>
