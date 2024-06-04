@@ -57,7 +57,6 @@ Fig. 2(b). when S<sub>3</sub> and S<sub>4</sub> are ON
 <br>
 </div>
 
-<center>
 <table align="center">
   <tr style="text-align: center; font-weight: bold; background-color: #c9c9c9;">
     <td style="text-align: center; font-weight: bold;">Switching States</td>
@@ -100,7 +99,6 @@ Fig. 2(b). when S<sub>3</sub> and S<sub>4</sub> are ON
     <td style="text-align: center; font-weight: bold;">0</td>
   </tr>
 </table>
-</center>
 
 <br>
 
