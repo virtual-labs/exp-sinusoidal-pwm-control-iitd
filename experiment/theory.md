@@ -56,7 +56,6 @@ Fig. 2(b). when S<sub>3</sub> and S<sub>4</sub> are ON
 <br><br>
 </div>
 
-<div style="width:100%;"><br>
 <center>
 <table align="center" width="500px">
   <tr style="text-align: center; font-weight: bold; background-color: #c9c9c9;">
@@ -102,7 +101,6 @@ Fig. 2(b). when S<sub>3</sub> and S<sub>4</sub> are ON
 </table>
 </center>
 
-</div>
 <br>
 
 <div style="float: left; width:100%;"><br>
