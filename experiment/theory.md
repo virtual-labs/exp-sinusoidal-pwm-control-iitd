@@ -52,9 +52,11 @@ Fig. 2(b). when S<sub>3</sub> and S<sub>4</sub> are ON
 <br>
 
 <div style="float: left; width:100%;"><br>
-<center>Table-1. Switch states for full bridge Inverter-Unipolar switching
+<center>Table-1. Switch states for full bridge Inverter-Unipolar switching</center>
+<br><br>
+</div>
 
-<table align="center" width="500px">
+<table align="center" style="width: 500px; margin-left: 300px; margin-right: 300px;">
   <tr style="text-align: center; font-weight: bold; background-color: #c9c9c9;">
     <td style="text-align: center; font-weight: bold;">Switching States</td>
     <td style="text-align: center; font-weight: bold;">S<sub>1</sub></td>
@@ -96,9 +98,7 @@ Fig. 2(b). when S<sub>3</sub> and S<sub>4</sub> are ON
     <td style="text-align: center; font-weight: bold;">0</td>
   </tr>
 </table>
-</center>
-<br><br>
-</div>
+
 <br>
 
 <div style="float: left; width:100%;"><br>
