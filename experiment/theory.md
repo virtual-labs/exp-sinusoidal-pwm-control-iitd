@@ -40,7 +40,6 @@ Fig. 2(a). Equivalent circuit when S<sub>1</sub> and S<sub>2</sub> are ON
 <td style="width:50%">
   
 <center>
-
 <img src="images/th3.png">
 <br><br>
 Fig. 2(b). when S<sub>3</sub> and S<sub>4</sub> are ON
@@ -52,11 +51,11 @@ Fig. 2(b). when S<sub>3</sub> and S<sub>4</sub> are ON
 <br>
 
 <div style="float: left; width:100%;"><br>
-<center>Table-1. Switch states for full bridge Inverter-Unipolar switching</center>
+Table-1. Switch states for full bridge Inverter-Unipolar switching
 <br><br>
 </div>
 
-<table align="center" style="width: 500px; margin-left: 300px; margin-right: 300px;">
+<table align="center">
   <tr style="text-align: center; font-weight: bold; background-color: #c9c9c9;">
     <td style="text-align: center; font-weight: bold;">Switching States</td>
     <td style="text-align: center; font-weight: bold;">S<sub>1</sub></td>
