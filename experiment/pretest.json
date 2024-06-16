@@ -2,12 +2,13 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "Answer the questions given below (refer Fig.1):<br> <center> <img src='images/pre1.png' height='300px'><br><br>Fig. 1. Circuit diagram of single-phase bridge inverter.</center><br><br> 1. ‘A<sub>r</sub>’ is reference signal amplitude and ‘A<sub>c</sub>’ is carrier signal amplitude, then modulation index (MI) is",
+
+      "question": "Answer the questions given below (refer Fig.1):<br> <center> <img src='images/pre1.png' height='300px'><br><br>Fig. 1. Circuit configuration of 3-Phase Uncontrolled Rectifier.</center><br><br> 1. In a single-phase inverter, at any given instant how many switches are turned-ON?",
       "answers": {        
-        "a": "A<sub>r</sub>/A<sub>c</sub>",
-        "b": "A<sub>c</sub>/A<sub>r</sub>",
-        "c": "(1-A<sub>c</sub>)/A<sub>r</sub>",
-        "d": "(1-A<sub>r</sub>)/A<sub>c</sub>"
+        "a": "one",
+        "b": "two",
+        "c": "three",
+        "d": "four"
       },
       "explanations": {
         "a": "Explanation 1  <a href='www.google.com'>here</a>",
@@ -20,7 +21,8 @@
     },
       
     {
-      "question": "2. What is output voltage when switch “S<sub>1</sub>” and “S<sub>3</sub>” are “ON”",
+
+      "question": "2. What is output voltage when switch “S<sub>2</sub>” and “S<sub>4</sub>” are turned-ON?",
       "answers": {
         "a": "0",
         "b": "-V<sub>in</sub>",
@@ -38,12 +40,13 @@
     },
     
     {
-      "question": "3. An inverter converts ",
+
+      "question": "3. Inverter converts ",
       "answers": {
-        "a": "DC -to- DC",
-        "b": "DC -to- AC",
-        "c": "AC -to- AC",
-        "d": "AC -to- DC"
+        "a": "DC –to- DC",
+        "b": "DC –to- AC",
+        "c": "AC –to- AC",
+        "d": "AC –to- DC"
       },
       "explanations": {
         "a": "Explanation 1  <a href='www.google.com'>here</a>",
@@ -56,12 +59,13 @@
     },
         
     {
-      "question": "4. In voltage source inverters (VSI)",
+
+      "question": "4. In single-phase inverter, gate pulse is given to switch “S<sub>1</sub>” and “S<sub>2</sub>” when",
       "answers": {
-        "a": "both voltage and current depend on the load impedance",
-        "b": "only voltage depends on the load impedance",
-        "c": "only current depends on the load impedance",
-        "d": "neither voltage nor current depends"
+        "a": "Carrier is greater than reference signal",
+        "b": "Reference is greater than carrier signal",
+        "c": "Both are equal",
+        "d": "When carrier signal is zero"
       },
       "explanations": {
         "a": "Explanation 1  <a href='www.google.com'>here</a>",
@@ -74,7 +78,7 @@
     },
     
     {
-      
+     
       "question": "5. The Total Harmonic Distortion (THD) is",
       "answers": {
         "a": "<img src='images/pre2.png' height='70px'>",
