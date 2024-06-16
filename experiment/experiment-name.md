@@ -1,1 +1,1 @@
-## Single phase IGBT inverter under sinusoidal PWM control
+## Performance measurement and analysis of 1-phase IGBT inverter with sinusoidal PWM control 
