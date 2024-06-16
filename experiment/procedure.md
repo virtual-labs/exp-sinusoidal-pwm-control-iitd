@@ -3,7 +3,7 @@
 a) Circuit formulation:
 <br>
 
-1. Connect the appropriate component to its position by connecting wires.<br>
+1. Select the correct “box” where selected component is required to be placed to form the single-phase bridge inverter.<br>
 2. Repeat the above process for all the components.
 
 b) Operating the circuit: 
