@@ -145,6 +145,7 @@ where “m<sub>f</sub>=f<sub>c</sub>/f<sub>o</sub>” is defined as the frequenc
 </div>
 
 <div style="float: left; width:100%;"><br>
+  
 - The variation of the modulation index (M) from 0 to 1 varies the pulse width “d” from 0 to “T/2p” (0 to &#8508;/p) and the RMS output voltage (V<sub>o</sub>) from “0 to V<sub>in</sub>”.
 - The general form of load voltage expressed using Fourier series is
 </div><br>
