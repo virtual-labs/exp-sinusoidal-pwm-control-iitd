@@ -197,28 +197,36 @@ symbol_R : this.allImgsDom[167],
 
 part_2_graph_data_upper : this.allImgsDom[168],
 
-// EE7 images added
+// EE14 images added
 
 
-    btn_check:this.allImgsDom[169],
-    btn_delete:this.allImgsDom[170],
-    btn_record:this.allImgsDom[171],
-    btn_reset:this.allImgsDom[172],
-    component_capacitor:this.allImgsDom[173],
-    component_inductance:this.allImgsDom[174],
-    component_switch_1:this.allImgsDom[175],
-    component_switch_2:this.allImgsDom[176],
-    component_switch_3:this.allImgsDom[177],
-    component_switch_4:this.allImgsDom[178],
-    part_1_circuit:this.allImgsDom[179],
-    part_1_correct_text:this.allImgsDom[180],
-    part_2_1_heading:this.allImgsDom[181],
-    part_2_2_heading:this.allImgsDom[182],
-    part_2_3_circuit:this.allImgsDom[183],
-    part_2_select_option:this.allImgsDom[184],
-    part_2_select_option_1:this.allImgsDom[185],
-    part_2_select_option_2:this.allImgsDom[186],
-    part_2_select_option_3:this.allImgsDom[187],
+
+    box_img:this.allImgsDom[169],
+    btn_check:this.allImgsDom[170],
+    btn_delete:this.allImgsDom[171],
+    btn_record:this.allImgsDom[172],
+    btn_reset:this.allImgsDom[173],
+    component_capacitor:this.allImgsDom[174],
+    component_inductance:this.allImgsDom[175],
+    component_switch_1:this.allImgsDom[176],
+    component_switch_2:this.allImgsDom[177],
+    component_switch_3:this.allImgsDom[178],
+    component_switch_4:this.allImgsDom[179],
+    part_1_circuit:this.allImgsDom[180],
+    part_1_cprrect_text:this.allImgsDom[181],
+    part_2_circuit:this.allImgsDom[182],
+    part_2_option_1:this.allImgsDom[183],
+    part_2_option_2:this.allImgsDom[184],
+    part_2_option_3:this.allImgsDom[185],
+    part_2_option_3_circuit:this.allImgsDom[186],
+    part_2_select_option:this.allImgsDom[187],
+    part_2_tab_1:this.allImgsDom[188],
+    part_2_tab_2:this.allImgsDom[189],
+    graph_legends: this.allImgsDom[190],
+
+
+
+
 
 
       // * Question Mark

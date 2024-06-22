@@ -14,6 +14,10 @@ const sliders = {
   sliderInput: document.querySelector(".slider_D_input"),
   sliderHeader: document.querySelector(".header_d"),
   
+  slider2: document.querySelector(".slider2"),
+  sliderInput2: document.querySelector(".slider2_input"),
+  sliderHeader2: document.querySelector(".slider2"),
+  
   init(){
     this.selectOptions = [this.selectOp1,this.selectOp2,this.selectOp3]
     this.changeValue()
@@ -47,7 +51,9 @@ const sliders = {
         this.changeHeader(1,"V<sub>in</sub> (V)")
         genOptions(this.selectOptions[1],[220,240,260])
         this.setSlider(0.1,0.9,0.1,"M")
+        this.setSlider2(220,260,20,"")
         this.hideSliderAndOption(0)
+        this.hideSliderAndOption(1)
         this.hideSliderAndOption(2)
         break
 
@@ -60,6 +66,7 @@ const sliders = {
         this.changeHeader(1,"M")
         genOptions(this.selectOptions[1],[0.3,0.5,0.8])
 
+        this.hideSlider2()
         this.hideSliderAndOption(2)
         this.hideSliderAndOption(3)
     
@@ -100,9 +107,9 @@ const sliders = {
   disable(...selectIndex) {
     selectIndex.forEach(index=>{
       if(index==3){
-        this.slider.disabled = true
-        this.sliderInput.disabled = true
-        this.selectContainers[index].classList.add("disabled")
+        this.slider2.disabled = true
+        this.sliderInput2.disabled = true
+        // this.selectContainers[index].classList.add("disabled")
       }else{
         this.selectOptions[index].disabled = true
         this.selectContainers[index].classList.add("disabled")
@@ -118,6 +125,12 @@ const sliders = {
     })
     this.slider.disabled = false
     this.sliderInput.disabled = false
+
+    this.slider2.disabled = false
+    this.sliderInput2.disabled = false
+
+    document.querySelector(".row3").style.display = "block"
+
     this.showSliderAndOptions()
   },
   hideSliderAndOption(opsIdx){
@@ -145,5 +158,24 @@ const sliders = {
 
     this.changeValue(max)
   },
+  setSlider2(min,max,step,title){
+    this.slider2.value = min
+    this.slider2.min = min
+    this.slider2.max = max
+    this.slider2.step = step
+
+    this.sliderInput2.value = min
+    this.sliderInput2.min = min
+    this.sliderInput2.max = max
+
+    this.sliderHeader2.innerHTML = title
+
+    this.slider2.oninput = () => {
+      this.sliderInput2.value = this.slider2.value;
+    }
+  },
+  hideSlider2(){
+    document.querySelector(".row3").style.display = "none"
+  }
 }
 sliders.init()

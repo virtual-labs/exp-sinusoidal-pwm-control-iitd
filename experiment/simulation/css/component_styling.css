@@ -46,7 +46,7 @@
     border: 1px solid black;
 }
 .part3_table_one thead{
-    background-color: #c00000;
+    background-color: #7030a0;
     color: white;
 }
 .part3_table_one thead tr th{
@@ -212,7 +212,8 @@
     box-sizing: border-box;
     background-color: white;
     border-radius: 20px;
-    box-shadow: 2px 2px 4px;    
+    box-shadow: 2px 2px 4px;   
+    z-index: 1000; 
 }
 
 .graph{
@@ -220,6 +221,14 @@
     padding: 5px;
     /* background-color: #202020; */
     display: none;
+}
+
+.xLabel,
+.yLabel,
+.xLabel2,
+.yLabel2
+{
+    z-index: 1001;
 }
 
 /* ! Next Btn Deactive class */
@@ -425,8 +434,10 @@
   /* Pop window */
   .btn-popup-box{
     display: flex;
-    position: relative;
-    left: 23px;
+    /* position: relative; */
+    position: absolute;
+    /* left: 23px; */
+    left: 475px;
     justify-content: center;
     align-items: center;
     /* background-color: rgba(0, 0, 0, 0.619); */
@@ -632,13 +643,13 @@
     opacity: 0;
     font-size: 14.5px;
     text-align: center;
-    background-color: #385723!important;
+    background-color: #843c0c!important;
     color: white;
     border-radius: 14px;
     border: 5px dashed #a850a8!important;
     padding: 8px;
-    left: 3px;
-    top: 52px;
+    left: 693px;
+    top: 225px;
     height: auto;
     width:  248px;
     z-index: 1;

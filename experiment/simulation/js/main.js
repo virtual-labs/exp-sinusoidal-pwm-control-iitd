@@ -270,6 +270,10 @@ const setIsProcessRunning = (value) => {
 
   isRunning = value;
   if(value){
+    speechSynthesis.cancel()
+    if(ccQueue){
+      ccQueue = []
+    }
     Dom.hideAll()
   }
 };
@@ -508,6 +512,7 @@ graph5: new Dom(".graph5"),
 graph6: new Dom(".graph6"),
 graph7: new Dom(".graph7"),
 graph8: new Dom(".graph8"),
+graph9: new Dom(".graph9"),
 graph_box_1: new Dom(".graph_box1"),
 graph_box_2: new Dom(".graph_box2"),
 graph_box_3: new Dom(".graph_box3"),
@@ -516,6 +521,7 @@ graph_box_5: new Dom(".graph_box5"),
 graph_box_6: new Dom(".graph_box6"),
 graph_box_7: new Dom(".graph_box7"),
 graph_box_8: new Dom(".graph_box8"),
+graph_box_9: new Dom(".graph_box9"),
 xLabel: new Dom(".xLabel"),
 yLabel: new Dom(".yLabel"),
 xLabel2: new Dom(".xLabel2"),
@@ -546,25 +552,27 @@ part_1_text_for_wrong: new Dom("part_1_text_for_wrong"),
 // EE7 images added
 
 
-    btn_check : new Dom("btn_check"),
-    btn_delete : new Dom("btn_delete"),
-    btn_record : new Dom("btn_record"),
-    btn_reset : new Dom("btn_reset"),
-    component_capacitor : new Dom("component_capacitor"),
-    component_inductance : new Dom("component_inductance"),
-    component_switch_1 : new Dom("component_switch_1"),
-    component_switch_2 : new Dom("component_switch_2"),
-    component_switch_3 : new Dom("component_switch_3"),
-    component_switch_4 : new Dom("component_switch_4"),
-    part_1_circuit : new Dom("part_1_circuit"),
-    part_1_correct_text : new Dom("part_1_correct_text"),
-    part_2_1_heading : new Dom("part_2_1_heading"),
-    part_2_2_heading : new Dom("part_2_2_heading"),
-    part_2_3_circuit : new Dom("part_2_3_circuit"),
-    part_2_select_option : new Dom("part_2_select_option"),
-    part_2_select_option_1 : new Dom("part_2_select_option_1"),
-    part_2_select_option_2 : new Dom("part_2_select_option_2"),
-    part_2_select_option_3 : new Dom("part_2_select_option_3"),
+      box_img : new Dom("box_img"),
+      btn_check : new Dom("btn_check"),
+      btn_delete : new Dom("btn_delete"),
+      btn_record : new Dom("btn_record"),
+      btn_reset : new Dom("btn_reset"),
+      component_capacitor : new Dom("component_capacitor"),
+      component_inductance : new Dom("component_inductance"),
+      component_switch_1 : new Dom("component_switch_1"),
+      component_switch_2 : new Dom("component_switch_2"),
+      component_switch_3 : new Dom("component_switch_3"),
+      component_switch_4 : new Dom("component_switch_4"),
+      part_1_circuit : new Dom("part_1_circuit"),
+      part_1_cprrect_text : new Dom("part_1_cprrect_text"),
+      part_2_circuit : new Dom("part_2_circuit"),
+      part_2_option_1 : new Dom("part_2_option_1"),
+      part_2_option_2 : new Dom("part_2_option_2"),
+      part_2_option_3 : new Dom("part_2_option_3"),
+      part_2_option_3_circuit : new Dom("part_2_option_3_circuit"),
+      part_2_select_option : new Dom("part_2_select_option"),
+      part_2_tab_1 : new Dom("part_2_tab_1"),
+      part_2_tab_2 : new Dom("part_2_tab_2"),
 
 
 
@@ -608,6 +616,7 @@ concept_development : new Dom(".concept_development"),
 // EE3 dom items added
 
 part1_box1 : new Dom(".part1_box1"),
+graph_legends: new Dom("graph_legends"),
 
 
 
@@ -715,17 +724,21 @@ part1_box1 : new Dom(".part1_box1"),
     Scenes.items.stepHeading.show("flex").push();
   },
 
-  changeHeader(step){
-    return
+  changeHeader(step, left_ = -326, size ){
+    // return                 
     let heading = Scenes.items.experiment_heading
+    heading.styles({
+      left: `${left_}px`,
+      fontSize: `${size}px`
+    })
     switch(step){
-      case 1: heading.setContent("Ideal-Characteristics")
+      case 1: heading.setContent("Performace Characteristics")
+      break; 
+      case 2: heading.setContent("Comparison Of Single-pulse And Sine PWM Techniques")
       break;
-      case 2: heading.setContent("Non-Ideal-Characteristics")
+      case 3: heading.setContent("Single-phase Bridge Inverter Connection")
       break;
-      case 3: heading.setContent("Losses And Efficiency")
-      break;
-      case 4: heading.setContent("Component Stress")
+      case 4: heading.setContent("Performance Assessment of Single-phase Bridge Inverter")
       break;
     }
   },
@@ -853,7 +866,8 @@ part1_box1 : new Dom(".part1_box1"),
         
       return true;
     }),  
-    
+
+    //! ciruit formulation
     (step1 = function () {
       setIsProcessRunning(true);
       // to hide previous step
@@ -861,869 +875,219 @@ part1_box1 : new Dom(".part1_box1"),
       Scenes.items.projectIntro.hide()
       Dom.setBlinkArrow(-1);
       Scenes.items.btn_next.show()
-      Scenes.items.btn_transparent.set().hide()
-      Scenes.items.slider_box.hide()
-      // Scenes.items.btn_reset_connections.styles({
-      //   position: "absolute",
-      //   right: 0,
-      //   top: "195px",
-      //   backgroundColor: "blue",
-      //   color: "white",
-      // })
+      // Scenes.items.btn_transparent.hide()
 
       // Scenes.setStepHeading("Step-1", "Circuit Formulation");
-      Scenes.changeHeader("1")
-      // Scenes.showPopup(1)
+        
+      Scenes.changeHeader(3, -239, 20)
 
-      // Scenes.items.btn_popup_box.styles({
-        // display : "none"
-      // })
 
-      // Scenes.items.changeHeader.setContent("sneha")
-      setCC("Connect all the terminals correctly to form the circuit")
+      setCC("Select the correct box to form the single phase bridge inverter.")
+      Scenes.items.part_1_circuit.set(116, 125, 319, 657)
+      Scenes.items.btn_transparent.hide()
 
-      let vertexBox = new Dom(".vertex-box")
-      vertexBox.show()
+      // box img mapping to domQus
+      let boxCount = 1;
+ 
+      // ! Required Postion
+      Scenes.items.box_img.set(87, -29, 136)
 
       //! Required positions
-      Scenes.items.part_1_circuit.set(175, 116, 328)
-      Scenes.items.component_switch_1.set(40+40,-45, 112)
-      Scenes.items.component_switch_2.set(40+40 + 110,-45, 112)
-      Scenes.items.component_switch_3.set(40+40 + 110 + 110,-45, 112)
-      Scenes.items.component_switch_4.set(40+40 + 110 + 110 + 110,-45, 112)
-      Scenes.items.component_inductance.set(40+40+110+110+110+110, -5,  61)
-      Scenes.items.component_capacitor.set(40+40+110+110+110+110+110, -15,  65, 58)
+      Scenes.items.component_switch_1.set(90 , -24, 102).zIndex(5)
+      Scenes.items.component_switch_2.set(90 + 130, -24, 102).zIndex(5)
+      Scenes.items.component_switch_3.set(90 + 260, -24, 102).zIndex(5)
+      Scenes.items.component_switch_4.set(90 + 390, -24, 102).zIndex(5)
+      Scenes.items.component_inductance.set(90 + 540, 19, 61).zIndex(5) 
+      Scenes.items.component_capacitor.set(90 + 670, -2, 82).zIndex(5)
 
-      Scenes.items.btn_check.set(865-80, -40, 45).zIndex(1)
-      Scenes.items.btn_reset.set(865, -40, 45).zIndex(1)
+      
+      Scenes.items.slider_box.hide()
 
-      let us = {
-        color: "#993366",
-        fontSize: "1.2rem",
-        textAlign: "left",
-        fontStyle: ""
+      let tempText = Scenes.items.tempText.set(450,360).hide()
+      
+      // * Part One Logic
+      Scenes.items.domQs1.set(306, 143, 100).zIndex(3)
+      Scenes.items.domQs2.set(306, 143 + 180, 100).zIndex(3)
+      Scenes.items.domQs3.set(306 + 196, 143, 100).zIndex(3)
+      Scenes.items.domQs4.set(306 + 196, 143 + 180, 100).zIndex(3)
+      Scenes.items.domQs5.set(590, 225, 56,  100).zIndex(3)
+      Scenes.items.domQs6.set(679, 265, 70, 40).zIndex(3)
+      let qsBtns = document.querySelectorAll(".qs")
+
+      // Adding onclick to all qs
+      // boxAnime()
+      for(let i in qsBtns){
+        qsBtns[i].onclick = function(){
+          checkClick(qsBtns[i])
+          // boxAnimes[i].play()
+        }
       }
-      Scenes.items.tempTitle16.setContent("Connect the device terminal to the bridge terminals to form 1-phase bridge inverter.").set(714, 29, null, 198
+      Scenes.items.domQs6.item.onclick = function(){
+          if(boxCount>5){
+    
+            // after complete
+            Scenes.items.box_img.hide()
+            // Dom.setBlinkArrow(true, 790, 408).play();
+            Scenes.items.part_1_cprrect_text.set(null,-10,120)
+            setCC("Click 'Next' to go to next step");
+            setIsProcessRunning(false);
+          }
+          checkClick(Scenes.items.domQs6.item)
+      }
+
+      const checkClick = (qsBtnDom) =>{
+        let isSame = qsBtnDom.classList.contains(`qs${boxCount}`)
+
+        let arr = [
+          (qsBtnDom.classList.contains(`qs1`)) ,
+          (qsBtnDom.classList.contains(`qs2`)) ,
+          (qsBtnDom.classList.contains(`qs3`)) ,
+          (qsBtnDom.classList.contains(`qs4`)) ,
+        ]
+
+        let isBoxAndSwitchClickedIdx = arr.indexOf(true)
         
-      ).styles(us).zIndex(20000)
-
-      // connected vertex src and dest
-      let allConnectedVertexSrcDest = {}
-
-      function isConnectionsRight(isConnectionsCorrect){
-        let imgToShow = null
-        if(isConnectionsCorrect){
-          Scenes.items.tempTitle16.hide()
-          setCC("Well Done, This is 'single-phase bridge inverter'")
-
-          // * destroy all the connection
-          Scenes.items.btn_reset.item.click()
-          getAll(".jtk-endpoint").forEach(ele=>{
-            ele.style.display = "none"
-          })
-          let switches = [
-            Scenes.items.component_switch_1.zIndex(1),
-            Scenes.items.component_switch_2.zIndex(1),
-            Scenes.items.component_switch_3.zIndex(1),
-            Scenes.items.component_switch_4.zIndex(1).set(null,null,null,78),
-          ]
-          // ! swtich for different places
-          function setSwitchOnDifferentPlaces(){
-            let edges = allConnectedVertexSrcDest
-            let tempSwitches = new Array(...switches)
-            let defaultIdxSrc = {
-              1: 0,
-              3: 1,
-              5: 2,
-              7: 3,
-            }
-            let defaultIdxDest = {
-              13: 0,
-              15: 1,
-              17: 2,
-              19: 3,
-            }
-            // ! suffling the array index according to connection
-            switches[defaultIdxDest[edges[1]]] = tempSwitches[defaultIdxSrc[1]]
-            switches[defaultIdxDest[edges[3]]] = tempSwitches[defaultIdxSrc[3]]
-            switches[defaultIdxDest[edges[5]]] = tempSwitches[defaultIdxSrc[5]]
-            switches[defaultIdxDest[edges[7]]] = tempSwitches[defaultIdxSrc[7]]
-          }
-          setSwitchOnDifferentPlaces()
-          let components = [
-            ...switches,
-            Scenes.items.component_inductance.zIndex(1),
-            Scenes.items.component_capacitor.zIndex(1),
-          ]
-          let left_pxs = [341, 532, 341, 532, 646, 704]
-          let top_pxs = [124, 124, 324, 324, 227, 267]
-
-          // send to final position of compos
-          let anim = anime.timeline({
-            duration: 1200,
-            easing: "easeInOutQuad",
-          })
-          for(let i in left_pxs){
-            let complete = ()=>{}
-            if(i == left_pxs.length-1){
-              complete = ()=>{
-                anime({
-                  targets: Scenes.items.part_1_correct_text.set(null).item,
-                  top: 0,
-                  height: 100,
-                  duration: 1200,
-                  easing: "easeInOutQuad",
-                  complete(){
-                    setCC("Click 'Next' to go to next step");
-                    Dom.setBlinkArrow(true, 790, 415).play();
-                    setIsProcessRunning(false);
-                  }
-                })
-              }
-            }
-            anim.add({
-              targets: components[i].item,
-              left: left_pxs[i],
-              top: top_pxs[i],
-              complete: complete,
-            })
-          }
+        if(isSame || isBoxAndSwitchClickedIdx>=0){
+          animateComponent(qsBtnDom,isBoxAndSwitchClickedIdx);
+          boxCount++
+          // to go to next component
+          tempText.hide()
+          // tempText.show()
+          // tempText.setContent("Correct component click.")
+          // tempText.item.style.color = "green"
+          // anime({
+          //   targets: tempText.item,
+          //   duration: 400,
+          //   opacity: [0,0.5,1]
+          // })
         }
         else{
-          setCC("Incorrect connections, try again")
           let st = {
-            color:"red",
-            backgroundColor: "white",
-            display: "block",
-            width: "153px",
-            height: "fit-content",
-            padding: "10px",
-            fontSize: "23px",
+            backgroundColor: "transperant",
+            color: "red",
+            width: "fit-content",
+            fontSize: "larger",
           }
-          let msg = Scenes.items.tempTitle30.set(23,313).setContent("Incorrect Connections, try again!").styles(st)
+          tempText.show()
+          tempText.setContent("This in incorrect placement of component, Try again").styles(st)
           anime({
-            targets: msg.item,
-            duration: 1000,
-            opacity: [0,1],
-            loop: 2,
-            easing: "linear",
-            complete(){
-              setTimeout(() => {
-                $(msg.item).hide("fast")
-                Dom.setBlinkArrowRed(-1)
-              }, 4000);
-            }
+            targets: tempText.item,
+            duration: 400,
+            opacity: [0,0.5,1]
           })
-          Dom.setBlinkArrowRed(true,885,10,30,null,90).play()
-
+          
+          qsBtnDom.style.backgroundColor = 'red';
         }
+       
       }
 
+      // * for animate after check click
+      const animateComponent = (qsBtnDom,isBoxAndSwitchClickedIdx=-1)=>{
+        let compo = [
+          Scenes.items.component_switch_1,
+          Scenes.items.component_switch_2,
+          Scenes.items.component_switch_3,
+          Scenes.items.component_switch_4,
+          Scenes.items.component_inductance, 
+          Scenes.items.component_capacitor,
+        ]
 
-      Scenes.items.slider_box.hide();
+        let props = [
 
-      // ! JSPLumb cable 
-      function cable(){
+          [211, -29, 136],
+          [338, -29, 136],
+          [471, -29, 136],
+          [608, -29, 136],
+          [750, -29, 136],
+        ]
+
+
+        // after new figures added 
+        let left = [293, 292, 488, 489, 595, 642]
+        let top = [133, 318, 133, 318, 231, 257]
+
+        let boxIdx = (isBoxAndSwitchClickedIdx >= 0 ? isBoxAndSwitchClickedIdx : boxCount-1)
+
+        anime.timeline({
+          duration: 2000,
+          easing: "easeInOutQuad",
+        })
+        .add({
+          targets:compo[boxCount - 1].item,
+          top: top[boxIdx],
+          left: left[boxIdx],
+          begin(){
+            anime({
+              targets: qsBtnDom,
+              opacity: 0,
+              duration: 2000,
+              complete(){
+                qsBtnDom.style.display = "none"
+              }
+            })
+          },
+
+          complete(){
+            for(let i of qsBtns){
+              i.style.backgroundColor = "#05bc57";
+            }
+          }
+        })
+        .add({
+          targets: Scenes.items.box_img.item,
+          left: props[boxCount-1][0],
+          top: props[boxCount-1][1],
+          height: props[boxCount-1][2],
+          width: props[boxCount-1][3],
+          
+        })
+
         
-        Scenes.items.btn_check.item.onclick = checkCableConnection
-        // ! connections array contains connected idxs
-        // ! initializing the checkgraph for connections
-        let matricesForCheckGraph = []
-        // ! connection is right/wrong
-        let isConnectionRight = false
-        // set graph
-        function fillCheckGraph(){
-          //* to fill element in array
-          function create2DArray(rows, cols, initValue){
+        
 
-            filledArray = new Array(rows)
-
-            for(let i=0;i<rows;i++){
-              filledArray[i] = new Array(cols)
-
-              for(let j=0;j<cols;j++){
-                filledArray[i][j] = initValue
-              }
-            }
-            return filledArray;
-          }
-
-          // fill zero 
-          let noOfVertex = 25
-          matricesForCheckGraph = create2DArray(noOfVertex, noOfVertex, 0)
-
-          //* for multiple connection switches point
-          let xSwitchAxis = [1,3,5,7]
-          let ySwitchAxis = [2,4,6,8]
-          let xSwitchPosAxis = [13,15,17,19]          
-          let ySwitchPosAxis = [14,16,18,20] 
-          
-          let xEdge = [xSwitchAxis, ySwitchAxis]
-          let yEdge = [xSwitchPosAxis, ySwitchPosAxis]
-          for(let edge_idx in xEdge){  
-            for(let x_edge of xEdge[edge_idx]){
-              for(let y_edge of yEdge[edge_idx]){
-                matricesForCheckGraph[x_edge][y_edge] = 1
-                matricesForCheckGraph[y_edge][x_edge] = 1
-              }
-            }
-          }
-          //* fixed connection is filled
-          let xAxisFixed = [9,10,11,12]
-          let yAxisFixed = [21,22,23,24]
-          for(let i in xAxisFixed){
-            matricesForCheckGraph[xAxisFixed[i]][yAxisFixed[i]] = 1
-            matricesForCheckGraph[yAxisFixed[i]][xAxisFixed[i]] = 1
-          }
-
-          // console.log(matricesForCheckGraph)
-        } 
-        fillCheckGraph()
-
-        // ! check
-        function checkCableConnection() {
-          // console.log("sneha")
-          // console.log("sneha")
-          // if (connections.length == 0) {
-          //   alert("Please make the connections first");
-          //   return false;
-          // }
-          let minimumConnectionsLength = 12
-          if (connections.length < minimumConnectionsLength) {
-            setCC("Connect all the terminals first")
-            return false;
-          }
-          if (connections.length >= minimumConnectionsLength) {
-            // ! listDiv contains vertexConnectionsName
-            // eg vertex10, vertex23
-            var listDiv = [];
-            for (var j = 0; j < connections.length; j++) {
-              let pos = [connections[j].targetId,connections[j].sourceId] 
-              listDiv.push(pos) 
-            }
-
-            // ! Main logic for hecking graph
-            for(let i=0;i<listDiv.length;i++){
-              // * to convert div to idx only
-              function convertDivtextToIdx(divText){
-                let convertedText = ""
-                let text = divText.substr(-2)
-                let num1 = text[0]
-                let num2 = text[1]
-                if(!isNaN(num1))
-                  convertedText+=num1
-                if(!isNaN(num2))
-                  convertedText+=num2
-                return parseInt(convertedText)
-              }
-              // substr is so i can extract the number from the id
-              let vertexSrcIdx = convertDivtextToIdx(listDiv[i][0])
-              let vertexDestIdx = convertDivtextToIdx(listDiv[i][1])
-
-              // saving value as object key:value src:dest
-              var minVertexSrcIdx = Math.min(vertexSrcIdx,vertexDestIdx)
-              var maxVertexDestIdx = Math.max(vertexSrcIdx,vertexDestIdx)
-                  
-              allConnectedVertexSrcDest[minVertexSrcIdx] = maxVertexDestIdx
-            }
-
-            // ! Matched Graph 
-            let isGraphMatched = false
-            // ! check graph condition is matched or not
-            function forCheckGraphIsMatched(){
-              var destFor = allConnectedVertexSrcDest
-              for(let src in destFor){
-                src = Number(src)
-                let dest = destFor[src]
-                console.log("src:",src,"dest:",dest)
-                // * match with graph
-                if(!matricesForCheckGraph[src][dest]){
-                  isGraphMatched = false
-                  return
-                }
-                let src_1 = Number()
-                let src_2 = Number()
-                // ODD
-                if(src & 1){ 
-                  src_1 = src
-                  src_2 = src+1
-                  if(destFor[src_2] == destFor[src_1] + 1){
-                    isGraphMatched = true
-                  }else{
-                    isGraphMatched = false
-                    return
-                  }
-                }
-                // EVEN 
-                else{
-                  src_1 = src
-                  src_2 = src-1
-                  if(destFor[src_2] == destFor[src_1] - 1){
-                    isGraphMatched = true
-                  }else{
-                    isGraphMatched = false
-                    return
-                  }
-                }
-                // delete destFor[src_1]
-                // delete destFor[src_2]
-              }
-            }
-            console.log(allConnectedVertexSrcDest,isGraphMatched)
-            forCheckGraphIsMatched()
-
-            
-            // ! for right connection note
-            if(isGraphMatched){
-              isConnectionsRight(true)
-            }else{
-              // ! for wrong connection
-              // alert("Wrong Connections, try again.")
-              isConnectionsRight(false)
-              allConnectedVertexSrcDest = []
-            }
-          }
-          
-        }
-        // checkCableConnection()
-        (showConnectionInfo = function (listDiv) {
-        }),
-        (hideConnectionInfo = function (listDiv) {
-          listDiv.style.display = "none";
-        }),
-        (connections = []),
-        (updateConnections = function (conn, remove) {
-          if (!remove) {
-            connections.push(conn);
-            // ! show blink when all vertex are connected
-            // todo change size 4 to 13
-            if(connections.length == 12){
-              Dom.setBlinkArrowRed(true,805,10,30,null,90).play()
-            }
-          }
-
-          else {
-            var idx = -1;
-            for (var i = 0; i < connections.length; i++) {
-              if (connections[i] == conn) {
-                idx = i;
-                break;
-              }
-            }
-            if (idx != -1) connections.splice(idx, 1);
-          }
-          if (connections.length > 0) {
-            var listDiv = [];
-            for (var j = 0; j < connections.length; j++) {
-              let pos = [connections[j].targetId,connections[j].sourceId] 
-              listDiv.push(pos)
-            }
-            showConnectionInfo(listDiv);
-          }
-        });
-
-        jsPlumb.ready(function () {
-          var instance = jsPlumb.getInstance();
-
-          // suspend drawing and initialise.
-          instance.batch(function () {
-            // bind to connection/connectionDetached events, and update the list of connections on screen.
-            instance.bind("connection", function (info, originalEvent) {
-              updateConnections(info.connection);
-            });
-            instance.bind("connectionDetached", function (info, originalEvent) {
-              updateConnections(info.connection, true);
-            });
-
-            instance.bind("connectionMoved", function (info, originalEvent) {
-              //  only remove here, because a 'connection' event is also fired.
-              // in a future release of jsplumb this extra connection event will not
-              // be fired.
-              updateConnections(info.connection, true);
-            });
-
-            // configure some drop options for use by all endpoints.
-            var exampleDropOptions = {
-              tolerance: "touch",
-              hoverClass: "dropHover",
-              activeClass: "dragActive",
-            };
-
-            // ! for setting up the endpoints
-            function setEndPoint(maxConnections=1){
-              let radius = 8
-              let endPointStyleData = {
-                endpoint: ["Dot", { radius: radius }],
-                paintStyle: { fill: "#c00000" },
-                isSource: true,
-                scope: "green",
-                connectorStyle: { stroke: "#c00000", strokeWidth: 6 },
-                connector: ["Bezier", { curviness: -60 }],
-                maxConnections: maxConnections,
-                isTarget: true,
-                dropOptions: exampleDropOptions,
-              }
-              return endPointStyleData
-            }
-
-            var exampleEndpoint1 = setEndPoint()
-            var exampleEndpoint2 = setEndPoint()
-            var exampleEndpoint3 = setEndPoint()
-            var exampleEndpoint4 = setEndPoint()
-            var exampleEndpoint5 = setEndPoint()
-            var exampleEndpoint6 = setEndPoint()
-            var exampleEndpoint7 = setEndPoint()
-            var exampleEndpoint8 = setEndPoint()
-            var exampleEndpoint9 = setEndPoint()
-            var exampleEndpoint10 = setEndPoint()
-            var exampleEndpoint11 = setEndPoint()
-            var exampleEndpoint12 = setEndPoint()
-
-            function addEndPoints(){
-              // conn 1
-              instance.addEndpoint(
-                "vertex1",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint1
-              );
-              instance.addEndpoint(
-                "vertex13",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint1
-              );
-              instance.addEndpoint(
-                "vertex17",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint1
-              );
-              instance.addEndpoint(
-                "vertex15",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint1
-              );
-              instance.addEndpoint(
-                "vertex19",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint1
-              );
-
-              // conn 2
-              instance.addEndpoint(
-                "vertex2",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint2
-              );
-              instance.addEndpoint(
-                "vertex14",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint2
-              );
-              instance.addEndpoint(
-                "vertex16",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint2
-              );
-              instance.addEndpoint(
-                "vertex18",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint2
-              );
-              instance.addEndpoint(
-                "vertex20",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint2
-              );
-
-              // conn 3
-              instance.addEndpoint(
-                "vertex3",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint3
-              );
-              instance.addEndpoint(
-                "vertex13",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint3
-              );
-              instance.addEndpoint(
-                "vertex17",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint3
-              );
-              instance.addEndpoint(
-                "vertex15",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint3
-              );
-              instance.addEndpoint(
-                "vertex19",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint3
-              );
-
-              // conn 4
-              instance.addEndpoint(
-                "vertex4",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint4
-              );
-              instance.addEndpoint(
-                "vertex14",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint4
-              );
-              instance.addEndpoint(
-                "vertex16",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint4
-              );
-              instance.addEndpoint(
-                "vertex18",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint4
-              );
-              instance.addEndpoint(
-                "vertex20",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint4
-              );
-
-              // conn 5
-              instance.addEndpoint(
-                "vertex5",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint5
-              );
-              instance.addEndpoint(
-                "vertex13",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint5
-              );
-              instance.addEndpoint(
-                "vertex17",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint5
-              );
-              instance.addEndpoint(
-                "vertex15",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint5
-              );
-              instance.addEndpoint(
-                "vertex19",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint5
-              );
-
-              // conn 6
-              instance.addEndpoint(
-                "vertex6",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint6
-              );
-              instance.addEndpoint(
-                "vertex14",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint6
-              );
-              instance.addEndpoint(
-                "vertex16",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint6
-              );
-              instance.addEndpoint(
-                "vertex18",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint6
-              );
-              instance.addEndpoint(
-                "vertex20",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint6
-              );
-
-              // conn 7
-              instance.addEndpoint(
-                "vertex7",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint7
-              );
-              instance.addEndpoint(
-                "vertex13",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint7
-              );
-              instance.addEndpoint(
-                "vertex17",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint7
-              );
-              instance.addEndpoint(
-                "vertex15",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint7
-              );
-              instance.addEndpoint(
-                "vertex19",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint7
-              );
-
-              // conn 8
-              instance.addEndpoint(
-                "vertex8",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint8
-              );
-              instance.addEndpoint(
-                "vertex14",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint9
-              );
-              instance.addEndpoint(
-                "vertex16",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint9
-              );
-
-              instance.addEndpoint(
-                "vertex18",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint10
-              );
-              instance.addEndpoint(
-                "vertex20",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint10
-              );
-
-              // conn 9
-              instance.addEndpoint(
-                "vertex9",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint11
-              );
-              instance.addEndpoint(
-                "vertex21",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint11
-              );
-
-              //* conn 10
-              instance.addEndpoint(
-                "vertex10",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint12
-              );
-              instance.addEndpoint(
-                "vertex22",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint12
-              );
-
-              //*conn 11
-              instance.addEndpoint(
-                "vertex11",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint5
-              );
-              instance.addEndpoint(
-                "vertex23",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint5
-              );
-
-              //*conn 12
-              instance.addEndpoint(
-                "vertex12",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint6
-              );
-              instance.addEndpoint(
-                "vertex24",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint6
-              );
-
-              //! till this mention correct connection numbering except switch 2, 3, 4 
-              //*conn 7
-              instance.addEndpoint(
-                "vertex23",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint7
-              );
-              instance.addEndpoint(
-                "vertex10",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint7
-              );
-              instance.addEndpoint(
-                "vertex4",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint7
-              );
-              instance.addEndpoint(
-                "vertex22",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint7
-              );
-
-              //*conn 8
-              instance.addEndpoint(
-                "vertex14",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint8
-              );
-              instance.addEndpoint(
-                "vertex3",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint8
-              );
-              instance.addEndpoint(
-                "vertex5",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint8
-              );
-
-              //*conn 9
-              instance.addEndpoint(
-                "vertex19",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint9
-              );
-              instance.addEndpoint(
-                "vertex5",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint9
-              );
-              instance.addEndpoint(
-                "vertex3",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint9
-              );
-
-              //*conn 10
-              instance.addEndpoint(
-                "vertex9",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint10
-              );
-              instance.addEndpoint(
-                "vertex6",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint10
-              );
-              instance.addEndpoint(
-                "vertex21",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint10
-              );
-
-              //*conn 11
-              instance.addEndpoint(
-                "vertex21",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint11
-              );
-              instance.addEndpoint(
-                "vertex8",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint11
-              );
-              instance.addEndpoint(
-                "vertex9",
-                { anchor: [0.75, 0, 0, -1] },
-                exampleEndpoint11
-              );
-            }
-            addEndPoints()
-
-
-            /*instance.addEndpoint("vertex9", { anchor: [0.75, 0, 0, -1] }, exampleEndpoint4);
-            instance.addEndpoint("vertex10", { anchor: [0.75, 0, 0, -1] }, exampleEndpoint4);
-            instance.addEndpoint("vertex11", { anchor: [0.75, 0, 0, -1] }, exampleEndpoint3);
-            instance.addEndpoint("vertex12", { anchor: [0.75, 0, 0, -1] }, exampleEndpoint3);*/
-
-            instance.draggable(jsPlumb.getSelector(".drag-drop-demo .window"));
-
-            var hideLinks = jsPlumb.getSelector(".drag-drop-demo .hide");
-            instance.on(hideLinks, "click", function (e) {
-              instance.toggleVisible(this.getAttribute("rel"));
-              jsPlumbUtil.consume(e);
-            });
-
-            var dragLinks = jsPlumb.getSelector(".drag-drop-demo .drag");
-            instance.on(dragLinks, "click", function (e) {
-              var s = instance.toggleDraggable(this.getAttribute("rel"));
-              this.innerHTML = s ? "disable dragging" : "enable dragging";
-              jsPlumbUtil.consume(e);
-            });
-
-            var detachLinks = jsPlumb.getSelector(".drag-drop-demo .detach");
-            instance.on(detachLinks, "click", function (e) {
-              instance.deleteConnectionsForElement(this.getAttribute("rel"));
-              jsPlumbUtil.consume(e);
-            });
-
-            // ! reset
-            instance.on(Scenes.items.btn_reset.item, "click", function (e) {
-              // instance.detachEveryConnection();
-              instance.deleteEveryConnection()
-              showConnectionInfo("");
-              jsPlumbUtil.consume(e);
-              Dom.setBlinkArrowRed(-1)
-            });
-          });
-
-          jsPlumb.fire("jsPlumbDemoLoaded", instance);
-        });
       }
-
-      // calling cable function
-      cable()
       
-      // ------ end
-
-
-
+      // ! Final Position
+      // Scenes.items.box_img.set(0,0)
+      // Scenes.items.component_mosfet.set(0,0)
+      // Scenes.items.component_register.set(0,0)
+      // Scenes.items.component_diode.set(0,0)
+      // Scenes.items.component_inductor.set(0,0)
+      // Scenes.items.component_battery.set(0,0) 
+      // Scenes.items.component_capacitor.set(0,0)
+      
+      // Dom.setBlinkArrow(true,65,130 ).play()
+      // onclick
+      
       return true
     }),
-  
-    (step3 = function () {
+    
+    //! select option
+    (step2 = function () {
       setIsProcessRunning(true);
       Scenes.items.btn_next.show()
       
       // todo all previous elements hide
       Dom.hideAll();
       Scenes.items.contentAdderBox.item.innerHTML = ""
+      Scenes.changeHeader(4, -233, 15)
 
-      Scenes.setStepHeading("Step-3", "Performance Analysis.");
+      // Scenes.setStepHeading("Step-3", "Performance Analysis.");
       setCC("Click on the 'ICON' to plot the performance characteristics.")
       
       // * remove all previous restrictions
       
       // ! Required Elements
 
-      Scenes.items.part_2_select_option.set(78, -73, 485)
-      Scenes.items.part_2_select_option_1.set(513-165, -46, 99).zIndex(2)
-      Scenes.items.part_2_select_option_2.set(513-350, 289, 99).zIndex(2)
-      Scenes.items.part_2_select_option_3.set(513, 289, 99).zIndex(2)
+      Scenes.items.part_2_select_option.set(-29, -73, 485)
+      Scenes.items.part_2_option_1.set(41, 18, 305).zIndex(4)
+      Scenes.items.part_2_option_2.set(41 + 307, 16, 307).zIndex(3)
+      Scenes.items.part_2_option_3.set(610, 27, 289).zIndex(2)
 
-      // Scenes.items.circuit_full_2.set(6,40,230)
-      // Scenes.items.new_part_3_select_option_full.set(-11, -59, 463, 800)
-      // Scenes.items.new_part_3_select_option_1.set(203, -19, 190, 267).zIndex(2)
-      // Scenes.items.new_part_3_select_option_2.set(474, -18, 189, 262).zIndex(2)
-      // Scenes.items.new_part_3_select_option_3.set(204, 175, 190, 265).zIndex(2)
-      // Scenes.items.new_part_3_select_option_4.set(474, 176, 189, 270).zIndex(2)
       // // hide the slider
       Scenes.items.slider_box.hide()
 
-      let rightTicks = [
-        Scenes.items.right_tick_1.set(20,280).hide(),
-        Scenes.items.right_tick_2.set(208,280).hide().zIndex(2001),
-        Scenes.items.right_tick_3.set(435,280).hide(),
-        Scenes.items.right_tick_4.set(630,280).hide()
-      ]
+ 
 
       // hide all tables
       // Scenes.items.part3_table_one.hide()
@@ -1748,9 +1112,9 @@ part1_box1 : new Dom(".part1_box1"),
 
     // ! onclicks for all options
       let options = [
-        Scenes.items.part_2_select_option_1,
-        Scenes.items.part_2_select_option_2,
-        Scenes.items.part_2_select_option_3,
+        Scenes.items.part_2_option_1,
+        Scenes.items.part_2_option_2,
+        Scenes.items.part_2_option_3,
       ]
 
       // ! Destroy Graphs
@@ -1774,7 +1138,6 @@ part1_box1 : new Dom(".part1_box1"),
         Scenes.optionsDone[0]=1;
         Scenes.forMathematicalExpressionBtn = 1
         Scenes.steps[4]()
-    
       }
       const opTwo = ()=>{
        
@@ -1819,14 +1182,16 @@ part1_box1 : new Dom(".part1_box1"),
       return true;
 
     }),
-    (step4 = function () {
+
+    //! single pulse width modulation
+    (step3 = function () {
       setIsProcessRunning(true);
  
       Scenes.setStepHeading(
         "",
         ""
       )
-      Scenes.changeHeader(1)
+      Scenes.changeHeader(1, -217, 25)
       // setCC("Record 7 reading for different Load Resistances (R0)")
         // ! show the slider
         // sliders.changeHeader(2, "Turns Ratio")
@@ -1841,17 +1206,23 @@ part1_box1 : new Dom(".part1_box1"),
       // Scenes.items.tempTitle1.set().setContent(conclusionFront).addClass("conclusion").item
       
       //! Required Items
-      Scenes.items.part_2_1_heading.set(235,-83, 60)
+      Scenes.items.part_2_tab_1.set(248,-92, 80, 335)
+      Scenes.items.part_2_circuit.set(24,-45,163)
+      //  Scenes.items.part3_table_one.set(335,-80, null).scale(0.8)
+
+       Scenes.items.part3_table_one.set(184, -80, null, 836).scale(0.8)
+
+
+
       // Scenes.items.new_part_3_circuit.set(220,-20,190)
       // Scenes.items.part_3_option_3.set(-30, 155)
-       Scenes.items.part3_table_one.set(25,196, null).scale(0.8)
       //  Scenes.items.right_tick_1.set(-5,175)
       Scenes.items.btn_record.set(640+20,-78, 45)
       Scenes.items.btn_delete.set(740+20,-78, 45)
        Scenes.items.btn_reset.set(840+20,-78, 45)
       // Scenes.items.part3_table_three.set(20)
        let table = Scenes.items.part3_table_one.item
-       let tableColumnMax = 10
+       let tableColumnMax = table.tBodies[0].rows[0].cells.length
        let tableRowMax = table.tBodies[0].rows.length
 
        let valuesToMatch = []
@@ -1862,17 +1233,19 @@ part1_box1 : new Dom(".part1_box1"),
       // ! graph
       // let graph_height = 200
       // let graph_width = 355
+
+      //-25 --> 175
       
       let graph_height = 220
       let graph_width = 310
       
-      Scenes.items.graph_box_1.set(null, -25, 235, 333)
+      Scenes.items.graph_box_1.set(5, 175, 235, 333)
       Scenes.items.graph1.set(null,null,graph_height,graph_width)
       let ctx = Scenes.items.graph1.item
 
       // Scenes.items.graph_box_2.set(null, 190, 220)
       // Scenes.items.graph2.set(null,null,graph_height,graph_width)
-      Scenes.items.graph_box_2.set(260, -25, 235, 333)
+      Scenes.items.graph_box_2.set(350, 175, 235, 333)
       Scenes.items.graph2.set(null,null,graph_height,graph_width)
       let ctx2 = Scenes.items.graph2.item
 
@@ -1912,27 +1285,27 @@ part1_box1 : new Dom(".part1_box1"),
         beginAtZero=false
       ){
         // for label
-        Scenes.items.yLabel.set(533,84).setContent(yLabel).styles({
+        Scenes.items.yLabel.set(533-260,84+200).setContent(yLabel).styles({
           backgroundColor: "transperant",
           textAlign: "center",
           color: "black",
           width: "170px", 
           rotate: "-90deg",
         })
-        Scenes.items.xLabel.set(732, 185).setContent(xLabel).styles({
+        Scenes.items.xLabel.set(732-290, 185+200).setContent(xLabel).styles({
           backgroundColor: "transperant",
           color: "black",
           width: "fit-content", 
         })
         // for label2
-        Scenes.items.yLabel2.set(190,84).setContent(yLabel2).styles({
+        Scenes.items.yLabel2.set(190-260,84+200).setContent(yLabel2).styles({
           backgroundColor: "transperant",
           textAlign: "center",
           color: "black",
           width: "170px", 
           rotate: "-90deg",
         })
-        Scenes.items.xLabel2.set(380,185).setContent(xLabel2).styles({
+        Scenes.items.xLabel2.set(380-290,185+200).setContent(xLabel2).styles({
           backgroundColor: "transperant",
           color: "black",
           width: "fit-content", 
@@ -2087,15 +1460,15 @@ part1_box1 : new Dom(".part1_box1"),
       let leftMinus = 50
       function stepTutorial2(){
 
-        Dom.setBlinkArrowRed(true,100-leftMinus,62-topMinus,30,30,90).play()
+        Dom.setBlinkArrowRed(true,62-leftMinus,176-topMinus,30,30,90).play()
         setCC("Select V<sub>in</sub>")
         
         // sliders.selectOp1.oninput = ()=>{
         //   Dom.setBlinkArrowRed(true,240-leftMinus,78-topMinus,30,30,90).play()
         //   setCC("Select R")
         // }
-        sliders.selectOp2.oninput = ()=>{
-          Dom.setBlinkArrowRed(true,69,95-topMinus,30,30,90).play()
+        sliders.slider2.onclick = ()=>{
+          Dom.setBlinkArrowRed(true,69,240-topMinus,30,30,90).play()
           setCC("Select M")
         }
         // sliders.selectOp3.oninput = ()=>{
@@ -2124,15 +1497,15 @@ part1_box1 : new Dom(".part1_box1"),
           var rows = table.tBodies[0].rows
           let n = rows.length
           ,xLabel = "Modulation Index (M)"
-          ,yLabel = "V<sub>01</sub>"
+          ,yLabel = "THD(%)"
           ,xLabel2 = "Modulation Index (M)"
-          ,yLabel2 = "THD(%)",
+          ,yLabel2 = "V<sub>01,rms</sub> fund. (V)",
           tableModulationIdx = 2,
-          tableV01Idx = 5,
-          tableThdIdx = 9
+          tableV01RMS = 4,
+          tableThdIdx = 8
           for(let i=0;i<n;i++){
             let x = rows[i].cells[tableModulationIdx].innerHTML
-            let y = rows[i].cells[tableV01Idx].innerHTML
+            let y = rows[i].cells[tableV01RMS].innerHTML
 
             let x2 = rows[i].cells[tableModulationIdx].innerHTML
             let y2 = rows[i].cells[tableThdIdx].innerHTML
@@ -2143,35 +1516,35 @@ part1_box1 : new Dom(".part1_box1"),
           // ! setDefault two values in it
           function setDefaultLowHighInGraph(){
             // D value
-            let low = 0.1, high = 0.9, x = 0, y=0, y2=0, 
+            let low = 0.1, high = 0.9, x = 0, y=0, y2= 0
             rowValues = [],
             colIdx = 2,
             colIdx2 = 6
             
             // for low, 
             x = low
-            rowValues = Formulas.multipulse.valueSet(sliders.selectOp2.value, x)
-            y = rowValues[colIdx]
-            y2 = rowValues[colIdx2]
+            updateValues(sliders.slider2.value,x,0)
+            y = Formulas.singlepulse.v0(values)
+            y2 = Formulas.singlepulse.thd(values)
             graphData.unshift({x: x, y:y})
             graphData2.unshift({x: x, y:y2})
-
+            
             // for high
             x = high
-            rowValues = Formulas.multipulse.valueSet(sliders.selectOp2.value, x)
-            y = rowValues[colIdx]
-            y2 = rowValues[colIdx2]
+            updateValues(sliders.slider2.value,x,0)
+            y = Formulas.singlepulse.v0(values)
+            y2 = Formulas.singlepulse.thd(values)
             graphData.push({x: x, y:y})
             graphData2.push({x: x, y:y2})
+
 
           }
           setDefaultLowHighInGraph()
 
-
           //for labeling
           let conclusionFront = ""
 
-          conclusionFront = "Here, the fundamental component of load voltage increases and total harmonic distortion decreases with increasing modulation index."
+          conclusionFront = "Fundamental voltage increases and “Total Harmonic Distortion” decreases with increasing “Modulation Index”."
 
 
 
@@ -2201,9 +1574,9 @@ part1_box1 : new Dom(".part1_box1"),
           //   Scenes.items.tempTitle1.set(null,100).setContent(conclusionFront).addClass("conclusion").item
           // )
 
-            Scenes.items.tempTitle1.set().setContent(conclusionFront).addClass("conclusion").item
+          Scenes.items.tempTitle1.set().setContent(conclusionFront).addClass("conclusion").item
 
-            setCC("Here, the fundamental component of load voltage increases and total harmonic distortion decreases with increasing modulation index.")
+          setCC("R.M.S value of fundamental voltage increases and total harmonic distortion decreases with increasing of modulation index.")
 
 
           
@@ -2224,13 +1597,13 @@ part1_box1 : new Dom(".part1_box1"),
         Scenes.currentStep = 3
 
         // ! change the table column index who's changing
-        let changeableColumnIndx = 2
+        let changeableColumnIndx = 3
 
         recordBtnClickIdx = 7
         let rows = table.tBodies[0].rows
       
         // * to get old values from table for matching
-        for(let i=0;i< tableRowMax;i++){
+        for(let i=0;i<tableRowMax;i++){
           let val = rows[i].cells[changeableColumnIndx].innerHTML
           valuesToMatch.push(Number(val))
         }
@@ -2292,9 +1665,9 @@ part1_box1 : new Dom(".part1_box1"),
       Scenes.items.btn_record.item.onclick = function(){ 
 
         // taking values from all sliders 
-        let vInValue = Number(sliders.selectOp2.value)
+        let vInValue = Number(sliders.slider2.value)
         let dutyRatioValue = Number(sliders.slider.value)
-        let resistanceValue = Number(sliders.selectOp2.value)
+        let resistanceValue = Number(sliders.slider2.value)
 
 
 
@@ -2308,7 +1681,7 @@ part1_box1 : new Dom(".part1_box1"),
         
         // ! for arrow system
         if(recordBtnClickIdx < tableRowMax-1){
-          Dom.setBlinkArrowRed(true,69,95-topMinus,30,30,90).play()
+          Dom.setBlinkArrowRed(true,69,240-topMinus,30,30,90).play()
           // Dom.setBlinkArrowRed(true,130-leftMinus,125-topMinus,30,30,90).play()
           setCC("Select M.")
         }
@@ -2375,7 +1748,7 @@ part1_box1 : new Dom(".part1_box1"),
         // deactivate the sliders after first value  done
         // todo
         if(recordBtnClickIdx == 0){
-          sliders.disable(0,1,2)
+          sliders.disable(3)
         }
 
         let ansArr = Formulas.multipulse.valueSet(vInValue, dutyRatioValue)
@@ -2385,13 +1758,19 @@ part1_box1 : new Dom(".part1_box1"),
         let tableRow = table.tBodies[0].rows[recordBtnClickIdx++]
         tableRow.cells[1].innerHTML = vInValue
         tableRow.cells[2].innerHTML = dutyRatioValue
-        tableRow.cells[3].innerHTML = Number(ansArr[0]).toFixed(2)
-        tableRow.cells[4].innerHTML = Number(ansArr[1]).toFixed(2)
-        tableRow.cells[5].innerHTML = Number(ansArr[2]).toFixed(2)
-        tableRow.cells[6].innerHTML = Number(ansArr[3]).toFixed(2)
-        tableRow.cells[7].innerHTML = Number(ansArr[4]).toFixed(2)
-        tableRow.cells[8].innerHTML = Number(ansArr[5]).toFixed(2)
-        tableRow.cells[9].innerHTML = Number(ansArr[6]).toFixed(2)
+        tableRow.cells[3].innerHTML = Number(Formulas.singlepulse.v0(values)).toFixed(2)
+        tableRow.cells[4].innerHTML = Number(Formulas.singlepulse.v01(values)).toFixed(2)
+        tableRow.cells[5].innerHTML = Number(Formulas.singlepulse.v03(values)).toFixed(2)
+        tableRow.cells[6].innerHTML = Number(Formulas.singlepulse.v05(values)).toFixed(2)
+        tableRow.cells[7].innerHTML = Number(Formulas.singlepulse.v07(values)).toFixed(2)
+        tableRow.cells[8].innerHTML = Number(Formulas.singlepulse.thd(values)).toFixed(2)
+        // tableRow.cells[3].innerHTML = Number(ansArr[0]).toFixed(2)
+        // tableRow.cells[4].innerHTML = Number(ansArr[1]).toFixed(2)
+        // tableRow.cells[5].innerHTML = Number(ansArr[2]).toFixed(2)
+        // tableRow.cells[6].innerHTML = Number(ansArr[3]).toFixed(2)
+        // tableRow.cells[7].innerHTML = Number(ansArr[4]).toFixed(2)
+        // tableRow.cells[8].innerHTML = Number(ansArr[5]).toFixed(2)
+        // tableRow.cells[9].innerHTML = Number(ansArr[6]).toFixed(2)
         // tableRow.cells[4].innerHTML = Number(Formulas.ideal.M(values)).toFixed(2)
         // tableRow.cells[5].innerHTML = Number(Formulas.nonIdeal.iIn(values)).toFixed(2)
         // tableRow.cells[6].innerHTML = Number(Formulas.ideal.i0(values)).toFixed(2)
@@ -2427,18 +1806,18 @@ part1_box1 : new Dom(".part1_box1"),
       }    
        
       
-
-      
       return true
     }),
-    (step5 = function () {
+
+    //! sinusoidal pulse width modulation
+    (step4 = function () { 
       setIsProcessRunning(true);
  
       Scenes.setStepHeading(
         "",
         ""
       )
-      Scenes.changeHeader(2)
+      Scenes.changeHeader(1, -217, 25)
       // setCC("Record 7 reading for different Load Resistances (R0)")
         // ! show the slider
         // sliders.changeHeader(2, "Turns Ratio")
@@ -2454,8 +1833,10 @@ part1_box1 : new Dom(".part1_box1"),
       // Scenes.items.new_part_3_circuit.set(220,-20,190)
       // Scenes.items.part_3_option_3.set(-30, 155)
 
-      Scenes.items.part_2_2_heading.set(235,-83, 60)
-       Scenes.items.part3_table_two.set(25,196, null).scale(0.8)
+      Scenes.items.part_2_tab_2.set(261,-92, 60, 335)
+      Scenes.items.part_2_circuit.set(24,-45,163)
+
+       Scenes.items.part3_table_two.set(184, -80, null, 836).scale(0.8)
       //  Scenes.items.right_tick_1.set(-5,175)
       Scenes.items.btn_record.set(640+20,-78, 45)
       Scenes.items.btn_delete.set(740+20,-78, 45)
@@ -2479,7 +1860,7 @@ part1_box1 : new Dom(".part1_box1"),
       
       // Scenes.items.graph_box_1.set(null, 0, 210)
 
-      Scenes.items.graph_box_1.set(null, -25, 235, 333)
+      Scenes.items.graph_box_1.set(5, 175, 235, 333)
       Scenes.items.graph1.set(null,null,graph_height,graph_width)
       let ctx = Scenes.items.graph1.item
 
@@ -2488,7 +1869,7 @@ part1_box1 : new Dom(".part1_box1"),
 
       // Scenes.items.graph_box_2.set(180, 0, 210)
 
-      Scenes.items.graph_box_2.set(260, -25, 235, 333)
+      Scenes.items.graph_box_2.set(350, 175, 235, 333)
 
       Scenes.items.graph2.set(null,null,graph_height,graph_width)
       let ctx2 = Scenes.items.graph2.item
@@ -2529,27 +1910,27 @@ part1_box1 : new Dom(".part1_box1"),
         beginAtZero=false
       ){
         // for label
-        Scenes.items.yLabel.set(533,84).setContent(yLabel).styles({
+        Scenes.items.yLabel.set(533-260,84+200).setContent(yLabel).styles({
           backgroundColor: "transperant",
           textAlign: "center",
           color: "black",
           width: "170px", 
           rotate: "-90deg",
         })
-        Scenes.items.xLabel.set(732, 185).setContent(xLabel).styles({
+        Scenes.items.xLabel.set(732-290, 185+200).setContent(xLabel).styles({
           backgroundColor: "transperant",
           color: "black",
           width: "fit-content", 
         })
         // for label2
-        Scenes.items.yLabel2.set(190,84).setContent(yLabel2).styles({
+        Scenes.items.yLabel2.set(190-260,84+200).setContent(yLabel2).styles({
           backgroundColor: "transperant",
           textAlign: "center",
           color: "black",
           width: "170px", 
           rotate: "-90deg",
         })
-        Scenes.items.xLabel2.set(380,185).setContent(xLabel2).styles({
+        Scenes.items.xLabel2.set(380-290,185+200).setContent(xLabel2).styles({
           backgroundColor: "transperant",
           color: "black",
           width: "fit-content", 
@@ -2704,15 +2085,15 @@ part1_box1 : new Dom(".part1_box1"),
       let leftMinus = 50
       function stepTutorial2(){
 
-        Dom.setBlinkArrowRed(true,100-leftMinus,62-topMinus,30,30,90).play()
+        Dom.setBlinkArrowRed(true,62-leftMinus,176-topMinus,30,30,90).play()
         setCC("Select V<sub>in</sub>")
         
         // sliders.selectOp1.oninput = ()=>{
         //   Dom.setBlinkArrowRed(true,240-leftMinus,78-topMinus,30,30,90).play()
         //   setCC("Select R")
         // }
-        sliders.selectOp2.oninput = ()=>{
-          Dom.setBlinkArrowRed(true,69,95-topMinus,30,30,90).play()
+        sliders.slider2.onclick = ()=>{
+          Dom.setBlinkArrowRed(true,69,240-topMinus,30,30,90).play()
           setCC("Select M")
         }
         // sliders.selectOp3.oninput = ()=>{
@@ -2741,15 +2122,15 @@ part1_box1 : new Dom(".part1_box1"),
           var rows = table.tBodies[0].rows
           let n = rows.length
           ,xLabel = "Modulation Index (M)"
-          ,yLabel = "V<sub>01</sub>"
+          ,yLabel = "THD(%)"
           ,xLabel2 = "Modulation Index (M)"
-          ,yLabel2 = "THD(%)",
+          ,yLabel2 = "V<sub>01,rms</sub> fund. (V)",
           tableModulationIdx = 2,
-          tableV01Idx = 5,
-          tableThdIdx = 9
+          tableV01RMS = 4,
+          tableThdIdx = 8
           for(let i=0;i<n;i++){
             let x = rows[i].cells[tableModulationIdx].innerHTML
-            let y = rows[i].cells[tableV01Idx].innerHTML
+            let y = rows[i].cells[tableV01RMS].innerHTML
 
             let x2 = rows[i].cells[tableModulationIdx].innerHTML
             let y2 = rows[i].cells[tableThdIdx].innerHTML
@@ -2762,12 +2143,12 @@ part1_box1 : new Dom(".part1_box1"),
             // D value
             let low = 0.1, high = 0.9, x = 0, y=0, y2=0, 
             rowValues = [],
-            colIdx = 2,
+            colIdx = 0,
             colIdx2 = 6
             
             // for low, 
             x = low
-            rowValues = Formulas.sinusoidal.valueSet(sliders.selectOp2.value, x)
+            rowValues = Formulas.sinusoidal.valueSet(sliders.slider2.value, x)
             y = rowValues[colIdx]
             y2 = rowValues[colIdx2]
             graphData.unshift({x: x, y:y})
@@ -2775,7 +2156,7 @@ part1_box1 : new Dom(".part1_box1"),
 
             // for high
             x = high
-            rowValues = Formulas.sinusoidal.valueSet(sliders.selectOp2.value, x)
+            rowValues = Formulas.sinusoidal.valueSet(sliders.slider2.value, x)
             y = rowValues[colIdx]
             y2 = rowValues[colIdx2]
             graphData.push({x: x, y:y})
@@ -2787,7 +2168,7 @@ part1_box1 : new Dom(".part1_box1"),
           //for labeling
           let conclusionFront = ""
 
-          conclusionFront = 'Fundamental voltage and “Total Harmonic Distortion” increases with increasing “Modulation Index”'
+          conclusionFront = 'Fundamental voltage and “Total Harmonic Distortion” increases with increasing “Modulation Index”.'
 
 
 
@@ -2818,7 +2199,7 @@ part1_box1 : new Dom(".part1_box1"),
           // )
 
             Scenes.items.tempTitle1.set().setContent(conclusionFront).addClass("conclusion").item
-            setCC("Here, the Fundamental voltage and “Total Harmonic Distortion” increases with increasing “Modulation Index”")
+            setCC("R.M.S value of fundamental voltage increases and total harmonic distortion decreases with increasing of modulation index.")
           
           Scenes.items.chart.label1.x = xLabel
           Scenes.items.chart.label1.y = yLabel
@@ -2905,9 +2286,9 @@ part1_box1 : new Dom(".part1_box1"),
       Scenes.items.btn_record.item.onclick = function(){ 
 
         // taking values from all sliders 
-        let vInValue = Number(sliders.selectOp2.value)
+        let vInValue = Number(sliders.slider2.value)
         let dutyRatioValue = Number(sliders.slider.value)
-        let resistanceValue = Number(sliders.selectOp2.value)
+        let resistanceValue = Number(sliders.slider2.value)
 
 
 
@@ -2921,7 +2302,7 @@ part1_box1 : new Dom(".part1_box1"),
         
         // ! for arrow system
         if(recordBtnClickIdx < tableRowMax-1){
-          Dom.setBlinkArrowRed(true,69,95-topMinus,30,30,90).play()
+          Dom.setBlinkArrowRed(true,69,240-topMinus,30,30,90).play()
           // Dom.setBlinkArrowRed(true,130-leftMinus,125-topMinus,30,30,90).play()
           setCC("Select M.")
         }
@@ -2988,7 +2369,7 @@ part1_box1 : new Dom(".part1_box1"),
         // deactivate the sliders after first value  done
         // todo
         if(recordBtnClickIdx == 0){
-          sliders.disable(0,1,2)
+          sliders.disable(3)
         }
 
         let ansArr = Formulas.sinusoidal.valueSet(vInValue, dutyRatioValue)
@@ -2999,12 +2380,11 @@ part1_box1 : new Dom(".part1_box1"),
         tableRow.cells[1].innerHTML = vInValue
         tableRow.cells[2].innerHTML = dutyRatioValue
         tableRow.cells[3].innerHTML = Number(ansArr[0]).toFixed(2)
-        tableRow.cells[4].innerHTML = Number(ansArr[1]).toFixed(2)
-        tableRow.cells[5].innerHTML = Number(ansArr[2]).toFixed(2)
-        tableRow.cells[6].innerHTML = Number(ansArr[3]).toFixed(2)
-        tableRow.cells[7].innerHTML = Number(ansArr[4]).toFixed(2)
-        tableRow.cells[8].innerHTML = Number(ansArr[5]).toFixed(2)
-        tableRow.cells[9].innerHTML = Number(ansArr[6]).toFixed(2)
+        tableRow.cells[4].innerHTML = Number(ansArr[2]).toFixed(2)
+        tableRow.cells[5].innerHTML = Number(ansArr[3]).toFixed(2)
+        tableRow.cells[6].innerHTML = Number(ansArr[4]).toFixed(2)
+        tableRow.cells[7].innerHTML = Number(ansArr[5]).toFixed(2)
+        tableRow.cells[8].innerHTML = Number(ansArr[6]).toFixed(2)
         // tableRow.cells[4].innerHTML = Number(Formulas.ideal.M(values)).toFixed(2)
         // tableRow.cells[5].innerHTML = Number(Formulas.nonIdeal.iIn(values)).toFixed(2)
         // tableRow.cells[6].innerHTML = Number(Formulas.ideal.i0(values)).toFixed(2)
@@ -3044,7 +2424,9 @@ part1_box1 : new Dom(".part1_box1"),
       
       return true
     }),
-    (step6 = function () {
+
+    //! Comparison Of Single-pulse And Sine PWM Techniques
+    (step5 = function () {
       setIsProcessRunning(true);
       
       Scenes.setStepHeading(
@@ -3053,10 +2435,17 @@ part1_box1 : new Dom(".part1_box1"),
       )
       // componenet stress
 
-      Scenes.changeHeader(4)
+      Scenes.changeHeader(2, -239, 15)
         // ! show the slider
       Scenes.items.slider_box.set(7,-55).scale(0.95)
       Scenes.items.btn_next.show()
+
+      //* for checking the conclusion front
+
+      
+      // let conclusionFront = "The fundamental component of load voltage increases with increase in modulation index.Load voltage variation and selective harmonic reduction is possible in sine PWM technique whereas in single pulse PWM, both are not possible simultaneously. "
+      // Scenes.items.tempTitle20.set(25,55,null,426).setContent(conclusionFront).addClass("conclusion").zIndex(3).item
+
 
       //! Required Items
       Scenes.items.btn_record.set(388,-75, 40)
@@ -3065,68 +2454,85 @@ part1_box1 : new Dom(".part1_box1"),
        // ! graph
       
        sliders.generateOptionsFor(2)
-       Scenes.items.part_2_3_circuit.set(0,180, 210)
-      //  Scenes.items.part4_table_graph.set(0,160,250,555)
-      //  Scenes.items.new_part_3_4_circuit.set(0,220,190,290)
-      //  Scenes.items.new_part_3_4_ratings.set(290,210,250,280)
-       //graph labels
-      //  let st_label = {
-      //   backgroundColor: "white",
-      //   color: "black",
-      //   fontSize: "20px",
-      //   width: "300px",
-      //   textAlign: "center",
-      //   margin: "0",
-        
-      //  }
-       
-      //  let l2 = "<span>i<sub>s</sub></span> <span>i<sub>d</sub></span> <span>i<sub>c</sub></span>"
-      //  let l1 = "<span>v<sub>s</sub></span> <span>v<sub>d</sub></span> <span>v<sub>c</sub></span>"
-      //  Scenes.items.tempTitle51.set(620,118).setContent(l1).styles(st_label).addClass("graph_labels")
-      //  Scenes.items.tempTitle52.set(620,364).setContent(l2).styles(st_label).addClass("graph_labels")
-
-       // temp label for the table
-      //  let st = {
-      //   width: "fit-content"
-      //  }
-      //  let st3 = {
-      //   ...st,
-      //   fontSize: "15px"
-      //  }
-      //  let leftMinus = 44, topMinus = 25
-      //  let format_1 = "(V<sub>in</sub>+V<sub>o</sub>/n) V/I<sub>in</sub> A"
-      //  let format_2 = "(nV<sub>in</sub>+V<sub>o</sub>) V/I<sub>L,p</sub>/n A"
-      //  let format_3 = "V<sub>o</sub> V/ (∆I<sub>Lm</sub>/2)/n A"
-      //  Scenes.items.tempTitle53.set(443-leftMinus,253-topMinus+50).setContent(format_1).styles(st)
-      //  Scenes.items.tempTitle54.set(443-leftMinus,300-topMinus+50).setContent(format_2).styles(st)
-      //  Scenes.items.tempTitle55.set(443-leftMinus,355-topMinus+50).setContent(format_3).styles(st3)
+       Scenes.items.part_2_option_3_circuit.set(0,180, 210)
+      
        let graphIdx = 6
-       
-      let graph_box7 = new Dom(".graph_box7")
-      let graph_box8 = new Dom(".graph_box8")
+       let graph_box7 = new Dom(".graph_box7")
+       let graph_box8 = new Dom(".graph_box8")
+       let graph_box9 = new Dom(".graph_box9")
+
+      let graphBoxes = [
+        graph_box7,
+        graph_box8,
+        graph_box9,
+      ]
+      graphBoxes.forEach((ele,idx)=>{
+        ele.styles({
+          padding: "0",
+        })
+        if(idx>0){
+          ele.styles({
+            boxShadow: "none",
+            padding: "17px 0 0 0",
+          })
+        }
+        if(idx==1){
+          ele.item.style.borderTopRightRadius= "0px"
+          ele.item.style.borderBottomRightRadius= "0px"
+        }else if(idx == 2){
+          ele.item.style.borderTopLeftRadius = "0px"
+          ele.item.style.borderBottomLeftRadius = "0px"
+          console.log(ele.item)
+        }
+      })
       Scenes.items.graph7.set(null,null,250,100)
       Scenes.items.graph8.set(null,200,250,100)
-      graph_box7.set()
-      graph_box8.set(null,171)
+      Scenes.items.graph9.set(null,200,250,100)
+      graph_box7.set(null,null,null,340)
+      graph_box8.set(437,171,null,250)
+      graph_box9.set(null,171,null,250)
       let ctx1 = Scenes.items.graph7.item
       let ctx2 = Scenes.items.graph8.item
+      let ctx3 = Scenes.items.graph9.item
       let chart1 = Scenes.items.chart[graphIdx]
       let chart2 = Scenes.items.chart[graphIdx+1]
+      let chart3 = Scenes.items.chart[graphIdx+2]
       
       let xLabel = ""
       let yLabel = ""
+
+      // dual merge graph text title and legend
+      Scenes.items.tempTitle22.setContent("Harmonic Component & THD").set(0,0).styles({
+        backgroundColor: "white",
+        left: "460px",
+        top: "173px",
+        display: "block",
+        color: "black",
+        width: "469px",
+        textAlign: "center",
+        height: "46px",
+        zIndex: "1001",
+      })
+      Scenes.items.graph_legends.set().styles({
+        left: "503px",
+        top: "196px",
+        zIndex: "1002",
+        height: "21px",
+      })
+
 
       function plotGraph(){
         if(chart1!=null){
           chart1.destroy()
           chart2.destroy()
+          chart3.destroy()
         }
         
         chart1 = new Chart(ctx1,
           {
             type: "bar",
             data: {
-              labels: ["Multi-pulse PWM", "Sinusoidal PWM"],
+              labels: ["Single-pulse PWM", "Sinusoidal PWM"],
               datasets: [
                 {
                   backgroundColor: ['#395723','#7030a0'],
@@ -3178,7 +2584,7 @@ part1_box1 : new Dom(".part1_box1"),
           {
             type: "bar",
             data: {
-              labels: ["Multi-pulse PWM", "Sinusoidal PWM"],
+              labels: ["Single-pulse PWM"],
               datasets: [
                 {
                   label: "Vo3",
@@ -3206,7 +2612,75 @@ part1_box1 : new Dom(".part1_box1"),
               maintainAspectRatio: false,
               responsive: true,
               legend: {
-                // display: false
+                display: false
+              },
+              title:{
+                display: true,
+                text: "Harmonic Component & THD",
+                fontColor: 'black',
+                fontSize: 15,
+              },
+              scales: {
+                yAxes: [
+                  {
+                    ticks: { 
+                      beginAtZero:true,
+                      fontColor: 'black',
+                      fontSize: 15,
+                    }
+                  },
+                ],
+                xAxes: [
+                  {
+                    scaleLabel: {
+                      display: true,
+                    },
+                    ticks: { 
+                      beginAtZero:true,
+                      fontColor: 'black',
+                      fontSize: 13,
+                    },
+                  },
+                ],
+              },
+              barPercentage: 1, // Controls the width of the bars relative to the available space
+              categoryPercentage: 0.5,
+            },
+          }  
+        )
+        chart3 = new Chart(ctx3,
+          {
+            type: "bar",
+            data: {
+              labels: ["Sinusoidal PWM"],
+              datasets: [
+                {
+                  label: "Vo3",
+                  backgroundColor: "#002060",
+                  data: [],
+                },
+                {
+                  label: "Vo5",
+                  backgroundColor: "#c00000",
+                  data: [],
+                },
+                {
+                  label: "Vo7",
+                  backgroundColor: "#385723",
+                  data: [],
+                },
+                {
+                  label: "THD",
+                  backgroundColor: "#c55a11",
+                  data: [],
+                },
+              ]
+            },
+            options: {
+              maintainAspectRatio: false,
+              responsive: true,
+              legend: {
+                display: false
               },
               title:{
                 display: true,
@@ -3244,6 +2718,7 @@ part1_box1 : new Dom(".part1_box1"),
         )
         Scenes.items.chart[graphIdx] = chart1
         Scenes.items.chart[graphIdx+1] = chart2
+        Scenes.items.chart[graphIdx+2] = chart3
         
       }
 
@@ -3291,25 +2766,30 @@ part1_box1 : new Dom(".part1_box1"),
       }
 
        // ! ------------> If data already present plot the graph
-        if(chart1 != null){
-          setIsProcessRunning(false)
-          Scenes.currentStep = 3
-          Scenes.items.graph7.set(null,null,250,355)
-          Scenes.items.graph8.set(null,200,250,355)
-        }else{
-          plotGraph()
-          Scenes.items.graph7.set(null,null,250,355)
-          Scenes.items.graph8.set(null,200,250,355)
-        }   
+       if(chart1 != null){
+        setIsProcessRunning(false)
+        Scenes.currentStep = 3
+        Scenes.items.graph7.set(null,null,250,355)
+        Scenes.items.graph8.set(null,200,250,270)
+        Scenes.items.graph9.set(null,200,250,270)
+      }else{
+        plotGraph()
+        Scenes.items.graph7.set(null,null,250,355)
+        Scenes.items.graph8.set(null,200,250,270)
+        Scenes.items.graph9.set(null,200,250,270)
+      }    
 
 
       // ! onclick for reset
       Scenes.items.btn_reset.item.onclick = function(){
         // reset all the parameters
         // so just simply call this step again
+        if(chart1!=null){
+          chart1.destroy()
+          chart2.destroy()
+        }
         Scenes.items.chart[graphIdx] = null
         Scenes.items.chart[graphIdx+1] = null
-        
         Scenes.steps[6]()        
       }
        
@@ -3332,22 +2812,22 @@ part1_box1 : new Dom(".part1_box1"),
         updateValues(vInValue,dutyRatioValue,resistanceValue)
  
         // for table data (temp title data)
-        let v0 = parseFloat(Number(Formulas.stress.v0(values)).toFixed(2))
-        let v0byN = parseFloat(Number(Formulas.stress.v0(values) / nValue).toFixed(2))
-        let iIn = parseFloat(Number(Formulas.stress.iIn(values)).toFixed(2))
-        // ! iLMPbyN !/ nValue
-        let iLMPbyN = parseFloat(Number(Formulas.stress.iLMP(values) / nValue).toFixed(2))
-        let delILMby2byN = parseFloat(Number((Formulas.stress.delILM(values) / 2) / nValue).toFixed(2))
+        // let v0 = parseFloat(Number(Formulas.stress.v0(values)).toFixed(2))
+        // let v0byN = parseFloat(Number(Formulas.stress.v0(values) / nValue).toFixed(2))
+        // let iIn = parseFloat(Number(Formulas.stress.iIn(values)).toFixed(2))
+        // // ! iLMPbyN !/ nValue
+        // let iLMPbyN = parseFloat(Number(Formulas.stress.iLMP(values) / nValue).toFixed(2))
+        // let delILMby2byN = parseFloat(Number((Formulas.stress.delILM(values) / 2) / nValue).toFixed(2))
 
-        console.log(vInValue,dutyRatioValue,resistanceValue)
+        // console.log(vInValue,dutyRatioValue,resistanceValue)
 
-        let vS = Number(parseFloat(vInValue) + parseFloat(v0byN)).toFixed(2)
-        let vD = Number((parseFloat(nValue) * parseFloat(vInValue)) + v0).toFixed(2)
-        let vC = Number(v0).toFixed(2)
+        // let vS = Number(parseFloat(vInValue) + parseFloat(v0byN)).toFixed(2)
+        // let vD = Number((parseFloat(nValue) * parseFloat(vInValue)) + v0).toFixed(2)
+        // let vC = Number(v0).toFixed(2)
 
-        let iS = Number(iIn).toFixed(2)
-        let iD = Number(iLMPbyN).toFixed(2)
-        let iC = Number(delILMby2byN).toFixed(2)
+        // let iS = Number(iIn).toFixed(2)
+        // let iD = Number(iLMPbyN).toFixed(2)
+        // let iC = Number(delILMby2byN).toFixed(2)
 
         // Scenes.items.tempTitle53.setContent(`${vS} V/${iS} A`)
         // Scenes.items.tempTitle54.setContent(`${vD} V/${iD} A`)
@@ -3382,29 +2862,38 @@ part1_box1 : new Dom(".part1_box1"),
         
         plotGraph()
         graph.addData(chart1,0,graph1_data)
-        graph.addData(chart2,0,v03_data)
-        graph.addData(chart2,1,v05_data)
-        graph.addData(chart2,2,v07_data)
-        graph.addData(chart2,3,THD_data)
+        
+        graph.addData(chart2,0,v03_data[0])
+        graph.addData(chart2,1,v05_data[0])
+        graph.addData(chart2,2,v07_data[0])
+        graph.addData(chart2,3,THD_data[0])
+
+        graph.addData(chart3,0,v03_data[1])
+        graph.addData(chart3,1,v05_data[1])
+        graph.addData(chart3,2,v07_data[1])
+        graph.addData(chart3,3,THD_data[1])
 
         Scenes.items.graph7.set(null,null,250,355)
-        Scenes.items.graph8.set(null,200,250,355)
+        Scenes.items.graph8.set(null,200,250,270)
+        Scenes.items.graph9.set(null,200,250,270)
           // after complete
           Dom.setBlinkArrow(true, 790, 408).play();
           // setCC("Click 'Next' to go to next step");
           // setCC("Bar chart shows the switch, diode and capacitor voltage stresses.")
 
-          setCC("Here, inverter load voltages are generated using Multi-pulse and Sinusoidal PWM schemes.")
+          setCC("Here, inverter load voltages are generated using single-pulse and Sinusoidal PWM schemes.")
 
-          setCC("Sine PWM  based waveforms results in reduced lower order harmonics and thus reduces the filtering requirements.")
+          setCC("Sine PWM  based waveforms results in variation in load voltage and selective harmonic reduction simultaneously.")
 
-          let conclusionFront = "The fundamental component of load voltage increases with increase in modulation index. In comparison to multi-pulse PWM, the amplitude of lower order harmonics is less for Sine PWM. The higher order harmonics can be easily filtered out by using suitable filter."
+          let conclusionFront = "The fundamental component of load voltage increases with increase in modulation index.Load voltage variation and selective harmonic reduction is possible in sine PWM technique whereas in single pulse PWM, both are not possible simultaneously. "
 
           // ! For front conclusion
           // Anime.fade(
           //   Scenes.items.tempTitle20.set().setContent(conclusionFront).addClass("conclusion").zIndex(3).item
           // )
-          Scenes.items.tempTitle20.set(25,43,null,426).setContent(conclusionFront).addClass("conclusion").zIndex(3).item
+
+          Scenes.items.tempTitle20.set(25,30,null,426).setContent(conclusionFront).addClass("conclusion").zIndex(3).item
+
           
           setIsProcessRunning(false); 
           Scenes.currentStep = 3
@@ -3421,1147 +2910,126 @@ part1_box1 : new Dom(".part1_box1"),
       
       return true
     }),
-    // (step5 = function () {
-    //   setIsProcessRunning(true);
-    //   Dom.hideAll()
-    //   Scenes.setStepHeading(
-    //     "",
-    //     ""
-    //   );
-    //   Scenes.changeHeader(2)
-    //   // setCC("Record 7 reading for 3 different load resistances.")
-    //   // ! show the slider
-    //   Scenes.items.slider_box.set(-50,-80).scale(0.79)
-    //   Scenes.items.btn_next.show()
-
-    //   //! Required Items
-    //   Scenes.items.new_part_3_circuit.set(220,-20,190)
-    //   // Scenes.items.circuit_full_3.set(230,-50,150)
-    //   // Scenes.items.part_3_option_3.set(-30, 155)
-    //   //  Scenes.items.right_tick_1.set(-5,175)
-    //   Scenes.items.btn_record.set(640,-78)
-    //   Scenes.items.btn_delete.set(740,-78)
-    //    Scenes.items.btn_reset.set(840,-78)
-    //   // Scenes.items.part3_table_three.set(20)
-    //   Scenes.items.part3_table_two.set(-43,160, null).scale(0.9)
-
-    //    let table = Scenes.items.part3_table_two.item
-    //    let tableColumnMax = table.tBodies[0].rows[0].cells.length
-    //    let tableRowMax = table.tBodies[0].rows.length
-
-    //    let valuesToMatch = []
-    //     // * index to handle records
-    //   let recordBtnClickIdx = (table.tBodies[0].rows[6].cells[4].innerHTML==""?0:7)
-      
-    //   // ! graph
-    //   let graph_height = 200
-    //   let graph_width = 355
-      
-    //   Scenes.items.graph_box_3.set(null, -28, 210)
-    //   Scenes.items.graph3.set(null,null,graph_height,graph_width)
-    //   let ctx = Scenes.items.graph3.item
-
-    //   Scenes.items.graph_box_4.set(null, 190, 220)
-    //   Scenes.items.graph4.set(null,null,graph_height,graph_width)
-    //   let ctx2 = Scenes.items.graph4.item
-
-    //   // ! Label for graph
-    //   let xLabel = Scenes.items.chart.label3.x
-    //   let yLabel = Scenes.items.chart.label3.y
-    //   let dataLabel = "Data"
-
-    //   let xLabel2 = Scenes.items.chart.label4.x
-    //   let yLabel2 = Scenes.items.chart.label4.y
-    //   let dataLabel2 = "Data2"
-
-    //   // ! Forshowing graph labels
-    //   // graph idx is for  showing which graph is being shown
-    //   let graphIdx = 2
-    //   if(Scenes.items.chart[graphIdx] != null){
-    //     Scenes.items.xLabel.set().setContent(xLabel)
-    //     Scenes.items.yLabel.set().setContent(yLabel)
-
-    //     Scenes.items.xLabel2.set().setContent(xLabel2)
-    //     Scenes.items.yLabel2.set().setContent(yLabel2)
-    //   }
-      
-    //   // ! To Plot graph
-    //   function plotGraph(
-    //     ctx,
-    //     ctx2,
-    //     graphIdx,
-    //     data,
-    //     data2,
-    //     dataLabel,
-    //     dataLabel2,
-    //     xLabel=null,
-    //     yLabel=null,
-    //     xLabel2=null,
-    //     yLabel2=null,
-    //     beginAtZero=false
-    //   ){
-    //     // for label
-    //     let yStyle = {
-    //       backgroundColor: "transperant",
-    //       textAlign: "center",
-    //       color: "black",
-    //       width: "170px", 
-    //       rotate: "-90deg",
-    //     }
-    //     let xStyle = {
-    //       backgroundColor: "transperant",
-    //       color: "black",          
-    //       width: "fit-content",
-    //     }
-    //     Scenes.items.yLabel.set(487,80).setContent(yLabel).styles(yStyle)
-    //     Scenes.items.xLabel.set(700,160).setContent(xLabel).styles(xStyle)        // for label2
-    //     Scenes.items.yLabel2.set(487,80+225).setContent(yLabel2).styles(yStyle)
-    //     Scenes.items.xLabel2.set(700,160+225).setContent(xLabel2).styles(xStyle)
-
-    //     // ! Destroy old graph
-    //     let graphRef = Scenes.items.chart[graphIdx]
-    //     let graphRef2 = Scenes.items.chart[graphIdx+1]
-    //     if(graphRef!=null){
-    //       graphRef.destroy()
-    //       graphRef2.destroy()
-    //     }
-        
-    //     graphRef = new Chart(ctx, {
-    //       type: "scatter",
-    //       plugins: [{
-    //         // afterDraw: chart => {
-    //         //   var ctx = chart.chart.ctx;
-    //         //   ctx.save();
-    //         //   ctx.textAlign = 'center';
-    //         //   ctx.font = '18px Arial';
-    //         //   ctx.fillStyle = 'black';
-    //         //   ctx.fillText('Output Power (P )', chart.chart.width / 2, chart.chart.height - 24);
-    //         //   ctx.textAlign = 'left';
-    //         //   ctx.font = '10px Arial';
-    //         //   ctx.fillText('0', chart.chart.width - 119, chart.chart.height - 12);
-    //         //   ctx.restore();
-    //         // },
-            
-    //       }],
-    //       data: {
-    //         datasets: [
-    //             {
-    //               label: dataLabel,
-    //               fill: false,
-    //               borderColor: "red",
-    //               backgroundColor: "red",
-    //               data: data,
-    //               display: false,
-    //             },
-    //         ],
-    //       },
-    //       options: {
-    //         scales: {
-    //           yAxes: [
-    //             {
-    //               scaleLabel: {
-    //                 display: false,
-    //                 labelString: yLabel,
-    //                 fontColor: 'black',
-    //                 fontSize: 17,
-  
-    //               },
-    //               ticks: { 
-    //                 beginAtZero:beginAtZero,
-    //                 fontColor: 'black',
-    //                 fontSize: 14,
-    //               }
-    //             },
-    //           ],
-    //           xAxes: [
-    //             {
-    //               scaleLabel: {
-    //                 display: false,
-    //                 labelString: xLabel,
-    //                 fontColor: 'black',
-    //                 fontSize: 17,
-    //               },
-    //               ticks: { 
-    //                 beginAtZero:beginAtZero,
-    //                 fontColor: 'black',
-    //                 fontSize: 14,
-    //               }
-    //             },
-    //           ],
-    //         },
-    //       },
-    //     })
-    //     graphRef2 = new Chart(ctx2, {
-    //       type: "scatter",
-    //       plugins: [{
-    //         // afterDraw: chart => {
-    //         //   var ctx = chart.chart.ctx;
-    //         //   ctx.save();
-    //         //   ctx.textAlign = 'center';
-    //         //   ctx.font = '18px Arial';
-    //         //   ctx.fillStyle = 'black';
-    //         //   ctx.fillText('Output Power (P )', chart.chart.width / 2, chart.chart.height - 24);
-    //         //   ctx.textAlign = 'left';
-    //         //   ctx.font = '10px Arial';
-    //         //   ctx.fillText('0', chart.chart.width - 119, chart.chart.height - 12);
-    //         //   ctx.restore();
-    //         // },
-            
-    //       }],
-    //       data: {
-    //         datasets: [
-    //             {
-    //               label: dataLabel2,
-    //               fill: false,
-    //               borderColor: "red",
-    //               backgroundColor: "red",
-    //               data: data2,
-    //               display: false,
-    //             },
-    //         ],
-    //       },
-    //       options: {
-    //         scales: {
-    //           yAxes: [
-    //             {
-    //               scaleLabel: {
-    //                 display: false,
-    //                 labelString: yLabel2,
-    //                 fontColor: 'black',
-    //                 fontSize: 17,
-  
-    //               },
-    //               ticks: { 
-    //                 beginAtZero:beginAtZero,
-    //                 fontColor: 'black',
-    //                 fontSize: 14,
-    //               }
-    //             },
-    //           ],
-    //           xAxes: [
-    //             {
-    //               scaleLabel: {
-    //                 display: false,
-    //                 labelString: xLabel2,
-    //                 fontColor: 'black',
-    //                 fontSize: 17,
-    //               },
-    //               ticks: { 
-    //                 beginAtZero:beginAtZero,
-    //                 fontColor: 'black',
-    //                 fontSize: 14,
-    //               }
-    //             },
-    //           ],
-    //         },
-    //       },
-    //     })
-     
-    //     Scenes.items.chart[graphIdx] = graphRef
-    //     Scenes.items.chart[graphIdx+1] = graphRef2
-    //   }
-
-    //   // for adding new datasets to graph
-    //   const graph = {
-    //     addDataset(chart,label,bgColor,data){
-    //       chart.data.datasets.push(
-    //         {
-    //           label: label,
-    //           fill: false,
-    //           borderColor: bgColor,
-    //           backgroundColor: bgColor,
-    //           data: data,
-    //         }
-    //       )
-    //       chart.update()
-    //     },
-    //     addData(chart,index,data){
-    //       console.log(data)
-    //       if(data.length > 0){
-    //         chart.data.datasets[index].data = data
-    //       }else{
-    //         chart.data.datasets[index].data.push(data)
-    //       }
-    //       chart.update()
-    //     }
-    //   }
 
 
-    //   // let slidersBox = document.querySelectorAll(".slider")
-    //   // let slidersBox = document.querySelectorAll(".range-slider__range")
-    //   let topMinus = 85
-    //   let leftMinus = 50
-    //   function stepTutorial2(){
-
-    //     Dom.setBlinkArrowRed(true,100-leftMinus,78-topMinus,30,30,90).play()
-    //     setCC("Select V<sub>in</sub>")
-        
-    //     sliders.selectOp1.oninput = ()=>{
-    //       Dom.setBlinkArrowRed(true,240-leftMinus,78-topMinus,30,30,90).play()
-    //       setCC("Select R")
-    //     }
-    //     sliders.selectOp2.oninput = ()=>{
-    //       Dom.setBlinkArrowRed(true,380-leftMinus,78-topMinus,30,30,90).play()
-    //       setCC("Select Turns ratio")
-    //       }
-    //         sliders.selectOp3.oninput = ()=>{
-    //           Dom.setBlinkArrowRed(true,130-leftMinus,125-topMinus,30,30,90).play()
-    //           setCC("Select D")
-    //         }
-    //           sliders.slider.onclick = ()=>{
-    //             Dom.setBlinkArrowRed(true,730-leftMinus,60-topMinus,30,30,90).play()
-    //             setCC("Press Record")                
-    //           }
-    //   }
-    //   if(recordBtnClickIdx == 0){
-    //     stepTutorial2()
-    //   }
-    //   // generate option
-    //   sliders.generateOptionsFor(1)
-      
-    //   function setDataToGraph(){
-
-    //     let characteristicsValue = Scenes.items.slider_C.item.value;
-       
-    //     let graphData = []
-    //     let graphData2 = []
-    //     var rows = table.tBodies[0].rows
-    //     let n = rows.length
-    //     ,xLabel = "Duty Ratio (D)"
-    //     ,yLabel = "Voltage Gain (M)"
-    //     ,xLabel2 = "Duty Ratio (D)"
-    //     ,yLabel2 = "Output voltage (V<sub>0</sub>)",
-    //     tableModulationIdx = 3,
-    //     tableV0Idx = 4,
-    //     table = 7
-    //     for(let i=0;i<n;i++){
-    //       let x = rows[i].cells[tableModulationIdx].innerHTML
-    //       let y = rows[i].cells[tableV0Idx].innerHTML
-
-    //       let x2 = rows[i].cells[tableModulationIdx].innerHTML
-    //       let y2 = rows[i].cells[tableV0Idx].innerHTML
-
-    //       graphData.push({x: x,y: y})
-    //       graphData2.push({x: x2,y: y2})
-    //     }
-    //     // ! setDefault two values in it
-    //     function setDefaultLowHighInGraph(graphNumber){
-    //       // D value
-    //       let low = 0, high = 0.95,x = 0,y = 0
-    //       updateValues(sliders.selectOp1.value,low,sliders.selectOp2.value)
-    //       x = low
-    //       if(graphNumber == 1){
-    //         y = Number(Formulas.nonIdeal.M(values)).toFixed(2)
-    //         graphData.unshift({x: x, y: y})
-    //       }else{
-    //         y = Number(Formulas.nonIdeal.v0(values)).toFixed(2)
-    //         graphData2.unshift({x: x, y: y})
-    //       }
-
-    //       updateValues(sliders.selectOp1.value,high,sliders.selectOp2.value)
-    //       x = high
-    //       if(graphNumber == 1){
-    //         y = Number(Formulas.nonIdeal.M(values)).toFixed(2)
-    //         graphData.push({x: x, y: y})
-    //       }else{
-    //         y = Number(Formulas.nonIdeal.v0(values)).toFixed(2)
-    //         graphData2.push({x: x, y: y})
-    //       }
-    //     }
-    //     setDefaultLowHighInGraph(1)
-    //     setDefaultLowHighInGraph(2)
-
-    //       // for loop fix
-    //       let conclusionFront = ""
-
-    //       conclusionFront = "Voltage gain and output voltage increases with increasing duty ratio upto certain duty ratio and then starts decreasing. Depending on turns ratio and duty cycle, output voltage is either lower or higher than input voltage."
-
-    //       setCC("Voltage gain and output voltage increases with increasing duty ratio upto certain duty ratio and then starts decreasing. Depending on turns ratio and duty cycle, output voltage is either less or greater than input voltage.",3)
-          
-
-    //       // switch(characteristicsValue){
-
-    //       //   case  'D-vs-M': 
-    //       //     yLabel = "M (D)"
-    //       //     dataLabel1 = "M(D) non-ideal"
-    //       //     dataLabel2 = "M(D) ideal"
-    //       //     conclusionFront = "Voltage gain depends on the load resistance and  non-ideal voltage gain is lesser than ideal voltage gain due to voltage drops in various components."
-    //       //     setCC("The conclusion of these observation is that Voltage gain depends on the load resistance and  non-ideal voltage gain is lesser than ideal voltage gain due to voltage drops in various components.",3)
-    //       //     break
-
-    //       //   case  'D-vs-I': 
-    //       //     yLabel = "I<sub>0</sub> (A)"
-    //       //     dataLabel1 = "I₀ (A) non-ideal"
-    //       //     dataLabel2 = "I₀ (A) ideal"
-    //       //     conclusionFront = "The load current linearly increases with increasing duty ratio."
-    //       //     setCC("The conclusion of these observation is that the load current linearly increases with increasing duty ratio.",3)
-    //       //     break
-
-    //       //   case  'D-vs-V': 
-    //       //     yLabel = "V<sub>0</sub> (V)"
-    //       //     dataLabel1 = "V₀ (V) non-ideal"
-    //       //     dataLabel2 = "V₀ (V) ideal"
-    //       //     conclusionFront = "Load voltage depends on the load resistance and  non-ideal load voltage is lesser than ideal load voltage due to voltage drops in various components."
-    //       //     setCC("The conclusion of these observation is that load voltage depends on the load resistance and  non-ideal load voltage is lesser than ideal load voltage due to voltage drops in various components.",3)
-    //       //     break
-    //       // }
-
-    //       // ! For front conclusion
-    //       // Anime.fade(
-    //         //   Scenes.items.tempTitle1.set().setContent(conclusionFront).addClass("conclusion").item,1,13
-    //         //   )
-            
-    //       Scenes.items.tempTitle1.set().setContent(conclusionFront).addClass("conclusion").item
-
-    //       Scenes.items.chart.label3.x = xLabel
-    //       Scenes.items.chart.label3.y = yLabel
-
-    //       Scenes.items.chart.label4.x = xLabel2
-    //       Scenes.items.chart.label4.y = yLabel2
-
-    //       plotGraph(ctx,ctx2,graphIdx,graphData,graphData2,dataLabel,dataLabel2,xLabel,yLabel,xLabel2,yLabel2,true)
-    //       Scenes.items.graph3.set(null,null,graph_height,graph_width)
-    //       Scenes.items.graph4.set(null,null,graph_height,graph_width)
-
-    //   }
-    //   // ! ------------> If data already present plot the graph
-    //   if(table.tBodies[0].rows[6].cells[2].innerHTML !== ""){
-    //     setIsProcessRunning(false)
-    //     Scenes.currentStep = 4
-
-    //     // ! change the table column index who's changing
-    //     let changeableColumnIndx = 3
-
-    //     recordBtnClickIdx = 8
-    //     let rows = table.tBodies[0].rows
-      
-    //     // * to get old values from table for matching
-    //     for(let i=0;i<tableColumnMax;i++){
-    //       let val = rows[i].cells[changeableColumnIndx].innerHTML
-    //       valuesToMatch.push(Number(val))
-    //     }
-    //   }else{
-    //     // ! Please note this when plot the graph then show the graph ... 
-    //     plotGraph(ctx,ctx2,graphIdx,[{}],[{}],dataLabel,dataLabel2,xLabel,yLabel,xLabel2,yLabel2,true) 
-    //     Scenes.items.graph3.set(null,null,graph_height,graph_width)
-    //     Scenes.items.graph4.set(null,null,graph_height,graph_width)
-    //     // disableSlider("reset")
-    //   }
-
-    //   // // ! adding data set
-    //   // graph.addDataset(
-    //   //   "Efficiency",
-    //   //   "red",
-    //   //   []
-    //   // )
-       
-
-    //    //!onclick for delete btn
-    //    Scenes.items.btn_delete.item.onclick =  function(){
-    //     if(recordBtnClickIdx == 0 || recordBtnClickIdx > tableRowMax){
-    //       return
-    //     }
-    //     let row = table.tBodies[0].rows
-        
-    //     for(let i=1;i<tableColumnMax;i++){
-    //       row[recordBtnClickIdx-1].cells[i].innerHTML = "" ;
-    //     }
-    //     recordBtnClickIdx = recordBtnClickIdx-1
-    //     if(recordBtnClickIdx==0){
-    //       sliders.enableAll()
-    //       stepTutorial2()
-    //     }
-    //     valuesToMatch.pop()
-    //   }
-
-    //   //! onclick for reset 
-    //   Scenes.items.btn_reset.item.onclick = function(){
-    //     var rows = table.tBodies[0].rows
-  
-    //     for(let i=0;i<tableRowMax;i++){
-    //       for(let j=1;j<tableColumnMax;j++){
-    //         rows[i].cells[j].innerHTML = "";
-    //       }
-    //     }
-
-    //     for(let i=0;i<tableRowMax;i++){
-    //       rows[i].cells[0].innerHTML = i+1;
-    //     }
-
-    //     // reset all the parameters
-    //     // so just simply call this step again
-    //     Scenes.steps[6]()        
-        
-    //   }
-
-    //   // ! onclick for record
-    //   Scenes.items.btn_record.item.onclick = function(){ 
-
-    //     // taking values from all sliders 
-    //     let vInValue = Number(sliders.selectOp1.value)
-    //     let dutyRatioValue = Number(sliders.slider.value)
-    //     let resistanceValue = Number(sliders.selectOp2.value)
-
-
-
-    //     // * if all values not selected
-    //     if(vInValue=="" || dutyRatioValue=="" || resistanceValue==""){
-    //       setCC("Select all values first.")
-    //       return
-    //     }
-
-    //     updateValues(vInValue,dutyRatioValue,resistanceValue)
-    //     console.log(vInValue,dutyRatioValue,resistanceValue)
-        
-    //     // ! for arrow system
-    //     if(recordBtnClickIdx < tableRowMax-1){
-    //       Dom.setBlinkArrowRed(true,130-leftMinus,125-topMinus,30,30,90).play()
-    //       setCC("Select D")
-    //     }
-    //     else{
-    //       Dom.setBlinkArrowRed(-1)
-    //     }
-
-    //     // ! Can't select same values
-    //     if(recordBtnClickIdx < 8 && valuesToMatch.indexOf(dutyRatioValue)!=-1){
-    //       setCC("Please select different value.")
-    //       return
-    //     }else{
-    //       valuesToMatch.push(dutyRatioValue)
-    //     }
-
-    //     // ! sort the data
-    //     if(recordBtnClickIdx>=8){
-
-    //       function sortTable(){
-    //         var rows = table.tBodies[0].rows
-
-    //         let n=8
-    //         let sortIndex = 3
-    //         for(let i=0;i<n;i++){
-    //             for(let j=0;j<n-i-1;j++){
-    //                 let val1 = Number(rows[j].cells[sortIndex].innerHTML)
-    //                 let val2 = Number(rows[j+1].cells[sortIndex].innerHTML)
-    //                 if(val1 > val2){
-    //                     let temp = rows[j].innerHTML
-    //                     rows[j].innerHTML = rows[j+1].innerHTML
-    //                     rows[j+1].innerHTML = temp
-    //                 }
-    //             }
-    //         }
-    //         for(let i=0;i<n;i++){
-    //             rows[i].cells[0].innerHTML = i+1
-    //         }
-    //       }
-    //       sortTable()
-
-    //       // * plot the graph
-    //       // adding parameter to x,y graph
-    //       // var rows = table.tBodies[0].rows
-    //       // let n = 7
-    //       // for(let i=0;i<n;i++){
-    //       //   graph.addData(0,
-    //       //     {
-    //       //       x: rows[i].cells[9].innerHTML,
-    //       //       y: rows[i].cells[10].innerHTML
-    //       //     }
-    //       //   )
-    //       // }
-    //       setDataToGraph()
-
-    //       // after complete
-    //       Dom.setBlinkArrow(true, 790, 408).play()
-    //       setCC("Click 'Next' to go to next step")
-    //       setIsProcessRunning(false)
-    //       Scenes.currentStep = 4
-    //     }
-
-
-      
-    //     // deactivate the sliders after first value  done
-    //     // todo
-    //     if(recordBtnClickIdx == 0){
-    //       sliders.disable(0,1,2)
-    //     }
-    //     let tableRow = table.tBodies[0].rows[recordBtnClickIdx++]
-    //     tableRow.cells[1].innerHTML = vInValue
-    //     tableRow.cells[2].innerHTML = resistanceValue
-    //     tableRow.cells[3].innerHTML = dutyRatioValue
-    //     tableRow.cells[4].innerHTML = Number(Formulas.nonIdeal.M(values)).toFixed(2)
-    //     tableRow.cells[5].innerHTML = Number(Formulas.nonIdeal.iIn(values)).toFixed(2)
-    //     tableRow.cells[6].innerHTML = Number(Formulas.nonIdeal.i0(values)).toFixed(2)
-    //     tableRow.cells[7].innerHTML = Number(Formulas.nonIdeal.v0(values)).toFixed(2)
-    //     tableRow.cells[8].innerHTML = Number(Formulas.nonIdeal.p0(values)).toFixed(2)
-
-    //     //!previous values 
-    //     // tableRow.cells[4].innerHTML = Number(Formulas.efficiencyPlot.v0(values)).toFixed(2)
-    //     // tableRow.cells[5].innerHTML = Number(Formulas.efficiencyPlot.M(values)).toFixed(2)
-    //     // tableRow.cells[6].innerHTML = Number(Formulas.efficiencyPlot.iIn(values)).toFixed(2)
-    //     // tableRow.cells[7].innerHTML = Number(Formulas.efficiencyPlot.i0(values)).toFixed(2)
-    //     // tableRow.cells[8].innerHTML = Number(Formulas.efficiencyPlot.pIn(values)).toFixed(2)
-    //     // tableRow.cells[9].innerHTML = Number(Formulas.efficiencyPlot.p0(values)).toFixed(2)
-    //     // tableRow.cells[10].innerHTML = Number(Formulas.efficiencyPlot.eff(values)).toFixed(2)
-
-    //     // let x = tableRow.cells[9].innerHTML
-    //     // let y = tableRow.cells[10].innerHTML
-    //     // // ! addData to graph
-    //     // graph.addData(0,{x:x,y:y})
-
-    //     // if(recordBtnClickIdx>6){
-    //     //   // after complete
-    //     //   Dom.setBlinkArrow(true, 790, 408).play();
-    //     //   setCC("Click 'Next' to go to next step");
-    //     //   setIsProcessRunning(false); 
-    //     //   Scenes.currentStep = 4
-    //     // }
-    //     // warning for sorting the data
-    //     if(recordBtnClickIdx==8){
-    //       setCC("Press Record")
-    //       Dom.setBlinkArrowRed(true,730-leftMinus,60-topMinus,30,30,90).play()
-    //     }
-    //   }      
-      
-      
-    //   return true;
-    // }),
+      //! slider working
     // (step6 = function () {
     //   setIsProcessRunning(true);
- 
-    //   Scenes.setStepHeading(
-    //     "",
-    //     ""
-    //   )
-
-    //   Scenes.changeHeader(3)
-    //   // setCC("Record 7 reading for different Load Resistances (R0)")
-    //     // ! show the slider
-    //   Scenes.items.slider_box.set(-50,-80).scale(0.79)
-    //     Scenes.items.btn_next.show()
-  
-    //     //! Required Items
-    //     Scenes.items.new_part_3_circuit.set(220,-20,190)
-    //     Scenes.items.btn_record.set(640,-78)
-    //   Scenes.items.btn_delete.set(740,-78)
-    //    Scenes.items.btn_reset.set(840,-78)
-    //     let table = Scenes.items.part3_table_three.set(-25,165, null).scale(0.9).item
-    //     let tableColumnMax = table.tBodies[0].rows[0].cells.length
-    //     let tableRowMax = table.tBodies[0].rows.length
-  
-    //     let valuesToMatch = []
-    //     // * index to handle records
-    //     let recordBtnClickIdx = (table.tBodies[0].rows[6].cells[4].innerHTML==""?0:7)
-        
-    //     // ! graph
-    //     let graph_height = 200
-    //     let graph_width = 355
-        
-    //     Scenes.items.graph_box_5.set(null, -28, 210)
-    //     Scenes.items.graph5.set(null,null,graph_height,graph_width)
-    //     let ctx = Scenes.items.graph5.item
-
-    //     Scenes.items.graph_box_6.set(null, 190, 220)
-    //     Scenes.items.graph6.set(null,null,graph_height,graph_width)
-    //     let ctx2 = Scenes.items.graph6.item
-
-    //     // ! Label for graph
-    //     let xLabel = Scenes.items.chart.label5.x
-    //     let yLabel = Scenes.items.chart.label5.y
-    //     let dataLabel = "Data"
-
-    //     let xLabel2 = Scenes.items.chart.label6.x
-    //     let yLabel2 = Scenes.items.chart.label6.y
-    //     let dataLabel2 = "Data2"
-
-    //     // ! Forshowing graph labels
-    //     // graph idx is for  showing which graph is being shown
-    //     let graphIdx = 0
-    //     if(Scenes.items.chart[graphIdx] != null){
-    //       Scenes.items.xLabel.set().setContent(xLabel)
-    //       Scenes.items.yLabel.set().setContent(yLabel)
-
-    //       Scenes.items.xLabel2.set().setContent(xLabel2)
-    //       Scenes.items.yLabel2.set().setContent(yLabel2)
-    //     }
-        
-    //     // ! To Plot graph
-    //     function plotGraph(
-    //       ctx,
-    //       ctx2,
-    //       graphIdx,
-    //       data,
-    //       data2,
-    //       dataLabel,
-    //       dataLabel2,
-    //       xLabel=null,
-    //       yLabel=null,
-    //       xLabel2=null,
-    //       yLabel2=null,
-    //       beginAtZero=false
-    //     ){
-    //       // for label
-    //       Scenes.items.yLabel.set(487,60).setContent(yLabel).styles({
-    //         backgroundColor: "transperant",
-    //         textAlign: "center",
-    //         color: "black",
-    //         width: "170px", 
-    //         rotate: "-90deg",
-    //       })
-    //       Scenes.items.xLabel.set(720,160).setContent(xLabel).styles({
-    //         backgroundColor: "transperant",
-    //         color: "black",
-    //         width: "fit-content", 
-    //       })
-    //       // for label2
-    //       Scenes.items.yLabel2.set(487,60+225).setContent(yLabel2).styles({
-    //         backgroundColor: "transperant",
-    //         textAlign: "center",
-    //         color: "black",
-    //         width: "170px", 
-    //         rotate: "-90deg",
-    //       })
-    //       Scenes.items.xLabel2.set(720,160+225).setContent(xLabel2).styles({
-    //         backgroundColor: "transperant",
-    //         color: "black",
-    //         width: "fit-content", 
-    //       })
-
-    //       // ! Destroy old graph
-    //       let graphRef = Scenes.items.chart[graphIdx]
-    //       let graphRef2 = Scenes.items.chart[graphIdx+1]
-    //       if(graphRef!=null){
-    //         graphRef.destroy()
-    //         graphRef2.destroy()
-    //       }
-          
-    //       graphRef = new Chart(ctx, {
-    //         type: "scatter",
-    //         plugins: [{
-    //           // afterDraw: chart => {
-    //           //   var ctx = chart.chart.ctx;
-    //           //   ctx.save();
-    //           //   ctx.textAlign = 'center';
-    //           //   ctx.font = '18px Arial';
-    //           //   ctx.fillStyle = 'black';
-    //           //   ctx.fillText('Output Power (P )', chart.chart.width / 2, chart.chart.height - 24);
-    //           //   ctx.textAlign = 'left';
-    //           //   ctx.font = '10px Arial';
-    //           //   ctx.fillText('0', chart.chart.width - 119, chart.chart.height - 12);
-    //           //   ctx.restore();
-    //           // },
-              
-    //         }],
-    //         data: {
-    //           datasets: [
-    //               {
-    //                 label: dataLabel,
-    //                 fill: false,
-    //                 borderColor: "red",
-    //                 backgroundColor: "red",
-    //                 data: data,
-    //                 display: false,
-    //               },
-    //           ],
-    //         },
-    //         options: {
-    //           scales: {
-    //             yAxes: [
-    //               {
-    //                 scaleLabel: {
-    //                   display: false,
-    //                   labelString: yLabel,
-    //                   fontColor: 'black',
-    //                   fontSize: 17,
-
-    //                 },
-    //                 ticks: { 
-    //                   beginAtZero:beginAtZero,
-    //                   fontColor: 'black',
-    //                   fontSize: 14,
-    //                 }
-    //               },
-    //             ],
-    //             xAxes: [
-    //               {
-    //                 scaleLabel: {
-    //                   display: false,
-    //                   labelString: xLabel,
-    //                   fontColor: 'black',
-    //                   fontSize: 17,
-    //                 },
-    //                 ticks: { 
-    //                   beginAtZero:beginAtZero,
-    //                   fontColor: 'black',
-    //                   fontSize: 14,
-    //                 }
-    //               },
-    //             ],
-    //           },
-    //         },
-    //       })
-    //       graphRef2 = new Chart(ctx2, {
-    //         type: "scatter",
-    //         plugins: [{
-    //           // afterDraw: chart => {
-    //           //   var ctx = chart.chart.ctx;
-    //           //   ctx.save();
-    //           //   ctx.textAlign = 'center';
-    //           //   ctx.font = '18px Arial';
-    //           //   ctx.fillStyle = 'black';
-    //           //   ctx.fillText('Output Power (P )', chart.chart.width / 2, chart.chart.height - 24);
-    //           //   ctx.textAlign = 'left';
-    //           //   ctx.font = '10px Arial';
-    //           //   ctx.fillText('0', chart.chart.width - 119, chart.chart.height - 12);
-    //           //   ctx.restore();
-    //           // },
-              
-    //         }],
-    //         data: {
-    //           datasets: [
-    //               {
-    //                 label: dataLabel2,
-    //                 fill: false,
-    //                 borderColor: "red",
-    //                 backgroundColor: "red",
-    //                 data: data2,
-    //                 display: false,
-    //               },
-    //           ],
-    //         },
-    //         options: {
-    //           scales: {
-    //             yAxes: [
-    //               {
-    //                 scaleLabel: {
-    //                   display: false,
-    //                   labelString: yLabel2,
-    //                   fontColor: 'black',
-    //                   fontSize: 17,
-
-    //                 },
-    //                 ticks: { 
-    //                   beginAtZero:beginAtZero,
-    //                   fontColor: 'black',
-    //                   fontSize: 14,
-    //                 }
-    //               },
-    //             ],
-    //             xAxes: [
-    //               {
-    //                 scaleLabel: {
-    //                   display: false,
-    //                   labelString: xLabel2,
-    //                   fontColor: 'black',
-    //                   fontSize: 17,
-    //                 },
-    //                 ticks: { 
-    //                   beginAtZero:beginAtZero,
-    //                   fontColor: 'black',
-    //                   fontSize: 14,
-    //                 }
-    //               },
-    //             ],
-    //           },
-    //         },
-    //       })
-        
-    //       Scenes.items.chart[graphIdx] = graphRef
-    //       Scenes.items.chart[graphIdx+1] = graphRef2
-    //     }
-
-    //     // let slidersBox = document.querySelectorAll(".slider")
-    //     // let slidersBox = document.querySelectorAll(".range-slider__range")
-    //     let topMinus = 85
-    //     let leftMinus = 50
-    //     function stepTutorial2(){
-
-    //       Dom.setBlinkArrowRed(true,100-leftMinus,78-topMinus,30,30,90).play()
-    //       setCC("Select V<sub>in</sub>")
-          
-    //       sliders.selectOp1.oninput = ()=>{
-    //         Dom.setBlinkArrowRed(true,240-leftMinus,78-topMinus,30,30,90).play()
-    //         setCC("Select D")
-    //       }
-    //       sliders.selectOp2.oninput = ()=>{
-    //         Dom.setBlinkArrowRed(true,380-leftMinus,78-topMinus,30,30,90).play()
-    //         setCC("Select Turns ratio")
-    //         }
-    //           sliders.selectOp3.oninput = ()=>{
-    //             Dom.setBlinkArrowRed(true,130-leftMinus,125-topMinus,30,30,90).play()
-    //             setCC("Select R")
-    //           }
-    //             sliders.slider.onclick = ()=>{
-    //               Dom.setBlinkArrowRed(true,730-leftMinus,60-topMinus,30,30,90).play()
-    //               setCC("Press Record")                
-    //             }
-    //     }
-    //     if(recordBtnClickIdx == 0){
-    //       stepTutorial2()
-    //     }
-    //     // generate option
-    //     sliders.generateOptionsFor(2)
-  
-        
-    //     function setDataToGraph(){
-  
-    //       let characteristicsValue = Scenes.items.slider_C.item.value;
-  
-         
-    //       let graphData = []
-    //       let graphData2 = []
-    //       var rows = table.tBodies[0].rows
-    //       let n = rows.length
-    //       ,xLabel = "Output Power P<sub>0</sub>"
-    //       ,yLabel = "Losses (W)"
-    //       ,xLabel2 = "Output Power P<sub>0</sub>"
-    //       ,yLabel2 = "Efficiency (%)",
-    //       tableP0Idx = 8,
-    //       tableEfficiency = 11,
-    //       tableLosses = 10
-    //       for(let i=0;i<n;i++){
-    //         let x = rows[i].cells[tableP0Idx].innerHTML
-    //         let y = rows[i].cells[tableLosses].innerHTML
-
-    //         let x2 = rows[i].cells[tableP0Idx].innerHTML
-    //         let y2 = rows[i].cells[tableEfficiency].innerHTML
-
-    //         graphData.push({x: x,y: y})
-    //         graphData2.push({x: x2,y: y2})
-    //       }
-
-    //         // setting labels
-    //       let conclusionFront = ""
-
-    //       conclusionFront = "Losses increase with loading effect and hence efficiency decreases."
-
-    //       setCC("Losses increase with loading effect and hence efficiency decreases.")
-
-
-    //       // if(p0vsLosses){
-    //       //   yLabel = "Losses (W)"
-    //       //   conclusionFront = "Losses increase with loading effect."
-    //       //   setCC("The conclusion of these observation is that the losses increase with loading effect.")
-    //       // }else{
-    //       //   yLabel = "Efficiencty (%)"
-    //       //   conclusionFront = "Loading effect the efficiency decreases."
-    //       //   setCC("The conclusion of these observation is that due to loading effect the efficiency decreases.")
-    //       // }
-
-    //       // ! For front conclusion
-    //       // Anime.fade(
-    //       //   Scenes.items.tempTitle1.set().setContent(conclusionFront).addClass("conclusion").item
-    //       // )
-          
-    //       Scenes.items.tempTitle1.addClass("conclusion").set(null,60).setContent(conclusionFront)
-    //       Scenes.items.chart.label5.x = xLabel
-    //       Scenes.items.chart.label5.y = yLabel
-
-    //       Scenes.items.chart.label6.x = xLabel2
-    //       Scenes.items.chart.label6.y = yLabel2
-
-    //       plotGraph(ctx,ctx2,graphIdx,graphData,graphData2,dataLabel,dataLabel2,xLabel,yLabel,xLabel2,yLabel2,false)
-    //       Scenes.items.graph5.set(null,null,graph_height,graph_width)
-    //       Scenes.items.graph6.set(null,null,graph_height,graph_width)
-    //     }
-
-    //         // ! ------------> If data already present plot the graph
-    //     if(table.tBodies[0].rows[6].cells[2].innerHTML !== ""){
-    //       setIsProcessRunning(false)
-    //       Scenes.currentStep = 4
-  
-    //       // ! change the table column index who's changing
-    //       let changeableColumnIndx = 3
-  
-    //       recordBtnClickIdx = 8
-    //       let rows = table.tBodies[0].rows
-        
-    //       // * to get old values from table for matching
-    //       for(let i=0;i<tableColumnMax;i++){
-    //         let val = rows[i].cells[changeableColumnIndx].innerHTML
-    //         valuesToMatch.push(Number(val))
-    //       }
-    //     }else{
-    //       // ! Please note this when plot the graph then show the graph ... 
-    //       plotGraph(ctx,ctx2,graphIdx,[{}],[{}],dataLabel,dataLabel2,xLabel,yLabel,xLabel2,yLabel2,true) 
-    //       Scenes.items.graph5.set(null,null,graph_height,graph_width)
-    //       Scenes.items.graph6.set(null,null,graph_height,graph_width)
-    //       // disableSlider("reset")
-    //     }
-  
-    //     // // ! adding data set
-    //     // graph.addDataset(
-    //     //   "Efficiency",
-    //     //   "red",
-    //     //   []
-    //     // )
-         
-  
-    //      //!onclick for delete btn
-    //      Scenes.items.btn_delete.item.onclick =  function(){
-    //       if(recordBtnClickIdx == 0 || recordBtnClickIdx > tableRowMax){
-    //         return
-    //       }
-    //       let row = table.tBodies[0].rows
-          
-    //       for(let i=1;i<tableColumnMax;i++){
-    //         row[recordBtnClickIdx-1].cells[i].innerHTML = "" ;
-    //       }
-    //       recordBtnClickIdx = recordBtnClickIdx-1
-    //       if(recordBtnClickIdx==0){
-    //         sliders.enableAll()
-    //       }
-    //       valuesToMatch.pop()
-    //     }
-  
-    //     //! onclick for reset 
-    //     Scenes.items.btn_reset.item.onclick = function(){
-    //       var rows = table.tBodies[0].rows
-    
-    //       for(let i=0;i<tableRowMax;i++){
-    //         for(let j=1;j<tableColumnMax;j++){
-    //           rows[i].cells[j].innerHTML = "";
-    //         }
-    //       }
-  
-    //       for(let i=0;i<tableRowMax;i++){
-    //         rows[i].cells[0].innerHTML = i+1;
-    //       }
-  
-    //       // reset all the parameters
-    //       // so just simply call this step again
-    //       Scenes.steps[7]()        
-          
-    //     }
-  
-    //     // ! onclick for record
-    //     Scenes.items.btn_record.item.onclick = function(){ 
-  
-    //       // taking values from all sliders 
-    //       // ! note dutyratio slider is now Resistance Slider and resistance is duty
-    //       let vInValue = Number(sliders.selectOp1.value)
-    //       let dutyRatioValue = Number(sliders.selectOp2.value)
-    //       let resistanceValue = Number(sliders.slider.value)
-  
-    //       // * if all values not selected
-    //       if(vInValue=="" || dutyRatioValue=="" || resistanceValue==""){
-    //         setCC("Select all values first.")
-    //         return
-    //       }
-  
-    //       updateValues(vInValue,dutyRatioValue,resistanceValue)
-    //       console.log(vInValue,dutyRatioValue,resistanceValue)
-
-          
-    //       // ! for arrow system
-    //       if(recordBtnClickIdx < tableRowMax-1){
-    //         setCC("Select R")
-    //         Dom.setBlinkArrowRed(true,130-leftMinus,125-topMinus,30,30,90).play()
-    //       }
-    //       else{
-    //         Dom.setBlinkArrowRed(-1)
-    //       }
-  
-    //       // ! Can't select same values
-    //       if(recordBtnClickIdx < 8 && valuesToMatch.indexOf(resistanceValue)!=-1){
-    //         setCC("Please select different value.")
-    //         return
-    //       }else{
-    //         valuesToMatch.push(resistanceValue)
-    //       }
-  
-    //       // ! sort the data
-    //       if(recordBtnClickIdx>=8){
-  
-    //         function sortTable(){
-    //           var rows = table.tBodies[0].rows
-    //           let sortAccording = 3
-  
-    //           let n=8
-    //           for(let i=0;i<n;i++){
-    //               for(let j=0;j<n-i-1;j++){
-    //                   let val1 = Number(rows[j].cells[sortAccording].innerHTML)
-    //                   let val2 = Number(rows[j+1].cells[sortAccording].innerHTML)
-    //                   if(val1 > val2){
-    //                       let temp = rows[j].innerHTML
-    //                       rows[j].innerHTML = rows[j+1].innerHTML
-    //                       rows[j+1].innerHTML = temp
-    //                   }
-    //               }
-    //           }
-    //           for(let i=0;i<n;i++){
-    //               rows[i].cells[0].innerHTML = i+1
-    //           }
-    //         }
-    //         sortTable()
-  
-    //         // * plot the graph
-    //         // adding parameter to x,y graph
-    //         // var rows = table.tBodies[0].rows
-    //         // let n = 7
-    //         // for(let i=0;i<n;i++){
-    //         //   graph.addData(0,
-    //         //     {
-    //         //       x: rows[i].cells[9].innerHTML,
-    //         //       y: rows[i].cells[10].innerHTML
-    //         //     }
-    //         //   )
-    //         // }
-    //         setDataToGraph()
-    //         Scenes.items.graph2.set(null,null,220,355)
-
-  
-    //         // after complete
-    //         Dom.setBlinkArrow(true, 790, 408).play()
-    //         setCC("Click 'Next' to go to next step")
-    //         setIsProcessRunning(false)
-    //         Scenes.currentStep = 4
-    //       }
-  
-  
-          
-  
-    //       // deactivate the sliders after first value  done
-    //       // todo
-    //       if(recordBtnClickIdx == 0){
-    //         sliders.disable(0,1,2)
-    //       }
-
-    //       let tableRow = table.tBodies[0].rows[recordBtnClickIdx++]
-    //       tableRow.cells[1].innerHTML = vInValue
-    //       tableRow.cells[2].innerHTML = dutyRatioValue
-    //       tableRow.cells[3].innerHTML = resistanceValue
-    //       tableRow.cells[4].innerHTML = Number(Formulas.efficiencyPlot.M(values)).toFixed(2)
-    //       tableRow.cells[5].innerHTML = Number(Formulas.efficiencyPlot.iIn(values)).toFixed(2)
-    //       tableRow.cells[6].innerHTML = Number(Formulas.efficiencyPlot.i0(values)).toFixed(2)
-    //       tableRow.cells[7].innerHTML = Number(Formulas.efficiencyPlot.v0(values)).toFixed(2)
-    //       tableRow.cells[8].innerHTML = Number(Formulas.efficiencyPlot.p0(values)).toFixed(2)
-    //       tableRow.cells[9].innerHTML = Number(Formulas.efficiencyPlot.pIn(values)).toFixed(2)
-    //       tableRow.cells[10].innerHTML = Number(Formulas.efficiencyPlot.losses(values)).toFixed(2)
-    //       tableRow.cells[11].innerHTML = Number(Formulas.efficiencyPlot.eff(values)).toFixed(2)
-  
-    //       // let x = tableRow.cells[9].innerHTML
-    //       // let y = tableRow.cells[10].innerHTML
-    //       // // ! addData to graph
-    //       // graph.addData(0,{x:x,y:y})
-  
-    //       // if(recordBtnClickIdx>6){
-    //       //   // after complete
-    //       //   Dom.setBlinkArrow(true, 790, 408).play();
-    //       //   setCC("Click 'Next' to go to next step");
-    //       //   setIsProcessRunning(false); 
-    //       //   Scenes.currentStep = 4
-    //       // }
-    //       // warning for sorting the data
-    //       if(recordBtnClickIdx==8){
-    //         setCC("Press Record")
-    //       Dom.setBlinkArrowRed(true,730-leftMinus,60-topMinus,30,30,90).play()
-    //       }
-    //     }    
-         
-        
-  
-        
+    //   Scenes.items.btn_next.show()
       
-    //   return true
+    //   // todo all previous elements hide
+    //   Dom.hideAll();
+    //   Scenes.items.contentAdderBox.item.innerHTML = ""
+
+    //   // Scenes.setStepHeading("Step-3", "Performance Analysis.");
+    //   setCC("Click on the 'ICON' to plot the performance characteristics.")
+      
+    //   // * remove all previous restrictions
+      
+    //   // ! Required Elements
+
+    //   // Scenes.items.part_2_select_option.set(-29, -73, 485)
+    //   // Scenes.items.part_2_option_1.set(41, 18, 305).zIndex(4)
+    //   // Scenes.items.part_2_option_2.set(41 + 307, 16, 307).zIndex(3)
+    //   // Scenes.items.part_2_option_3.set(610, 27, 289).zIndex(2)
+
+    //   // // hide the slider
+    //   // Scenes.items.slider_box.hide()
+
+ 
+
+    //   // hide all tables
+    //   // Scenes.items.part3_table_one.hide()
+    //   // Scenes.items.part3_table_two.hide()
+    //   Scenes.items.part3_table_three.hide()
+    //   // Scenes.items.part3_table_four.hide()
+    //   // Scenes.items.part3_table_four_2.hide()
+
+    //   // active all sliders
+      
+
+    //   // * showing right tick if done
+    //   // for(let i in rightTicks){
+    //   //   if(Scenes.optionsDone[i] == 1){
+    //   //     rightTicks[i].show()
+    //   //   }
+    //   // }
+
+    //   // resetSliderValue()
+    //   // ! Final Position
+    // //  Scenes.items.tableCalc.show()
+
+    // // ! onclicks for all options
+    //   let options = [
+    //     Scenes.items.part_2_option_1,
+    //     Scenes.items.part_2_option_2,
+    //     Scenes.items.part_2_option_3,
+    //   ]
+
+    //   // ! Destroy Graphs
+    //   function destroyGraphs(){
+    //     for(let i=0;i<7;i++){
+    //       if(Scenes.items.chart[i]!=null){
+    //         Scenes.items.chart[i].destroy()
+    //       }
+    //     }
+    //   }
+    //   // destroyGraphs()
+
+      
+    //   //! RESET ALL THE SLIDER VALUES
+    //   // sliders.reset()
+    //   Scenes.forMathematicalExpressionBtn = 0
+      
+    //   const opOne = ()=>{
+        
+
+    //     Scenes.optionsDone[0]=1;
+    //     Scenes.forMathematicalExpressionBtn = 1
+    //     Scenes.steps[4]()
+    //   }
+    //   const opTwo = ()=>{
+       
+
+    //     Scenes.optionsDone[1]=1;
+    //     Scenes.forMathematicalExpressionBtn = 2
+    //     Scenes.steps[5]()
+    //   }
+    //   const opThree = ()=>{
+        
+
+    //     Scenes.optionsDone[2]=1;
+    //     Scenes.forMathematicalExpressionBtn = 3
+    //     Scenes.steps[6]()
+    //   }
+  
+    //   options[0].item.onclick = opOne
+    //   // rightTicks[0].item.onclick = opOne
+
+    //   options[1].item.onclick =  opTwo
+    //   // rightTicks[1].item.onclick = opTwo
+
+    //   options[2].item.onclick =  opThree
+    //   // rightTicks[2].item.onclick = opThree
+
+    //   // ! if all options done then exit
+    //   let exit = true
+    //   for(let i of Scenes.optionsDone){
+    //     if(i==0){
+    //       exit = false
+    //       break
+    //     }
+    //   }      
+
+    //   if(exit){
+    //     // after complete
+    //     // Dom.setBlinkArrow(true, 790, 408).play();
+    //     setCC("Simulation Done");
+    //     setIsProcessRunning(false);
+    //   }
+
+    //   return true;
+
     // }),
   
  

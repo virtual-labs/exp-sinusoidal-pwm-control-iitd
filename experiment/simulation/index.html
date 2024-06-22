@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href ="css/layout.css" />
     <link rel="stylesheet" href="css/progressBar.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
@@ -104,7 +104,7 @@
             <!-- transparent layer for question -->
             <div class="transparent-box"></div>
             <section class="anime-header">
-              <p class="experiment_heading" style="text-transform: uppercase;position: relative;left: -116px;">IGBT Inverter</p>
+              <p class="experiment_heading" style="text-transform: uppercase;position: relative;left: -326px;">igbt inverter</p>
               
               <div class="btn-popup-box">
                 <p class="btn-popup">PROCEDURE</p>
@@ -243,6 +243,9 @@
               <div class="graph_box graph_box8" >
                 <canvas class="graph graph8"></canvas>
               </div>
+              <div class="graph_box graph_box9" >
+                <canvas class="graph graph9"></canvas>
+              </div>
               <!-- Label for graph -->
               <span
                 style="background-color: transparent; font-weight: bold"
@@ -301,7 +304,6 @@
                     <th rowspan="2">V<sub>in</sub>(V)</th>
                     <th rowspan="2">M (Modulation Index)</th>
                     <th rowspan="2">V<sub>0</sub>(V) (RMS)</th>
-                    <th rowspan="2">V<sub>0</sub> / V<sub>in</sub> </th>
                     <th rowspan="2">V<sub>01</sub>(V) (Fundamental)</th>
                     <th  colspan="3">Harmonic Component
                     <th rowspan="2">THD (%)</th>
@@ -327,11 +329,9 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>
                   </tr>
                   <tr>
                     <td>2</td>
-                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -345,7 +345,6 @@
                   </tr>
                   <tr>
                     <td>3</td>
-                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -367,7 +366,6 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>
                     <!-- <td></td>
                     <td></td> -->
                   </tr>
@@ -381,13 +379,11 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>
                     <!-- <td></td>
                     <td></td> -->
                   </tr>
                   <tr>
                     <td>6</td>
-                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -436,7 +432,6 @@
                     <th rowspan="2">V<sub>in</sub>(V)</th>
                     <th rowspan="2">M (Modulation Index)</th>
                     <th rowspan="2">V<sub>0</sub>(V) (RMS)</th>
-                    <th rowspan="2">V<sub>0</sub> / V<sub>in</sub> </th>
                     <th rowspan="2">V<sub>01</sub>(V) (Fundamental)</th>
                     <th  colspan="3">Harmonic Component
                     <th rowspan="2">THD (%)</th>
@@ -462,11 +457,9 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>
                   </tr>
                   <tr>
                     <td>2</td>
-                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -480,7 +473,6 @@
                   </tr>
                   <tr>
                     <td>3</td>
-                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -502,7 +494,6 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>
                     <!-- <td></td>
                     <td></td> -->
                   </tr>
@@ -516,13 +507,11 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>
                     <!-- <td></td>
                     <td></td> -->
                   </tr>
                   <tr>
                     <td>6</td>
-                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -1040,7 +1029,6 @@
                         </select>
                     </div>
                 </div>
-        
                 <div class="row2">
                     <div class="slider-box-container-4 select-container">
                         <div class="header header_d">D</div>
@@ -1051,6 +1039,16 @@
                         step="0.1">
                         <input class="slider_D_input" value="0.1" type="text">
                     </div>
+                </div>
+                <div class="row3">
+                    <div class="slider-box-container-5 select-container">
+                        <div class="header header_slider2"></div>
+                        <input class="slider2" type="range">
+                        <input class="slider2_input" value="220" type="text" readonly>
+                    </div>
+                    <span class="slider2_input_label labels">V</span>
+                    <span class="slider2_label_1 labels">220</span>
+                    <span class="slider2_label_2 labels">260</span>
                 </div>
             </div>
 
@@ -2118,99 +2116,120 @@ class="main-window-imgs"
 src="./src/images/part_2_graph_data_upper.png"
 />
 
-<!--* EE11 images added -->
+<!--* EE14 images added -->
+
+      <img
+      class="main-window-imgs"
+      src="./src/images/EE14/box_img.png"
+      />
+
+      <img
+      class="main-window-imgs pointer"
+      src="./src/images/EE14/btn_check.png"
+      />
+
+      <img
+      class="main-window-imgs pointer"
+      src="./src/images/EE14/btn_delete.png"
+      />
+
+      <img
+      class="main-window-imgs pointer"
+      src="./src/images/EE14/btn_record.png"
+      />
+
+      <img
+      class="main-window-imgs pointer"
+      src="./src/images/EE14/btn_reset.png"
+      />
+
+      <img
+      class="main-window-imgs"
+      src="./src/images/EE14/component_capacitor.png"
+      />
+
+      <img
+      class="main-window-imgs"
+      src="./src/images/EE14/component_inductance.png"
+      />
+
+      <img
+      class="main-window-imgs"
+      src="./src/images/EE14/component_switch_1.png"
+      />
+
+      <img
+      class="main-window-imgs"
+      src="./src/images/EE14/component_switch_2.png"
+      />
+
+      <img
+      class="main-window-imgs"
+      src="./src/images/EE14/component_switch_3.png"
+      />
+
+      <img
+      class="main-window-imgs"
+      src="./src/images/EE14/component_switch_4.png"
+      />
+
+      <img
+      class="main-window-imgs"
+      src="./src/images/EE14/part_1_circuit.png"
+      />
+
+      <img
+      class="main-window-imgs"
+      src="./src/images/EE14/part_1_cprrect_text.png"
+      />
+
+      <img
+      class="main-window-imgs"
+      src="./src/images/EE14/part_2_circuit.png"
+      />
+
+      <img
+      class="main-window-imgs pointer"
+      src="./src/images/EE14/part_2_option_1.png"
+      />
+
+      <img
+      class="main-window-imgs pointer"
+      src="./src/images/EE14/part_2_option_2.png"
+      />
+
+      <img
+      class="main-window-imgs pointer"
+      src="./src/images/EE14/part_2_option_3.png"
+      />
+
+      <img
+      class="main-window-imgs"
+      src="./src/images/EE14/part_2_option_3_circuit.png"
+      />
+
+      <img
+      class="main-window-imgs"
+      src="./src/images/EE14/part_2_select_option.png"
+      />
+
+      <img
+      class="main-window-imgs"
+      src="./src/images/EE14/part_2_tab_1.png"
+      />
+
+      <img
+      class="main-window-imgs"
+      src="./src/images/EE14/part_2_tab_2.png"
+      />
+      <img
+      class="main-window-imgs"
+      src="./src/images/EE14/graph_legends.png"
+      />
+
+<!--* EE14 images end -->
 
 
-<img
-class="main-window-imgs btn-img"
-src="./src/images/EE11/btn_check.png"
-/>
-
-<img
-class="main-window-imgs btn-img"
-src="./src/images/EE11/btn_delete.png"
-/>
-
-<img
-class="main-window-imgs btn-img"
-src="./src/images/EE11/btn_record.png"
-/>
-
-<img
-class="main-window-imgs btn-img"
-src="./src/images/EE11/btn_reset.png"
-/>
-
-<img
-class="main-window-imgs"
-src="./src/images/EE11/component_capacitor.png"
-/>
-
-<img
-class="main-window-imgs"
-src="./src/images/EE11/component_inductance.png"
-/>
-
-<img
-class="main-window-imgs"
-src="./src/images/EE11/component_switch_1.png"
-/>
-
-<img
-class="main-window-imgs"
-src="./src/images/EE11/component_switch_2.png"
-/>
-
-<img
-class="main-window-imgs"
-src="./src/images/EE11/component_switch_3.png"
-/>
-
-<img
-class="main-window-imgs"
-src="./src/images/EE11/component_switch_4.png"
-/>
-
-<img
-class="main-window-imgs"
-src="./src/images/EE11/part_1_circuit.png"
-/>
-
-<img
-class="main-window-imgs"
-src="./src/images/EE11/part_1_correct_text.png"
-/>
-
-<img
-class="main-window-imgs"
-src="./src/images/EE11/part_2_1_heading.png"
-/>
-
-<img
-class="main-window-imgs"
-src="./src/images/EE11/part_2_2_heading.png"
-/>
-
-<img
-class="main-window-imgs"
-src="./src/images/EE11/part_2_3_circuit.png"
-/>
-<img
-class="main-window-imgs"
-src="./src/images/EE11/part_2_select_option.png"
-/>
-<img
-class="main-window-imgs btn-img"
-src="./src/images/EE11/part_2_select_option_1.png"
-/>
-<img
-class="main-window-imgs btn-img"
-src="./src/images/EE11/part_2_select_option_2.png"
-/>
-<img
-class="main-window-imgs btn-img"
-src="./src/images/EE11/part_2_select_option_3.png"
-/>
 
 
 
