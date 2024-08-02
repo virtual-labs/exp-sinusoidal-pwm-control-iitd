@@ -50,11 +50,11 @@ Fig. 2(b). when S<sub>3</sub> and S<sub>4</sub> are ON
 </table>
 <br>
 
+
 <div style="float: left; width:100%;"><br>
-Table-1. Switch states for full bridge Inverter-Unipolar switching
+Table-1. Switch states for single-phase bridge inverter (Unipolar switching)
 <br><br>
 </div>
-
 <table align="center">
   <tr style="text-align: center; font-weight: bold; background-color: #c9c9c9;">
     <td style="text-align: center; font-weight: bold;">Switching States</td>
