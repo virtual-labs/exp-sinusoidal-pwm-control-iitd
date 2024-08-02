@@ -66,34 +66,34 @@ Table-1. Switch states for single-phase bridge inverter (Unipolar switching)
   </tr>
   <tr style="background-color: #FFF;">
     <td style="text-align: center; font-weight: bold;">1</td>
-    <td style="text-align: center; font-weight: bold;">ON</td>
-    <td style="text-align: center; font-weight: bold;">ON</td>
-    <td style="text-align: center; font-weight: bold;">OFF</td>
-    <td style="text-align: center; font-weight: bold;">OFF</td>
+    <td style="text-align: center; font-weight: bold;">&#10004;</td>
+    <td style="text-align: center; font-weight: bold;">&#10004;</td>
+    <td style="text-align: center; font-weight: bold;">&#10008;</td>
+    <td style="text-align: center; font-weight: bold;">&#10008;</td>
     <td style="text-align: center; font-weight: bold;">V<sub>in</sub></td>
   </tr>
   <tr style="background-color: #FFF;">
     <td style="text-align: center; font-weight: bold;">2</td>
-    <td style="text-align: center; font-weight: bold;">OFF</td>
-    <td style="text-align: center; font-weight: bold;">OFF</td>
-    <td style="text-align: center; font-weight: bold;">ON</td>
-    <td style="text-align: center; font-weight: bold;">ON</td>
+    <td style="text-align: center; font-weight: bold;">&#10008;</td>
+    <td style="text-align: center; font-weight: bold;">&#10008;</td>
+    <td style="text-align: center; font-weight: bold;">&#10004;</td>
+    <td style="text-align: center; font-weight: bold;">&#10004;</td>
     <td style="text-align: center; font-weight: bold;">-V<sub>in</sub></td>
   </tr>
   <tr style="background-color: #FFF;">
     <td style="text-align: center; font-weight: bold;">3</td>
-    <td style="text-align: center; font-weight: bold;">ON</td>
-    <td style="text-align: center; font-weight: bold;">OFF</td>
-    <td style="text-align: center; font-weight: bold;">ON</td>
-    <td style="text-align: center; font-weight: bold;">OFF</td>
+    <td style="text-align: center; font-weight: bold;">&#10004;</td>
+    <td style="text-align: center; font-weight: bold;">&#10008;</td>
+    <td style="text-align: center; font-weight: bold;">&#10004;</td>
+    <td style="text-align: center; font-weight: bold;">&#10008;</td>
     <td style="text-align: center; font-weight: bold;">0</td>
   </tr>
   <tr style="background-color: #FFF;">
     <td style="text-align: center; font-weight: bold;">4</td>
-    <td style="text-align: center; font-weight: bold;">OFF</td>
-    <td style="text-align: center; font-weight: bold;">ON</td>
-    <td style="text-align: center; font-weight: bold;">OFF</td>
-    <td style="text-align: center; font-weight: bold;">ON</td>
+    <td style="text-align: center; font-weight: bold;">&#10008;</td>
+    <td style="text-align: center; font-weight: bold;">&#10004;</td>
+    <td style="text-align: center; font-weight: bold;">&#10008;</td>
+    <td style="text-align: center; font-weight: bold;">&#10004;</td>
     <td style="text-align: center; font-weight: bold;">0</td>
   </tr>
 </table>
