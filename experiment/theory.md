@@ -163,7 +163,7 @@ Even harmonics are absent due to the symmetry of the output voltage along the x-
 </div>
 
 <div style="float: left; width:50%;">
-  <img src="images/th8.png" height="78px">
+  <img src="images/th8.png" height="65px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
     ..(4)
@@ -189,7 +189,7 @@ Fourier series expression for the output load voltage waveform is:
 </div>
 <br>
 <div style="float: left; width:50%;">
-  <img src="images/th9.png" height="65px">
+  <img src="images/th10.png" height="65px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
     ..(5)
@@ -201,7 +201,7 @@ Fourier series expression for the output load voltage waveform is:
 </div>
 
 <div style="float: left; width:50%;">
-  <img src="images/th10.png" height="65px">
+  <img src="images/th11.png" height="65px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
     ..(6)
@@ -213,7 +213,7 @@ Fourier series expression for the output load voltage waveform is:
 </div>
 
 <div style="float: left; width:50%;">
-  <img src="images/th11.png" height="65px">
+  <img src="images/th12.png" height="65px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
     ..(7)
@@ -225,7 +225,7 @@ Fourier series expression for the output load voltage waveform is:
 </div>
 
 <center>
-  <img src="images/th12.png">
+  <img src="images/th13.png">
   
 Fig. 4. Ideal waveforms for the unipolar SPWM generation.
 
