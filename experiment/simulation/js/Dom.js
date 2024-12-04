@@ -153,6 +153,128 @@ class Dom {
   static resetItems() {
     Dom.arrayOfItems = [];
   }
+  onClick(callback=null){
+    if(callback==null){
+      this.item.onclick = ()=>{}
+    }else{
+      this.item.onclick = callback
+    }
+    return this
+  }
+  static maskClick(
+    mask,
+    onClick,
+    leftAndDevMode = false,
+    top = 0,
+    height = 100,
+    width = 100,
+    rotate = 0
+  ) {
+    let maskImg = mask;
+    // default px
+    let leftPx = typeof leftAndDevMode === "boolean" ? 0 : leftAndDevMode;
+    maskImg.set(leftPx, top, height, width).rotate(rotate).zIndex(1000);
+    maskImg.styles({ cursor: "pointer" }).onClick(() => {
+      maskImg.styles({ cursor: "unset" });
+      maskImg.zIndex(0);
+      Dom.setBlinkArrowRed(-1)
+      maskImg.onClick(); // it will null
+      if (onClick) {
+        onClick();
+      }
+    });
+
+    if (leftAndDevMode === true) {
+      maskImg.styles({background: "red"})
+    }
+    return maskImg;
+  }
+  static setBlinkArrowOnElement(
+    connectingElement,
+    direction,
+    arrowLeft = null,
+    arrowTop = null
+  ) {
+    let blinkArrow = new Dom(".blinkArrowRed");
+    let arrowHeight = 30;
+    let arrowWidth = 38.25;
+    let arrowRotate = 0;
+    let gap = 6
+
+    // get left top height and width of the connectingElement
+    const connectingElementProps = {
+      left: connectingElement.item.offsetLeft,
+      top: connectingElement.item.offsetTop,
+      right: Number(
+        connectingElement.item.offsetLeft + connectingElement.item.offsetWidth
+      ),
+      bottom: Number(
+        connectingElement.item.offsetTop + connectingElement.item.offsetHeight
+      ),
+      centerX: Number(
+        connectingElement.item.offsetLeft +
+          connectingElement.item.offsetWidth / 2
+      ).toFixed(2),
+      centerY: Number(
+        connectingElement.item.offsetTop +
+          connectingElement.item.offsetHeight / 2
+      ).toFixed(2),
+    };
+
+    // for(let key in  connectingElementProps) {
+    //   console.log(connectingElement.item)
+    //   console.log(`${key}: ${connectingElementProps[key]}`)
+    // }
+
+    switch (direction) {
+      case "left":
+        arrowRotate = 90;
+        arrowLeft = connectingElementProps.left -  arrowWidth - gap;
+        arrowTop = connectingElementProps.centerY - arrowHeight / 2;
+        break;
+
+      case "right":
+        arrowRotate = -90;
+        arrowLeft = connectingElementProps.right + gap;
+        arrowTop = connectingElementProps.centerY - arrowHeight / 2;
+        break;
+
+      case "top":
+        arrowRotate = -180;
+        arrowLeft = connectingElementProps.centerX - arrowWidth / 2;
+        arrowTop = connectingElementProps.top - arrowHeight - gap
+        break;
+
+      case "bottom":
+        arrowRotate = 0;
+        arrowLeft = connectingElementProps.centerX - arrowWidth / 2;
+        arrowTop = connectingElementProps.bottom + gap;
+        break;
+    }
+
+    blinkArrow.set(arrowLeft, arrowTop, arrowHeight, arrowWidth).rotate(arrowRotate + 90).zIndex(10000);
+    let y = 20;
+
+    var blink = anime({
+      targets: blinkArrow.item,
+      easing: "easeInOutQuad",
+      opacity: 1,
+      translateX: y,
+      direction: "alternate",
+      loop: true,
+      autoplay: false,
+      duration: 300,
+    });
+    return {
+      reset() {
+        blinkArrow.hide();
+        blink.reset();
+      },
+      play() {
+        blink.play();
+      },
+    };
+  }
   static setBlinkArrowRed(
     isX = true,
     left = null,

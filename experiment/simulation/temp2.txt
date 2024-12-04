@@ -1,0 +1,144 @@
+
+     <img
+        class="main-window-imgs"
+        src="./src/images/EE14/box_img.png"
+    />
+    
+     <img
+        class="main-window-imgs"
+        src="./src/images/EE14/btn_check.png"
+    />
+    
+     <img
+        class="main-window-imgs"
+        src="./src/images/EE14/btn_delete.png"
+    />
+    
+     <img
+        class="main-window-imgs"
+        src="./src/images/EE14/btn_record.png"
+    />
+    
+     <img
+        class="main-window-imgs"
+        src="./src/images/EE14/btn_reset.png"
+    />
+    
+     <img
+        class="main-window-imgs"
+        src="./src/images/EE14/component_capacitor.png"
+    />
+    
+     <img
+        class="main-window-imgs"
+        src="./src/images/EE14/component_inductance.png"
+    />
+    
+     <img
+        class="main-window-imgs"
+        src="./src/images/EE14/component_switch_1.png"
+    />
+    
+     <img
+        class="main-window-imgs"
+        src="./src/images/EE14/component_switch_2.png"
+    />
+    
+     <img
+        class="main-window-imgs"
+        src="./src/images/EE14/component_switch_3.png"
+    />
+    
+     <img
+        class="main-window-imgs"
+        src="./src/images/EE14/component_switch_4.png"
+    />
+    
+     <img
+        class="main-window-imgs"
+        src="./src/images/EE14/part_1_circuit.png"
+    />
+    
+     <img
+        class="main-window-imgs"
+        src="./src/images/EE14/part_1_cprrect_text.png"
+    />
+    
+     <img
+        class="main-window-imgs"
+        src="./src/images/EE14/part_2_circuit.png"
+    />
+    
+     <img
+        class="main-window-imgs"
+        src="./src/images/EE14/part_2_option_1.png"
+    />
+    
+     <img
+        class="main-window-imgs"
+        src="./src/images/EE14/part_2_option_2.png"
+    />
+    
+     <img
+        class="main-window-imgs"
+        src="./src/images/EE14/part_2_option_3.png"
+    />
+    
+     <img
+        class="main-window-imgs"
+        src="./src/images/EE14/part_2_option_3_circuit.png"
+    />
+    
+     <img
+        class="main-window-imgs"
+        src="./src/images/EE14/part_2_select_option.png"
+    />
+    
+     <img
+        class="main-window-imgs"
+        src="./src/images/EE14/part_2_tab_1.png"
+    />
+    
+
+box_img:this.allImgsDom[index++],
+btn_check:this.allImgsDom[index++],
+btn_delete:this.allImgsDom[index++],
+btn_record:this.allImgsDom[index++],
+btn_reset:this.allImgsDom[index++],
+component_capacitor:this.allImgsDom[index++],
+component_inductance:this.allImgsDom[index++],
+component_switch_1:this.allImgsDom[index++],
+component_switch_2:this.allImgsDom[index++],
+component_switch_3:this.allImgsDom[index++],
+component_switch_4:this.allImgsDom[index++],
+part_1_circuit:this.allImgsDom[index++],
+part_1_cprrect_text:this.allImgsDom[index++],
+part_2_circuit:this.allImgsDom[index++],
+part_2_option_1:this.allImgsDom[index++],
+part_2_option_2:this.allImgsDom[index++],
+part_2_option_3:this.allImgsDom[index++],
+part_2_option_3_circuit:this.allImgsDom[index++],
+part_2_select_option:this.allImgsDom[index++],
+part_2_tab_1:this.allImgsDom[index++],
+
+
+box_img : new Dom("box_img"),
+btn_check : new Dom("btn_check"),
+btn_delete : new Dom("btn_delete"),
+btn_record : new Dom("btn_record"),
+btn_reset : new Dom("btn_reset"),
+component_capacitor : new Dom("component_capacitor"),
+component_inductance : new Dom("component_inductance"),
+component_switch_1 : new Dom("component_switch_1"),
+component_switch_2 : new Dom("component_switch_2"),
+component_switch_3 : new Dom("component_switch_3"),
+component_switch_4 : new Dom("component_switch_4"),
+part_1_circuit : new Dom("part_1_circuit"),
+part_1_cprrect_text : new Dom("part_1_cprrect_text"),
+part_2_circuit : new Dom("part_2_circuit"),
+part_2_option_1 : new Dom("part_2_option_1"),
+part_2_option_2 : new Dom("part_2_option_2"),
+part_2_option_3 : new Dom("part_2_option_3"),
+part_2_option_3_circuit : new Dom("part_2_option_3_circuit"),
+part_2_select_option : new Dom("part_2_select_option"),
+part_2_tab_1 : new Dom("part_2_tab_1"),

@@ -223,7 +223,13 @@ part_2_graph_data_upper : this.allImgsDom[168],
     part_2_tab_1:this.allImgsDom[188],
     part_2_tab_2:this.allImgsDom[189],
     graph_legends: this.allImgsDom[190],
+    btn_hint:this.allImgsDom[191],
+    hint_box:this.allImgsDom[192],
 
+    hw_result_1_1:this.allImgsDom[193],
+    hw_result_1_2:this.allImgsDom[194],
+    hw_result_menu:this.allImgsDom[195],
+    mask:this.allImgsDom[196],
 
 
 
