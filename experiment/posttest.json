@@ -10,10 +10,10 @@
         "d": "“S<sub>2</sub>” and “S<sub>4</sub>” are conducting"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "a": "Explanation 1: In a single-phase inverter, the output voltage is “+V<sub>in</sub>” when switch “S<sub>1</sub>” and “S<sub>2</sub>” are ON simultaneously.",
         "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "c": "Explanation 3",
+        "d": "Explanation 4"
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
@@ -29,10 +29,10 @@
         "d": "34 V"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Explanation 1",
+        "b": "Explanation 2: For a single-phase full-bridge inverter operating in square-wave mode,<br><img src='images/expl1.png' height='60px'>",
+        "c": "Explanation 3",
+        "d": "Explanation 4"
       },
       "correctAnswer": "b",
       "difficulty": "beginner"
@@ -48,10 +48,10 @@
         "d": "7<sup>th</sup> harmonic"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "a": "Explanation 1: Single-phase inverter operating in square-wave mode, the output voltage waveform is symmetrical (odd symmetry), hence only odd harmonics (1st, 3rd, 5th, 7th, etc.), and no even harmonics (2nd, 4th, 6th, etc.).",
         "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "c": "Explanation 3",
+        "d": "Explanation 4"
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
@@ -68,10 +68,10 @@
         "d": "200"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Explanation 1",
+        "b": "Explanation 2: <img src='images/expl2.png' height='60px'>",
+        "c": "Explanation 3",
+        "d": "Explanation 4"
       },
       "correctAnswer": "b",
       "difficulty": "beginner"
@@ -87,10 +87,10 @@
         "d": "90 V"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Explanation 1",
+        "b": "Explanation 2: <img src='images/expl3.png' height='30px'>",
+        "c": "Explanation 3",
+        "d": "Explanation 4"
       },
       "correctAnswer": "b",
       "difficulty": "beginner"
