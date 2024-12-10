@@ -10,12 +10,12 @@
         "d": "“S<sub>2</sub>” and “S<sub>4</sub>” are conducting"
       },
       "explanations": {
-        "a": "Explanation 1: In a single-phase inverter, the output voltage is “+V<sub>in</sub>” when switch “S<sub>1</sub>” and “S<sub>2</sub>” are ON simultaneously.",
+        "a": "Explanation 1",
         "b": "Explanation 2",
-        "c": "Explanation 3",
+        "c": "Explanation 3: In a single-phase inverter, the output voltage is “+V<sub>in</sub>” when switch “S<sub>1</sub>” and “S<sub>2</sub>” are ON simultaneously.",
         "d": "Explanation 4"
       },
-      "correctAnswer": "a",
+      "correctAnswer": "c",
       "difficulty": "beginner"
     },
 
@@ -30,11 +30,11 @@
       },
       "explanations": {
         "a": "Explanation 1",
-        "b": "Explanation 2: For a single-phase full-bridge inverter operating in square-wave mode,<br><img src='images/expl1.png' height='60px'>",
-        "c": "Explanation 3",
+        "b": "Explanation 2",
+        "c": "Explanation 3: For a single-phase full-bridge inverter operating in square-wave mode,<br><img src='images/expl1.png' height='60px'>",
         "d": "Explanation 4"
       },
-      "correctAnswer": "b",
+      "correctAnswer": "c",
       "difficulty": "beginner"
     },
 
@@ -87,12 +87,12 @@
         "d": "90 V"
       },
       "explanations": {
-        "a": "Explanation 1",
-        "b": "Explanation 2: <img src='images/expl3.png' height='30px'>",
+        "a": "Explanation 1: <img src='images/expl3.png' height='30px'>",
+        "b": "Explanation 2",
         "c": "Explanation 3",
         "d": "Explanation 4"
       },
-      "correctAnswer": "b",
+      "correctAnswer": "a",
       "difficulty": "beginner"
     }
   ]
