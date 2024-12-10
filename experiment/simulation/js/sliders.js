@@ -88,6 +88,19 @@ const sliders = {
         this.setSlider(0.25, 0.75, 0.25, "D")
         this.enableAll()
         break
+
+      case 4:
+        this.enableAll()
+
+        this.changeHeader(0,"V<sub>in</sub> (V)")
+        genOptions(this.selectOptions[0],[220,240,260])
+
+        this.hideSlider2()
+        this.hideSliderAndOption(1)
+        this.hideSliderAndOption(2)
+        this.hideSliderAndOption(3)
+
+      break
     }
   },
 
