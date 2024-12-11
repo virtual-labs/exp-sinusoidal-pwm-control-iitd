@@ -185,7 +185,6 @@ where T<sub>s</sub>=T/2.
 - The switches of the inverter are controlled as per the PWM pattern generated.
 
 <br>
-<br>
 The calculation of the sinusoidal PWM output voltage is similar as that of the uniform PWM output voltage. However, for sinusoidal PWM, the width of each pulse varies according to its position. [1] 
 <br>
 <br>
