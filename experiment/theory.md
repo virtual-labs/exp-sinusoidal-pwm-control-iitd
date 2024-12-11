@@ -197,7 +197,7 @@ Fourier series expression for the output voltage waveform is:
   <img src="images/thup6.png" height="65px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
-    ..(6)
+    ..(5)
 
 </div>
 
@@ -209,7 +209,7 @@ Since the inverter output voltage is an odd function, only odd harmonics exist. 
   <img src="images/thup7.png" height="65px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
-    ..(7)
+    ..(6)
 
 </div>
 <br>
@@ -221,7 +221,7 @@ Since the inverter output voltage is an odd function, only odd harmonics exist. 
   <img src="images/thup8.png" height="65px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
-    ..(8)
+    ..(7)
 
 </div>
 <br>
@@ -233,7 +233,7 @@ After solving, adding the contribution from all the other pulses, the ith compon
   <img src="images/thup9.png" height="65px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
-    ..(9)
+    ..(8)
 
 </div>
 <br>
@@ -252,7 +252,7 @@ Assume each pulse is located at the discrete value of ϕ<sub>i</sub>, which repr
   <img src="images/thup10.png" height="56px">
 </div>
 <div style="float: right; width:50%; text-align:center;">
-    ..(10)
+    ..(9)
 
 </div>
 <br>
@@ -264,7 +264,7 @@ The approximated width of the i<sub>th</sub> pulse,<img src="images/thup11.png" 
   <img src="images/thup12.png" height="40px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
-    ..(11)
+    ..(10)
 
 </div>
 <br>
@@ -276,7 +276,7 @@ Since  &alpha; = &beta;, then
   <img src="images/thup13.png" height="65px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
-    ..(12)
+    ..(11)
 
 </div>
 <br>
@@ -288,7 +288,7 @@ Substituting the values will result in,
   <img src="images/thup14.png" height="65px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
-    ..(13)
+    ..(12)
 
 </div>
 <br>
@@ -300,7 +300,7 @@ The general expression for v<sub>cont</sub>(wt),
   <img src="images/thup15.png" height="65px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
-    ..(14)
+    ..(13)
 
 </div>
 <br>
@@ -312,7 +312,7 @@ The expression for the reference signal is given by
   <img src="images/thup16.png" height="36px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
-    ..(15)
+    ..(14)
 
 </div>
 <br>
@@ -324,7 +324,7 @@ The expression for the reference signal is given by
   <img src="images/thup17.png" height="65px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
-    ..(16)
+    ..(15)
 
 </div>
 <br>
@@ -337,7 +337,7 @@ Equation can be rewritten as
   <img src="images/thup18.png" height="65px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
-    ..(17)
+    ..(16)
 
 </div>
 <br>
