@@ -185,35 +185,29 @@ where T<sub>s</sub>=T/2.
 - The switches of the inverter are controlled as per the PWM pattern generated.
 
 <br>
-Fourier series expression for the output load voltage waveform is:
+<br>
+The calculation of the sinusoidal PWM output voltage is similar as that of the uniform PWM output voltage. However, for sinusoidal PWM, the width of each pulse varies according to its position. [1] 
+<br>
+<br>
+Fourier series expression for the output voltage waveform is:
+
+
 </div>
 <br>
 <div style="float: left; width:50%;">
-  <img src="images/th10.png" height="65px">
-      </div>
-<div style="float: right; width:50%; text-align:center;">
-    ..(5)
-
-</div>
-
-<div style="float: left; width:100%;">
-&nbsp;
-</div>
-
-<div style="float: left; width:50%;">
-  <img src="images/th11.png" height="65px">
+  <img src="images/thup6.png" height="65px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
     ..(6)
 
 </div>
-<br>
+
 <div style="float: left; width:100%;">
-&nbsp;
+Since the inverter output voltage is an odd function, only odd harmonics exist. The calculation of the output voltage harmonic components can be done using a single pair pf pulses.
 </div>
 
 <div style="float: left; width:50%;">
-  <img src="images/th12.png" height="65px">
+  <img src="images/thup7.png" height="65px">
       </div>
 <div style="float: right; width:50%; text-align:center;">
     ..(7)
@@ -224,6 +218,130 @@ Fourier series expression for the output load voltage waveform is:
 &nbsp;
 </div>
 
+<div style="float: left; width:50%;">
+  <img src="images/thup8.png" height="65px">
+      </div>
+<div style="float: right; width:50%; text-align:center;">
+    ..(8)
+
+</div>
+<br>
+<div style="float: left; width:100%;">
+After solving, adding the contribution from all the other pulses, the ith component of vo is given by
+</div>
+
+<div style="float: left; width:50%;">
+  <img src="images/thup9.png" height="65px">
+      </div>
+<div style="float: right; width:50%; text-align:center;">
+    ..(9)
+
+</div>
+<br>
+<div style="float: left; width:100%;">
+
+**Approximating the pulse width**
+</div>
+<br>
+
+<div style="float: left; width:100%;">
+Assume each pulse is located at the discrete value of ϕ<sub>i</sub>, which represents the first intersection for the generation of the i<sub>th</sub> pulse. Then the approximated mathematical relation for the width is found using a geometrical relation
+</div>
+
+<br>
+<div style="float: left; width:50%;">
+  <img src="images/thup10.png" height="56px">
+</div>
+<div style="float: right; width:50%; text-align:center;">
+    ..(10)
+
+</div>
+<br>
+<div style="float: left; width:100%;">
+The approximated width of the i<sub>th</sub> pulse,<img src="images/thup11.png" height="30px"> is given by,
+</div>
+
+<div style="float: left; width:50%;">
+  <img src="images/thup12.png" height="40px">
+      </div>
+<div style="float: right; width:50%; text-align:center;">
+    ..(11)
+
+</div>
+<br>
+<div style="float: left; width:100%;">
+Since  &alpha; = &beta;, then
+</div>
+
+<div style="float: left; width:50%;">
+  <img src="images/thup13.png" height="65px">
+      </div>
+<div style="float: right; width:50%; text-align:center;">
+    ..(12)
+
+</div>
+<br>
+<div style="float: left; width:100%;">
+Substituting the values will result in,
+</div>
+
+<div style="float: left; width:50%;">
+  <img src="images/thup14.png" height="65px">
+      </div>
+<div style="float: right; width:50%; text-align:center;">
+    ..(13)
+
+</div>
+<br>
+<div style="float: left; width:100%;">
+The general expression for v<sub>cont</sub>(wt), 
+</div>
+
+<div style="float: left; width:50%;">
+  <img src="images/thup15.png" height="65px">
+      </div>
+<div style="float: right; width:50%; text-align:center;">
+    ..(14)
+
+</div>
+<br>
+<div style="float: left; width:100%;">
+The expression for the reference signal is given by 
+</div>
+
+<div style="float: left; width:50%;">
+  <img src="images/thup16.png" height="36px">
+      </div>
+<div style="float: right; width:50%; text-align:center;">
+    ..(15)
+
+</div>
+<br>
+<div style="float: left; width:100%;">
+&nbsp; 
+</div>
+
+<div style="float: left; width:50%;">
+  <img src="images/thup17.png" height="65px">
+      </div>
+<div style="float: right; width:50%; text-align:center;">
+    ..(16)
+
+</div>
+<br>
+
+<div style="float: left; width:100%;">
+Equation can be rewritten as 
+</div>
+
+<div style="float: left; width:50%;">
+  <img src="images/thup18.png" height="65px">
+      </div>
+<div style="float: right; width:50%; text-align:center;">
+    ..(17)
+
+</div>
+<br>
 <center>
   <img src="images/th13.png">
   
