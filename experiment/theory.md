@@ -145,7 +145,7 @@ The RMS value of output voltage is
 </div>
 
 <div style="float: left; width:100%;"><br>
-By varying ‘A<sub>r</sub>’ from ‘0’ to ‘A<sub>c</sub>’, the pulse width ‘δ’ can be modified from ‘0’ to ‘180o’ and the RMS output load voltage ‘V<sub>o</sub>’, from ‘0’ to ‘V<sub>s</sub>’. The Fourier series of output voltage expression is:
+By varying ‘A<sub>r</sub>’ from ‘0’ to ‘A<sub>c</sub>’, the pulse width ‘δ’ can be modified from ‘0’ to ‘180&#176;’ and the RMS output load voltage ‘V<sub>o</sub>’, from ‘0’ to ‘V<sub>s</sub>’. The Fourier series of output voltage expression is:
 </div><br>
 
 <div style="float: left; width:50%;">
