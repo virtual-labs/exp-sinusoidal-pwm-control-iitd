@@ -14,7 +14,7 @@ const Download = {
   previousRealCurrentStep: null,
   // 1 step aage
   // removeDownloadFromTheseSteps: [],
-  addDownloadToTheseSteps: [4,5,6],
+  addDownloadToTheseSteps: [4,5,6,7],
   init() {
     this.setOnClicks();
     this.showTookitForCurrentStep();
@@ -246,8 +246,8 @@ setTimeout(() => {
 
 $(document).ready(function () {
   // TODO uncomment
-  // Download.init();
-  // Download.toggleSpinner()
+  Download.init();
+  Download.toggleSpinner()
 
   window.onbeforeprint = () => {
     Dom.setBlinkArrowRed(-1);

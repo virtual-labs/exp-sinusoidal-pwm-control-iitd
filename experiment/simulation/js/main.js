@@ -518,6 +518,7 @@ graph6: new Dom(".graph6"),
 graph7: new Dom(".graph7"),
 graph8: new Dom(".graph8"),
 graph9: new Dom(".graph9"),
+graph10: new Dom(".graph10"),
 graph_box_1: new Dom(".graph_box1"),
 graph_box_2: new Dom(".graph_box2"),
 graph_box_3: new Dom(".graph_box3"),
@@ -527,6 +528,7 @@ graph_box_6: new Dom(".graph_box6"),
 graph_box_7: new Dom(".graph_box7"),
 graph_box_8: new Dom(".graph_box8"),
 graph_box_9: new Dom(".graph_box9"),
+graph_box_10: new Dom(".graph_box10"),
 xLabel: new Dom(".xLabel"),
 yLabel: new Dom(".yLabel"),
 xLabel2: new Dom(".xLabel2"),
@@ -698,8 +700,8 @@ mask : new Dom("mask"),
     y: "Label 1",
   },
   label10:{
-    x: "Label 2",
-    y: "Label 1",
+    x: "Modulation index (M)",
+    y: "Third harmonic component (Vo3)",
   },
  } 
 
@@ -1202,7 +1204,7 @@ mask : new Dom("mask"),
         setCC("Click 'Next' to go to next step");
         Dom.setBlinkArrow(true, 790, 410).play();
         setIsProcessRunning(false);
-        Scenes.currentStep = 6
+        Scenes.currentStep = 7
       } {
         setCC("Click on the 'ICON' to plot the performance characteristics.")
       }
@@ -2926,7 +2928,7 @@ mask : new Dom("mask"),
 
           
           setIsProcessRunning(false); 
-          Scenes.currentStep = 3
+          Scenes.currentStep = 7
 
           // ! fix resistance value to its original
           // resistanceSlider.min = 10
@@ -2957,10 +2959,10 @@ mask : new Dom("mask"),
       Scenes.items.btn_next.show()
 
       //* for checking the conclusion front
-
+      Scenes.forMathematicalExpressionBtn = 4
       
       let conclusionFront = "Here, the lower order harmonic component magnitude (Vo3) is less in sinusoidal PWM technique when compared to single-pulse PWM technique. Hence, the size of filter requirement reduces. "
-      Scenes.items.tempTitle20.set(25,90,null,520).setContent(conclusionFront).addClass("conclusion").zIndex(3).item
+      Scenes.items.tempTitle20.set(25,90,null,520).setContent(conclusionFront).addClass("conclusion").zIndex(3).hide()
 
 
       //! Required Items
@@ -2971,17 +2973,17 @@ mask : new Dom("mask"),
       
        sliders.generateOptionsFor(4)
        Scenes.items.part_2_option_3_circuit.set(0,180, 210)
-      
-       let graphIdx = 6
-       let graph_box7 = new Dom(".graph_box7")
-       let graph_box8 = new Dom(".graph_box8")
-       let graph_box9 = new Dom(".graph_box9")
+
+      let graph_height = 340
+      let graph_width = 340
+
+      let graphIdx = 9
+      let graph_box10 = new Dom(".graph_box10")
 
       let graphBoxes = [
-        graph_box7,
-        graph_box8,
-        graph_box9,
+        graph_box10,
       ]
+
       graphBoxes.forEach((ele,idx)=>{
         ele.styles({
           padding: "0",
@@ -3001,58 +3003,53 @@ mask : new Dom("mask"),
           console.log(ele.item)
         }
       })
-      Scenes.items.graph7.set(null,null,250,100)
-      Scenes.items.graph8.set(null,200,250,100)
-      Scenes.items.graph9.set(null,200,250,100)
-      graph_box7.set(null,null,null,340)
-      graph_box8.set(437,171,null,250)
-      graph_box9.set(null,171,null,250)
-      let ctx1 = Scenes.items.graph7.item
-      let ctx2 = Scenes.items.graph8.item
-      let ctx3 = Scenes.items.graph9.item
+      Scenes.items.graph10.set(null, null, graph_height, graph_width)
+      graph_box10.set(null,null,graph_height,graph_width).styles({
+        paddingLeft: "30px"
+      })
+      let ctx1 = Scenes.items.graph10.item
       let chart1 = Scenes.items.chart[graphIdx]
-      let chart2 = Scenes.items.chart[graphIdx+1]
-      let chart3 = Scenes.items.chart[graphIdx+2]
       
-      let xLabel = ""
-      let yLabel = ""
+      let xLabel = Scenes.items.chart.label10.x
+      let yLabel = Scenes.items.chart.label10.y
 
-      // dual merge graph text title and legend
-      Scenes.items.tempTitle22.setContent("Harmonic Component & THD").set(0,0).styles({
-        backgroundColor: "white",
-        left: "460px",
-        top: "173px",
-        display: "block",
-        color: "black",
-        width: "469px",
+      if(Scenes.items.chart[graphIdx] != null){
+        Scenes.items.xLabel.set().setContent(xLabel)
+        Scenes.items.yLabel.set().setContent(yLabel)
+      }
+      
+      Scenes.items.yLabel.set(445,85).setContent(yLabel).styles({
+        backgroundColor: "transparent",
         textAlign: "center",
-        height: "46px",
-        zIndex: "1001",
+        color: "black",
+        width: "327px", 
+        rotate: "-90deg",
       })
-      Scenes.items.graph_legends.set().styles({
-        left: "503px",
-        top: "196px",
-        zIndex: "1002",
-        height: "21px",
+      Scenes.items.xLabel.set(685, 239).setContent(xLabel).styles({
+        backgroundColor: "transperant",
+        color: "black",
+        width: "fit-content", 
       })
-
 
       function plotGraph(){
         if(chart1!=null){
           chart1.destroy()
-          chart2.destroy()
-          chart3.destroy()
         }
         
         chart1 = new Chart(ctx1,
           {
             type: "bar",
             data: {
-              labels: ["Single-pulse PWM", "Sinusoidal PWM"],
+              labels: ["0.3", "0.5", "0.8"],
               datasets: [
                 {
-                  backgroundColor: ['#395723','#7030a0'],
-                  label: "Vo1,rms",
+                  backgroundColor: ['#002060','#002060',"#002060"],
+                  label: "Single pulse PWM",
+                  data: [],
+                },
+                {
+                  backgroundColor: ['#c00000','#c00000', '#c00000'],
+                  label: "Sinusoidal PWM",
                   data: [],
                 },
               ]
@@ -3061,10 +3058,10 @@ mask : new Dom("mask"),
               maintainAspectRatio: false,
               responsive: true,
               legend: {
-                display: false
+                display: true
               },
               title:{
-                display: true,
+                // display: true,
                 text: "Vo1,rms (fundamental)",
                 fontColor: 'black',
                 fontSize: 15,
@@ -3096,145 +3093,8 @@ mask : new Dom("mask"),
             },
           }
         )
-        chart2 = new Chart(ctx2,
-          {
-            type: "bar",
-            data: {
-              labels: ["Single-pulse PWM"],
-              datasets: [
-                {
-                  label: "Vo3",
-                  backgroundColor: "#002060",
-                  data: [],
-                },
-                {
-                  label: "Vo5",
-                  backgroundColor: "#c00000",
-                  data: [],
-                },
-                {
-                  label: "Vo7",
-                  backgroundColor: "#385723",
-                  data: [],
-                },
-                {
-                  label: "THD",
-                  backgroundColor: "#c55a11",
-                  data: [],
-                },
-              ]
-            },
-            options: {
-              maintainAspectRatio: false,
-              responsive: true,
-              legend: {
-                display: false
-              },
-              title:{
-                display: true,
-                text: "Harmonic Component & THD",
-                fontColor: 'black',
-                fontSize: 15,
-              },
-              scales: {
-                yAxes: [
-                  {
-                    ticks: { 
-                      beginAtZero:true,
-                      fontColor: 'black',
-                      fontSize: 15,
-                    }
-                  },
-                ],
-                xAxes: [
-                  {
-                    scaleLabel: {
-                      display: true,
-                    },
-                    ticks: { 
-                      beginAtZero:true,
-                      fontColor: 'black',
-                      fontSize: 13,
-                    },
-                  },
-                ],
-              },
-              barPercentage: 1, // Controls the width of the bars relative to the available space
-              categoryPercentage: 0.5,
-            },
-          }  
-        )
-        chart3 = new Chart(ctx3,
-          {
-            type: "bar",
-            data: {
-              labels: ["Sinusoidal PWM"],
-              datasets: [
-                {
-                  label: "Vo3",
-                  backgroundColor: "#002060",
-                  data: [],
-                },
-                {
-                  label: "Vo5",
-                  backgroundColor: "#c00000",
-                  data: [],
-                },
-                {
-                  label: "Vo7",
-                  backgroundColor: "#385723",
-                  data: [],
-                },
-                {
-                  label: "THD",
-                  backgroundColor: "#c55a11",
-                  data: [],
-                },
-              ]
-            },
-            options: {
-              maintainAspectRatio: false,
-              responsive: true,
-              legend: {
-                display: false
-              },
-              title:{
-                display: true,
-                text: "Harmonic Component & THD",
-                fontColor: 'black',
-                fontSize: 15,
-              },
-              scales: {
-                yAxes: [
-                  {
-                    ticks: { 
-                      beginAtZero:true,
-                      fontColor: 'black',
-                      fontSize: 15,
-                    }
-                  },
-                ],
-                xAxes: [
-                  {
-                    scaleLabel: {
-                      display: true,
-                    },
-                    ticks: { 
-                      beginAtZero:true,
-                      fontColor: 'black',
-                      fontSize: 13,
-                    },
-                  },
-                ],
-              },
-              barPercentage: 1, // Controls the width of the bars relative to the available space
-              categoryPercentage: 0.5,
-            },
-          }  
-        )
+        
         Scenes.items.chart[graphIdx] = chart1
-        Scenes.items.chart[graphIdx+1] = chart2
-        Scenes.items.chart[graphIdx+2] = chart3
         
       }
 
@@ -3285,14 +3145,10 @@ mask : new Dom("mask"),
        if(chart1 != null){
         setIsProcessRunning(false)
         Scenes.currentStep = 3
-        Scenes.items.graph7.set(null,null,250,355)
-        Scenes.items.graph8.set(null,200,250,270)
-        Scenes.items.graph9.set(null,200,250,270)
+        Scenes.items.graph10.set(null,null,graph_width)
       }else{
         plotGraph()
-        Scenes.items.graph7.set(null,null,250,355)
-        Scenes.items.graph8.set(null,200,250,270)
-        Scenes.items.graph9.set(null,200,250,270)
+        Scenes.items.graph10.set(null,null,graph_width)
       }    
 
 
@@ -3302,11 +3158,9 @@ mask : new Dom("mask"),
         // so just simply call this step again
         if(chart1!=null){
           chart1.destroy()
-          chart2.destroy()
         }
         Scenes.items.chart[graphIdx] = null
-        Scenes.items.chart[graphIdx+1] = null
-        Scenes.steps[6]()        
+        Scenes.steps[7]()        
       }
        
        // ! onclick for record
@@ -3326,89 +3180,50 @@ mask : new Dom("mask"),
 
         Dom.setBlinkArrowRed(-1)
         updateValues(vInValue,dutyRatioValue,resistanceValue)
- 
-        // for table data (temp title data)
-        // let v0 = parseFloat(Number(Formulas.stress.v0(values)).toFixed(2))
-        // let v0byN = parseFloat(Number(Formulas.stress.v0(values) / nValue).toFixed(2))
-        // let iIn = parseFloat(Number(Formulas.stress.iIn(values)).toFixed(2))
-        // // ! iLMPbyN !/ nValue
-        // let iLMPbyN = parseFloat(Number(Formulas.stress.iLMP(values) / nValue).toFixed(2))
-        // let delILMby2byN = parseFloat(Number((Formulas.stress.delILM(values) / 2) / nValue).toFixed(2))
 
-        // console.log(vInValue,dutyRatioValue,resistanceValue)
-
-        // let vS = Number(parseFloat(vInValue) + parseFloat(v0byN)).toFixed(2)
-        // let vD = Number((parseFloat(nValue) * parseFloat(vInValue)) + v0).toFixed(2)
-        // let vC = Number(v0).toFixed(2)
-
-        // let iS = Number(iIn).toFixed(2)
-        // let iD = Number(iLMPbyN).toFixed(2)
-        // let iC = Number(delILMby2byN).toFixed(2)
-
-        // Scenes.items.tempTitle53.setContent(`${vS} V/${iS} A`)
-        // Scenes.items.tempTitle54.setContent(`${vD} V/${iD} A`)
-        // Scenes.items.tempTitle55.setContent(`${vC} V/${iC} A`)
-
-        let data1Arr = Formulas.multipulse.valueSet(vInValue, dutyRatioValue)
-        let data2Arr = Formulas.sinusoidal.valueSet(vInValue, dutyRatioValue)
-
-        console.log(vInValue, dutyRatioValue)
-        // console.log(data2Arr)
-        let data_1 = data1Arr[3]
-        let data_2 = data1Arr[4]
-        let data_3 = data1Arr[5]
-        let data_4 = data1Arr[6]
+        // single pulse
+        let dataArraySinglePulse = Formulas.comparison.single_pulse(values)
         
-        let data_5 = data2Arr[3]
-        let data_6 = data2Arr[4]
-        let data_7 = data2Arr[5]
-        let data_8 = data2Arr[6]
+        // sinusoidal pulse
+        let dataArraySinusoidal = Formulas.comparison.sinusoidal(values)
 
-        let val1 = data1Arr[2]
-        let val2 = data2Arr[2]
         // ! add values to graph
         // let graph1_data = [vS,vD,vC]
-        let graph1_data = [val1, val2]
+        // let graph1_data = [val1, val2]
 
         // let graph2_data = [iS,iD,iC]
-        let v03_data = [data_1,data_5]
-        let v05_data = [data_2,data_6]
-        let v07_data = [data_3,data_7]
-        let THD_data = [data_4,data_8]
+        // let v03_data = [data_1,data_5]
+        // let v05_data = [data_2,data_6]
+        // let v07_data = [data_3,data_7]
+        // let THD_data = [data_4,data_8]
         
         plotGraph()
-        graph.addData(chart1,0,graph1_data)
+        graph.addData(chart1,0,dataArraySinglePulse)
+        graph.addData(chart1,1,dataArraySinusoidal)
         
-        graph.addData(chart2,0,v03_data[0])
-        graph.addData(chart2,1,v05_data[0])
-        graph.addData(chart2,2,v07_data[0])
-        graph.addData(chart2,3,THD_data[0])
+        // graph.addData(chart2,0,v03_data[0])
+        // graph.addData(chart2,1,v05_data[0])
+        // graph.addData(chart2,2,v07_data[0])
+        // graph.addData(chart2,3,THD_data[0])
 
-        graph.addData(chart3,0,v03_data[1])
-        graph.addData(chart3,1,v05_data[1])
-        graph.addData(chart3,2,v07_data[1])
-        graph.addData(chart3,3,THD_data[1])
-
-        Scenes.items.graph7.set(null,null,250,355)
-        Scenes.items.graph8.set(null,200,250,270)
-        Scenes.items.graph9.set(null,200,250,270)
+        Scenes.items.graph10.set(null,null,graph_width)
           // after complete
           Dom.setBlinkArrow(true, 790, 408).play();
           // setCC("Click 'Next' to go to next step");
           // setCC("Bar chart shows the switch, diode and capacitor voltage stresses.")
 
-          setCC("Here, inverter load voltages are generated using single-pulse and Sinusoidal PWM schemes.")
+          setCC("Here, the lower order harmonic component magnitude (Vo3) is less in sinusoidal PWM technique when compared to single-pulse PWM technique.")
 
-          setCC("Sine PWM  based waveforms results in variation in load voltage and selective harmonic reduction simultaneously.")
+          setCC("Hence, the size of filter requirement reduces.")
 
-          let conclusionFront = "The fundamental component of load voltage increases with increase in modulation index.Load voltage variation and selective harmonic reduction is possible in sine PWM technique whereas in single pulse PWM, both are not possible simultaneously. "
+          let conclusionFront = "Here, the lower order harmonic component magnitude (Vo3) is less in sinusoidal PWM technique when compared to single-pulse PWM technique. Hence, the size of filter requirement reduces. "
 
           // ! For front conclusion
           // Anime.fade(
           //   Scenes.items.tempTitle20.set().setContent(conclusionFront).addClass("conclusion").zIndex(3).item
           // )
 
-          Scenes.items.tempTitle20.set(25,30,null,426).setContent(conclusionFront).addClass("conclusion").zIndex(3).item
+          Scenes.items.tempTitle20.set(25,30,null,426).setContent(conclusionFront).addClass("conclusion").zIndex(3)
 
           
           setIsProcessRunning(false); 
@@ -3620,7 +3435,7 @@ mask : new Dom("mask"),
 // rangeSlider();
 
 // stepcalling
-Scenes.currentStep = 7
+Scenes.currentStep = 1
 
 Scenes.next()
 // Scenes.steps[3]()

@@ -594,52 +594,16 @@ const Formulas = {
         ans;
       switch (vIn) {
         case 220:
-          {
-            switch (m) {
-              case 0.3:
-                ans = 28.9787;
-                break;
-              case 0.5:
-                ans = 46.0546;
-                break;
-              case 0.8:
-                ans = 67.9154;
-                break;
-            }
-          }
+            ans = [28.9787, 46.0546, 67.9154]
           break;
         case 240:
-          {
-            switch (m) {
-              case 0.3:
-                ans = 31.4166;
-                break;
-              case 0.5:
-                ans = 50.2414;
-                break;
-              case 0.8:
-                ans = 74.0895;
-                break;
-            }
-          }
+            ans = [31.4166, 50.2414, 74.0895]
           break;
         case 260:
-          {
-            switch (m) {
-              case 0.3:
-                ans = 33.7432;
-                break;
-              case 0.5:
-                ans = 54.4282;
-                break;
-              case 0.8:
-                ans = 80.2636;
-                break;
-            }
-          }
+            ans = [33.7432, 54.4282, 80.2636]
           break;
       }
-      return parseFloat(ans);
+      return ans
     },
     sinusoidal(values) {
       let vIn = values.vIn,
@@ -647,52 +611,16 @@ const Formulas = {
         ans;
       switch (vIn) {
         case 220:
-          {
-            switch (m) {
-              case 0.3:
-                ans = 0.431;
-                break;
-              case 0.5:
-                ans = 1.9275;
-                break;
-              case 0.8:
-                ans = 7.2747;
-                break;
-            }
-          }
+            ans = [0.431,1.9275,7.2747]
           break;
         case 240:
-          {
-            switch (m) {
-              case 0.3:
-                ans = 0.4702;
-                break;
-              case 0.5:
-                ans = 2.1027;
-                break;
-              case 0.8:
-                ans = 7.936;
-                break;
-            }
-          }
+            ans = [0.4702,2.1027,7.936]
           break;
         case 260:
-          {
-            switch (m) {
-              case 0.3:
-                ans = 0.5094;
-                break;
-              case 0.5:
-                ans = 2.2779;
-                break;
-              case 0.8:
-                ans = 8.5973;
-                break;
-            }
-          }
+            ans = [0.5094,2.2779,8.5973]
           break;
       }
-      return parseFloat(ans);
+      return ans
     },
   },
 };
