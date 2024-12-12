@@ -1,0 +1,99 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "Answer the questions given below (refer Fig.2):<br> <center> <img src='images/pos1.png' height='300px'><br><br>Fig. 2. Circuit diagram of single-phase bridge inverter.</center><br><br> 1. In a single-phase bridge inverter, which of the switches are in ON-state when the output voltage is “+V<sub>in</sub>”’",
+      "answers": {
+        "a": "“S<sub>3</sub>” and “S<sub>4</sub>” are conducting",
+        "b": "“S<sub>1</sub>” and “S<sub>3</sub>” are conducting",
+        "c": "“S<sub>1</sub>” and “S<sub>2</sub>” are conducting",
+        "d": "“S<sub>2</sub>” and “S<sub>4</sub>” are conducting"
+      },
+      "explanations": {
+        "a": "Explanation 1",
+        "b": "Explanation 2",
+        "c": "Explanation 3: In a single-phase inverter, the output voltage is “+V<sub>in</sub>” when switch “S<sub>1</sub>” and “S<sub>2</sub>” are ON simultaneously.",
+        "d": "Explanation 4"
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+
+    {
+
+      "question": "2. The single-phase bridge inverter is fed from 48 V DC supply and its load resistance is 2.4 Ω. The rms value of fundamental component of output voltage is ",
+      "answers": {
+        "a": "20 V",
+        "b": "21.6",
+        "c": "43.2 V",
+        "d": "34 V"
+      },
+      "explanations": {
+        "a": "Explanation 1",
+        "b": "Explanation 2",
+        "c": "Explanation 3: For a single-phase full-bridge inverter operating in square-wave mode,<br><img src='images/expl1.png' height='60px'>",
+        "d": "Explanation 4"
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+
+    {
+      
+      "question": "3. In a single-phase inverter, which harmonic component is not present",
+      "answers": {
+        "a": "2<sup>nd</sup> harmonic",
+        "b": "3<sup>rd</sup> harmonic",
+        "c": "5<sup>th</sup> harmonic",
+        "d": "7<sup>th</sup> harmonic"
+      },
+      "explanations": {
+        "a": "Explanation 1: Single-phase inverter operating in square-wave mode, the output voltage waveform is symmetrical (odd symmetry), hence only odd harmonics (1st, 3rd, 5th, 7th, etc.), and no even harmonics (2nd, 4th, 6th, etc.).",
+        "b": "Explanation 2",
+        "c": "Explanation 3",
+        "d": "Explanation 4"
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    
+    {
+
+      "question": "4. A single-phase bridge inverter driven with sinusoidal PWM. The reference waveform frequency (f<sub>r</sub>) is 50 Hz while the carrier frequency (f<sub>c</sub>) is 10 kHz. The number of pulses per half cycle of the output voltage waveform will be",
+      "answers": {
+        
+        "a": "50",
+        "b": "100",
+        "c": "1500",
+        "d": "200"
+      },
+      "explanations": {
+        "a": "Explanation 1",
+        "b": "Explanation 2: <img src='images/expl2.png' height='60px'>",
+        "c": "Explanation 3",
+        "d": "Explanation 4"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+            
+    {
+
+      "question": "5. A single-phase bridge inverter having square wave output of pulse width 180o has the DC supply of 60 V. The rms value of output voltage is",
+      "answers": {
+        "a": "60 V",
+        "b": "70 V",
+        "c": "80 V",
+        "d": "90 V"
+      },
+      "explanations": {
+        "a": "Explanation 1: <img src='images/expl3.png' height='30px'>",
+        "b": "Explanation 2",
+        "c": "Explanation 3",
+        "d": "Explanation 4"
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+.slider-box{
+    z-index: 1000;
+}
+
+.slider-box .row1{
+    display: flex;
+    gap: 20px;
+}
+.slider-box .header{
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 2px;
+}
+.slider-box .header_v{
+  background-color: #0000cc;
+}
+.slider-box .header_r{
+  background-color: #c00000;
+
+}
+.slider-box .header_c{
+    background-color: #ff0066;
+  }
+.slider-box .slider{
+    width: 155px;
+    height: 30px;
+}
+.slider-box .slider_vIn{
+    background-color: #fff5cc;
+}
+.slider-box .slider_R{
+    background-color: #f5efff;
+}
+.slider-box .slider_C{
+    background-color: #f5efff; 
+}
+.slider-box .slider {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 1.4rem;
+    color: #c00000;
+    
+} 
+.slider-box .slider option:hover{
+    background-color: #a8cf40;            
+}
+.slider-box .slider-box-container-4 .header_d{
+    height: 10px;
+    width: fit-content;
+}
+.slider-box .slider-box-container-4 {
+    margin-top: 5px;
+}
+.slider-box .slider_D_input{
+    width: 50px;
+    height: 30px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-align: center;
+    border: 2px solid black;
+    margin-left:  5px;
+    border-radius: 12px;
+}
+.slider-box .slider option:hover{
+    background-color: #a8cf40!important ;
+}
+.slider-box .slider-box-container-4{
+    top: 191px;
+    position: absolute;
+    display: flex;
+    width: fit-content;
+    padding: 7px 18px;
+    border-radius: 81px;
+    background-color: #7030a0;
+}
+
+.slider-box .vertical_slider{
+    display: flex;
+    flex-direction: column;
+    transform: rotate(-90deg);
+}
+.slider-box .slider_v_new{
+    accent-color: red;
+}
+
+.slider-box .slider2{
+    rotate: -90deg;
+    accent-color: red;
+    position: absolute;
+    top: 100px;
+    left: -50px;
+    z-index: 1000;
+}
+
+.slider-box .slider2_input{
+    position: absolute;
+    color: red;
+    width: 55px;
+    font-weight: bold;
+    top: 106px;
+    left: 64px;
+    padding: 0 2px;
+    font-size: 1.2em;
+}
+
+.slider-box .labels{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    color: red;
+    font-weight: bold;
+}
+.slider-box .slider2_input_label{
+    top: 106px;
+    left: 102px;
+}
+.slider-box .slider2_label_1{
+    top: 153px;
+    left: 26px;
+}
+.slider-box .slider2_label_2{
+    top: 40px;
+    left: 26px;
+}
