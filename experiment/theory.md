@@ -348,3 +348,8 @@ Fig. 4. Ideal waveforms for the unipolar SPWM generation.
 
 </center>
 <br>
+
+<div style="float: left; width:100%;">
+  
+#### ("For more Information on mathematical analysis, see references")
+<br></div>
