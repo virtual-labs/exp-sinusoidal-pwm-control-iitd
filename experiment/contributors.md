@@ -10,4 +10,4 @@
 
 | SNo. | Name | Department | Institute |
 | :---: | :---: | :---: | :---: | 
-| 1 | Ms. Utkarsha Dey | Dept. of Electrical Engineering | IIT Delhi |  
+| 1 | Ms. Akankshi Trivedi | Dept. of Electrical Engineering | IIT Delhi |  
