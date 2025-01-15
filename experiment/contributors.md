@@ -1,10 +1,7 @@
 ### Principal Investigator/ Laboratory Developers
-| SNo. | Name | Email | Institute |  |
-| :---: | :---: | :---: | :---: | :---: |
-| 1 | Prof. M. Veerachary | mvchary@ee.iitd.ac.in | IIT Delhi | <img src="images/profimg1.png" alt="Prof. M. Veerachary" width="70" height="90"> |
-|  |  |  |  |  |
-| 2 | Prof. Amit Kumar Jain | amitjain@ee.iitd.ac.in | IIT Delhi | <img src="images/profimg2.png" alt="Prof. Amit Kumar Jain" width="70" height="90"> |
-
+ |  |  |
+ | :---: | :---: | 
+   | <img src="images/profimg2.png" alt="Prof. M. Veerachary" width="70" height="90"><br>Prof. Amit Kumar Jain <br>Dept. of Electrical Engineering<br> IIT Delhi<br>Email: amitjain@ee.iitd.ac.in |<img src="images/profimg1.png" alt="Prof. M. Veerachary" width="70" height="90"><br>Prof. M. Veerachary <br>Dept. of Electrical Engineering<br> IIT Delhi<br>Email: mvchary@ee.iitd.ac.in|
 
 ### Technical Content Organizers
 
